@@ -1,7 +1,5 @@
 import { Carousel } from "./Carousel"
-import Imagem1 from "@/assets/social-email.png"
-import Imagem2 from "@/assets/social-insta.png"
-import Imagem3 from "@/assets/social-whatsapp.png"
+import Imagem from "@/assets/logo-white.png"
 import { StaticImageData } from "next/image"
 
 interface slide {
@@ -11,16 +9,16 @@ interface slide {
 
 const slides: slide[] = [
     {
-        imagem: Imagem1,
-        text: "Otimizacao e Eficiencia, com foco na agilidade..."
+        imagem: Imagem,
+        text: "Otimizacao e Eficiencia, incentivando na agilidade... "
     },
     {
-        imagem: Imagem2,
-        text: "Insterfaces que lhe proporcionam tudo..."
+        imagem: Imagem,
+        text: "Insterfaces que lhe proporcionam tudo... "
     },
     {
-        imagem: Imagem3,
-        text: "Nosso objetivo? Além ser um parceiro estratégico para as demais empresas no mercado, buscamos facilitar e oferecer os melhores meios para a gestao e o sucesso contínuo do seu negócio. Nao perca suas chances... Basta um clique."
+        imagem: Imagem,
+        text: "Com foco em facilitar e oferecer os melhores meios para o sucesso do seu negócio. "
     }
 ]
 

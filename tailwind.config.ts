@@ -22,7 +22,27 @@ const config: Config = {
         },
       },
     },
-  },
+    keyframes: {
+        typewriter: {
+          '0%': { width: '0' },
+          '70%': { width: '100%' },
+          '100%': { width: '100%' },
+        },
+        blinkTextCursor: {
+          '0%, 100%': { visibility: 'visible' },
+          '50%': { visibility: 'hidden' },
+       },
+       slideIn: {
+         '0%': { transform: 'translateY(10%)', opacity: '0' },
+         '100%': { transform: 'translateY(0)', opacity: '1' },
+       },
+      },
+      animation: {
+        typewriter: 'typewriter 8s steps(44) 1s infinite normal both',
+        blinkTextCursor: 'blinkTextCursor 1s steps(5, start) infinite',
+        slideIn: 'slideIn 0.5s ease-out',
+      },    
+    },
   plugins: [],
 };
 

@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function WhatsButton() {
     return(
-        <div className="fixed right-0 mr-10 p-[10px] rounded-full bg-white w-fit hover:opacity-70 cursor-pointer">
-            <Link href=""><Image src={WhatsApp} alt='button-contact' width={60} /></Link>
+        <div className="fixed block bottom-[30px] right-[20px] rounded-full p-3 shadow-2xl bg-white hover:opacity-80 cursor-pointer transition">
+            <Link href=""><Image src={WhatsApp} alt='button-contact' width={70} /></Link>
         </div>
     )
 }
