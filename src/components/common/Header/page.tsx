@@ -21,7 +21,7 @@ export default function Header() {
                         onMouseLeave={() => setIsHiddenSolution(false)}
                     >
                         <p>
-                            Soluções
+                            Serviços
                         </p>
                         <ul className={`${IsHiddenSolution ? 'flex' : 'hidden'} z-10 transition delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center translate-x-[-50%] left-[50%] flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap`}>
                             <li>Cartazeamento</li>
@@ -34,7 +34,7 @@ export default function Header() {
                         onMouseLeave={() => setIsHiddenSeg(false)}
                     >
                         <p>
-                            Soluções
+                            Segmentos
                         </p>
                         <ul className={`${IsHiddenSeg ? 'flex' : 'hidden'} z-10 transition delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center translate-x-[-50%] left-[50%] flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap`}>
                             <li>Supermercados</li>

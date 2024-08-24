@@ -38,7 +38,7 @@ const config: Config = {
        },
       },
       animation: {
-        typewriter: 'typewriter 8s steps(44) 1s infinite normal both',
+        typewriter: 'typewriter 6s steps(44) 1s normal both',
         blinkTextCursor: 'blinkTextCursor 1s steps(5, start) infinite',
         slideIn: 'slideIn 0.5s ease-out',
       },    

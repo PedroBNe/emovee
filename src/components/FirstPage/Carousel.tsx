@@ -1,9 +1,7 @@
-"use client"
-
 import NextL from '@/assets/next-left.png'
 import NextR from '@/assets/next-right.png'
 import Image, { StaticImageData } from "next/image";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface slide {
     imagem: StaticImageData,
@@ -29,7 +27,13 @@ export const Carousel = ({ slides }: CarouselProps) => {
         prevIndex === slides.length - 1 ? 0 : prevIndex + 1
         );
     };
-    
+
+    useEffect(() => {
+        const intervalId: number = window.setInterval(nextSlide, 8000);
+      
+        return () => clearInterval(intervalId);
+    });
+
     return (
         <div className="relative w-full min-h-[800px] flex">
             <div className="w-full min-h[800px] flex overflow-hidden items-center">
