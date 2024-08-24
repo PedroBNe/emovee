@@ -14,28 +14,46 @@ export default function Footer() {
     return (
         <footer className="bg-slate-800 min-h-40 flex flex-col justify-between text-slate-300">
             <div className="flex flex-row gap-1 justify-around py-4 px-5">
-                <div>
-                    <Image src={Logo} alt='logo-emove' />
+                <div className='hover:opacity-60'>
+                    <Link href=''>
+                        <Image src={Logo} alt='logo-emove' />
+                    </Link>
                 </div>
                 <div>
                     <ul className='flex flex-col gap-3'>
-                        <li>Inicio</li>
-                        <li>Sobre</li>
-                        <li>Servicos</li>
-                        <li>Suporte</li>
+                        <li className='hover:opacity-60'>
+                            <Link href="">
+                                Inicio
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href=''>
+                                Sobre
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href=''>
+                                Servicos
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href=''>
+                                Suporte
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className='flex flex-col pb-1'>
                     <div className='flex flex-col gap-3'>
-                        <div>
+                        <div className='hover:opacity-60'>
                             <Images image={WhatsApp} alt='whatsapp' text="Telefone:" />
                             <Link href=""><Information text="numero"/></Link>
                         </div>
-                        <div>
+                        <div className='hover:opacity-60'>
                             <Images image={Email} alt='email' text="E-mail:" />
                             <Link href=""><Information text="emails"/></Link>
                         </div>
-                        <div>
+                        <div className='hover:opacity-60'>
                             <Images image={Location} alt='location' text="Localizacao" />
                             <Link href=""><Information text="rua tal"/></Link>
                         </div>
