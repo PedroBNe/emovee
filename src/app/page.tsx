@@ -1,11 +1,9 @@
-import Banner from "@/components/Banner/page";
-import Exemple from "@/components/Exemple/page";
+import FirstPage from "@/components/FirstPage/page";
 
 export default function Home() {
   return(
     <div>
-      <Banner />
-      <Exemple />
+      <FirstPage />
     </div>
   );
 }
