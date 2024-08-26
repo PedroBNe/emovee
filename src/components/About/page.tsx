@@ -14,12 +14,12 @@ export default function About() {
             <div className="w-full min-h-[20em] bg-[#1e65ff] text-white flex flex-col justify-center pl-12 gap-3 shadow-xl">
                 <h1 className="text-4xl font-bold">Soluções inteligentes para a sua loja</h1>
             </div>
-            <div className="w-full min-h-[35em] flex gap-5">
-                <div className="w-[50%] h-full m-3 flex flex-col gap-4">
-                    <h2 className="text-center text-2xl font-bold">
+            <div className="w-full min-h-[35em] flex gap-5 mb-[8em]">
+                <div className="w-[50%] h-full m-3 flex flex-col gap-12">
+                    <h2 className="text-center text-3xl font-bold">
                         Sobre a E-movee
                     </h2>
-                    <div className="flex flex-col gap-8">
+                    <div className="text-lg flex flex-col gap-8">
                         <p className="pl-7">Fruto da busca pela otimização e eficiência, a E-moviee se insere no mercado com uma plataforma intuitiva capaz de simplificar processos e aumentar a produtividade e reduzir custos operacionais. Em um ambiente de negócios cada vez mais competitivo e dinâmico, a necessidade de ferramentas que proporcionem rapidez e precisão nas operações é imprescindível.</p>
                         <p className="pl-7">Com uma interface de fácil aprendizado e funcionalidades avançadas, nossa plataforma permite que sua equipe tenha mais agilidade no dia a dia. Estamos preparados para nos adaptarmos a sua necessidade específica, oferecendo soluções personalizadas que atendem às particularidades do seu setor.
                         </p>
@@ -33,6 +33,9 @@ export default function About() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="w-full flex justify-center items-center gap-2">
+                <hr className="w-[70%] border-2 border-slate-500 rounded-full"></hr>
             </div>
             <div>
                 <div className="w-full min-h-[35em] flex flex-row gap-16 justify-center">

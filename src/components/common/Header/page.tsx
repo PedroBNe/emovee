@@ -25,7 +25,9 @@ export default function Header() {
                             Serviços
                         </p>
                         <ul className={`${IsHiddenSolution ? 'flex' : 'hidden'} z-10 transition delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center translate-x-[-50%] left-[50%] flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap`}>
-                            <li>Cartazeamento</li>
+                            <li>
+                                <Link href="/cartazeamento">Cartazeamento</Link>
+                            </li>
                             <li>Gestão de Ofertas</li>
                             <li>Tabloide</li>
                         </ul>
