@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar-thin {
+    scrollbar-width: none;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+width: 8px; /* Para Chrome, Safari e Edge */
+}
+
+.scrollbar-thin:hover{
+scrollbar-width: thin;
+}
+
+.scrollbar-none {
+scrollbar-width: none;
+-ms-overflow-style: none;  
+}
+
+.scrollbar-none::-webkit-scrollbar {
+display: none;
+}

@@ -22,8 +22,8 @@ function Section({ children }: any) {
 
 export default function SlideIn({ Content }: any) {
   return (
-    <>
+    <div className="w-full">
       <Section>{Content}</Section>
-    </>
+    </div>
   );
 }

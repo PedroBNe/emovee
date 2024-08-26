@@ -1,5 +1,5 @@
-import NextL from '@/assets/next-left.png'
-import NextR from '@/assets/next-right.png'
+// import NextL from '@/assets/next-left.png'
+// import NextR from '@/assets/next-right.png'
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react"
 
@@ -61,7 +61,7 @@ export const Carousel = ({ slides }: CarouselProps) => {
                 </div>
                 ))}
             </div>
-            <button
+            {/* <button
                 onClick={prevSlide}
                 className="absolute left-0 top-1/2 transform-translate-y-1/2 p-2 pl-3 hover:opacity-70"
             >
@@ -72,7 +72,7 @@ export const Carousel = ({ slides }: CarouselProps) => {
                 className="absolute right-0 top-1/2 transform-translate-y-1/2 p-2 pr-3 hover:opacity-70"
             >
                 <Image src={NextR} alt='next-left-button' width={40}/>
-            </button>
+            </button> */}
         </div>
     );
 };

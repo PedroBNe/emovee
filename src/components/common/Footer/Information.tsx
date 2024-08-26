@@ -4,7 +4,7 @@ interface SitesProps {
 
 export const Information = ({ text }: SitesProps) => {
     return(
-        <div className="pl-7">
+        <div className="pl-7 hover:opacity-60">
             {text}
         </div>
     )

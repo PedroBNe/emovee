@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Logo from "@/assets/logo-blue.jpg";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
 
@@ -12,7 +13,7 @@ export default function Header() {
     return(
         <header className="h-16 flex flex-row justify-around bg-[#f7f7f7] items-center">
             <div>
-                <Image src={Logo} alt="logo-emove" height={56}/>
+                <Link href="/sobre" ><Image src={Logo} alt="logo-emove" height={56}/></Link>
             </div>
             <nav>
                 <ul className="flex flex-row gap-10">
@@ -45,7 +46,9 @@ export default function Header() {
                             <li>Outros segmentos</li>
                         </ul>
                     </li>
-                    <li>Sobre</li>
+                    <li>
+                        <Link href="/sobre">Sobre</Link>
+                    </li>
                     <li>Conteúdos</li>
                     <li>Contato</li>
                 </ul>

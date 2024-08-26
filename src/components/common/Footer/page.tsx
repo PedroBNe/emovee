@@ -15,19 +15,19 @@ export default function Footer() {
         <footer className="bg-slate-800 min-h-40 flex flex-col justify-between text-slate-300">
             <div className="flex flex-row gap-1 justify-around py-4 px-5">
                 <div className='hover:opacity-60'>
-                    <Link href=''>
+                    <Link href='/inicio'>
                         <Image src={Logo} alt='logo-emove' />
                     </Link>
                 </div>
                 <div>
                     <ul className='flex flex-col gap-3'>
                         <li className='hover:opacity-60'>
-                            <Link href="">
+                            <Link href="/inicio">
                                 Inicio
                             </Link>
                         </li>
                         <li className='hover:opacity-60'>
-                            <Link href=''>
+                            <Link href='/sobre'>
                                 Sobre
                             </Link>
                         </li>
@@ -45,15 +45,15 @@ export default function Footer() {
                 </div>
                 <div className='flex flex-col pb-1'>
                     <div className='flex flex-col gap-3'>
-                        <div className='hover:opacity-60'>
+                        <div>
                             <Images image={WhatsApp} alt='whatsapp' text="Telefone:" />
                             <Link href=""><Information text="numero"/></Link>
                         </div>
-                        <div className='hover:opacity-60'>
+                        <div>
                             <Images image={Email} alt='email' text="E-mail:" />
                             <Link href=""><Information text="emails"/></Link>
                         </div>
-                        <div className='hover:opacity-60'>
+                        <div>
                             <Images image={Location} alt='location' text="Localizacao" />
                             <Link href=""><Information text="rua tal"/></Link>
                         </div>
