@@ -28,7 +28,7 @@ export default function About() {
                     </div>
                 </div>
                 <div className="w-[50%] flex justify-center items-center">
-                    <div className="w-[50%] h-[90%] flex flex-col gap-5 justify-center items-center">
+                    <div className="w-[60%] h-[95%] flex flex-col gap-5 justify-center items-center">
                         <div className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl">
                             Fotos
                         </div>
@@ -101,15 +101,17 @@ export default function About() {
                 </div>
             </div>
             {/* <div className="w-full flex justify-center items-center gap-2">
-                    <h2 className="font-bold text-xl text-slate-500">
+                <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
+                    <h2 className="font-bold text-2xl">
                         Empresas parceiras
                     </h2>
+                <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
             </div>
             <div className="w-[80%] min-h-[7em] flex flex-row justify-between items-center">
                 <div>
                     <CarouselPage title="ola"/>
                 </div>
-            </div> */}
+            </div> */}                  {/* STAND BY HERE */}
             <div className="w-full flex justify-center items-center gap-2">
                 <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
                     <h2 className="font-bold text-2xl">
