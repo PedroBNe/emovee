@@ -32,7 +32,7 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li className='hover:opacity-60'>
-                            <Link href=''>
+                            <Link href='/segmentos'>
                                 Servicos
                             </Link>
                         </li>

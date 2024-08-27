@@ -1,6 +1,7 @@
 // import NextL from '@/assets/next-left.png'
 // import NextR from '@/assets/next-right.png'
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react"
 
 interface slide {
@@ -53,9 +54,11 @@ export const Carousel = ({ slides }: CarouselProps) => {
                                 </div>
                                 <div className="animate-blinkTextCursor border-l-2"></div>
                             </div>
-                            <button className="transition w-fit text-slate-100 font-bold rounded-full p-6 px-9 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                                Saiba mais
-                            </button>
+                            <Link href="/sobre">
+                                <button className="transition w-fit text-slate-100 font-bold rounded-full p-6 px-9 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                    Saiba mais
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import Quotam from '@/assets/quotation-marks.png';
 import Image, { StaticImageData } from "next/image";
 import SlideIn from "./SlideInPage";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface slide {
     imagem: StaticImageData,
@@ -80,9 +81,11 @@ export default function FirstPage() {
                                     <p className="text-center m-5">
                                         Fruto da busca pela otimização e eficiência, a E-moviee se insere no mercado com uma plataforma intuitiva capaz de simplificar processos e aumentar a produtividade e reduzir custos operacionais. Em um ambiente de negócios cada vez mais competitivo e dinâmico, a necessidade de ferramentas que proporcionem rapidez e precisão nas operações é imprescindível.
                                     </p>
-                                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                                        Sobre a E-movee
-                                    </button>
+                                    <Link href="/sobre">
+                                        <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                            Sobre a E-movee
+                                        </button>
+                                    </Link>
                                 </motion.div>
                             </div>
                         </div>
@@ -114,9 +117,11 @@ export default function FirstPage() {
                                 <p className="text-center m-5">
                                     Em poucos cliques, crie e imprima cartazes promocionais atrativos, que despertem desejo nos consumidores. 
                                 </p>
-                                <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                                    Saiba mais
-                                </button>                            
+                                <Link href="/cartazeamento">
+                                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                        Saiba mais
+                                    </button>   
+                                </Link>
                             </motion.div>
                         </div>
                         <div className="w-[20%] flex items-center justify-center">
@@ -132,12 +137,14 @@ export default function FirstPage() {
                                 <p className="text-center m-5">
                                     De maneira ágil e simplificada, gerencie e organize seu calendário promocional.
                                 </p>
-                                <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                                    Saiba mais
-                                </button>                            
+                                <Link href="/gestao-ofertas">
+                                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                        Saiba mais
+                                    </button>   
+                                </Link>                         
                             </motion.div>
                         </div>
-                        <div className="w-[20%] flex items-center justify-center">
+                        {/* <div className="w-[20%] flex items-center justify-center">
                             <motion.div
                                 className="w-[100%] h-[60%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                                 whileHover={{ scale: 1.1 }}
@@ -145,16 +152,18 @@ export default function FirstPage() {
                                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                             >
                                 <p className="font-bold text-xl">
-                                    TABLOIDE
+                                    Tablóides
                                 </p>
                                 <p className="text-center m-5">
                                     Frase
                                 </p>
-                                <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                                    Saiba mais
-                                </button>                            
+                                <Link href="/tabloides">
+                                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                        Saiba mais
+                                    </button>   
+                                </Link>                          
                             </motion.div>
-                        </div>
+                        </div> */}                               {/* STAND BY HERE */}
                     </div>            
                 } />
                 <div className="w-full">
@@ -226,7 +235,7 @@ export default function FirstPage() {
                         </div>
                     </div>            
                 } />
-                <div className="w-full">
+                {/* <div className="w-full">
                     <SlideIn Content={
                         <div className="w-full flex justify-center items-center gap-2">
                             <hr className="w-[30%] border-2 border-[#1E293B] rounded-full"/>
@@ -236,8 +245,8 @@ export default function FirstPage() {
                             <hr className="w-[30%] border-2 border-[#1E293B] rounded-full"/>
                         </div>
                     } />
-                </div>                    
-                <SlideIn Content={
+                </div>                     */}      {/* STAND BY HERE */}
+                {/* <SlideIn Content={
                     <div className="w-full min-h-[35em] flex flex-row gap-16 justify-center">
                         <div className="w-[20%] flex items-center justify-center">
                             <motion.div
@@ -294,13 +303,13 @@ export default function FirstPage() {
                             </motion.div>
                         </div>
                     </div>            
-                } />
+                } /> */}
                 <div className="w-full">
                     <SlideIn Content={
                         <div className="w-full flex justify-center items-center gap-2">
                             <hr className="w-[30%] border-2 border-[#1E293B] rounded-full"/>
                                 <h2 className="font-bold text-2xl">
-                                    Teste gratis
+                                    Teste grátis
                                 </h2>
                             <hr className="w-[30%] border-2 border-[#1E293B] rounded-full"/>
                         </div>
@@ -319,9 +328,11 @@ export default function FirstPage() {
                                     <p className="text-center m-5">
                                         texto
                                     </p>
-                                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                                        Fale com um especialista
-                                    </button>
+                                    <Link href="/fale-especialista">
+                                        <button className="transition w-fit text-slate-100 font-bold rounded-full p-4 px-5 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                            Fale com um especialista
+                                        </button>   
+                                    </Link>
                                 </motion.div>
                             </div>
                         </div>

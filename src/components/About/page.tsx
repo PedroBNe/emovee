@@ -5,6 +5,7 @@ import Vision from '@/assets/vision.png';
 import Values from '@/assets/values.png';
 import Mission from '@/assets/mission.png';
 import Image from "next/image";
+import Link from "next/link";
 // import { CarouselPage } from "./carousel";
 
 
@@ -12,14 +13,14 @@ export default function About() {
     return (
         <div className="w-full min-h-[100em] flex flex-col gap-12 justify-center items-center">
             <div className="w-full min-h-[20em] bg-[#1e65ff] text-white flex flex-col justify-center pl-12 gap-3 shadow-xl">
-                <h1 className="text-4xl font-bold">Soluções inteligentes para a sua loja</h1>
+                <h1 className="text-5xl font-bold">Soluções inteligentes para a sua loja</h1>
             </div>
             <div className="w-full min-h-[35em] flex gap-5 mb-[8em]">
                 <div className="w-[50%] h-full m-3 flex flex-col gap-12">
                     <h2 className="text-center text-3xl font-bold">
                         Sobre a E-movee
                     </h2>
-                    <div className="text-lg flex flex-col gap-8">
+                    <div className="text-2xl flex flex-col gap-8">
                         <p className="pl-7">Fruto da busca pela otimização e eficiência, a E-moviee se insere no mercado com uma plataforma intuitiva capaz de simplificar processos e aumentar a produtividade e reduzir custos operacionais. Em um ambiente de negócios cada vez mais competitivo e dinâmico, a necessidade de ferramentas que proporcionem rapidez e precisão nas operações é imprescindível.</p>
                         <p className="pl-7">Com uma interface de fácil aprendizado e funcionalidades avançadas, nossa plataforma permite que sua equipe tenha mais agilidade no dia a dia. Estamos preparados para nos adaptarmos a sua necessidade específica, oferecendo soluções personalizadas que atendem às particularidades do seu setor.
                         </p>
@@ -35,7 +36,11 @@ export default function About() {
                 </div>
             </div>
             <div className="w-full flex justify-center items-center gap-2">
-                <hr className="w-[70%] border-2 border-slate-500 rounded-full"></hr>
+                <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
+                    <h2 className="font-bold text-2xl">
+                        Temos
+                    </h2>
+                <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
             </div>
             <div>
                 <div className="w-full min-h-[35em] flex flex-row gap-16 justify-center">
@@ -106,17 +111,19 @@ export default function About() {
                 </div>
             </div> */}
             <div className="w-full flex justify-center items-center gap-2">
-                <h2 className="font-bold text-xl text-slate-500">
-                    Como Podemos Ajudar o Seu Negócio
-                </h2>
+                <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
+                    <h2 className="font-bold text-2xl">
+                        Como podemos ajudar o Seu Negócio
+                    </h2>
+                <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
             </div>
-            <div className="bg-black min-h-[20em] w-full text-white font-bold flex flex-col gap-6 justify-center items-center">
-                <h2 className="text-2xl">
-                    titulo
-                </h2>
-                <button className="transition w-fit text-slate-100 font-bold rounded-full p-3 px-4 text-lg bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                    Fale com um especialista
-                </button>
+            <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
+                <h2 className="text-white text-3xl font-bold">Descubra com um clique!</h2>
+                <Link href="">
+                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-6 px-10 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                        Fale com um especialista
+                    </button>
+                </Link>
             </div>
         </div>
     );

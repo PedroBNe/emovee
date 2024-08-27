@@ -13,7 +13,7 @@ export default function Header() {
     return(
         <header className="h-16 flex flex-row justify-around bg-[#f7f7f7] items-center">
             <div>
-                <Link href="/sobre" ><Image src={Logo} alt="logo-emove" height={56}/></Link>
+                <Link href="/inicio" ><Image src={Logo} alt="logo-emove" height={56}/></Link>
             </div>
             <nav>
                 <ul className="flex flex-row gap-10">
@@ -28,8 +28,12 @@ export default function Header() {
                             <li>
                                 <Link href="/cartazeamento">Cartazeamento</Link>
                             </li>
-                            <li>Gestão de Ofertas</li>
-                            <li>Tabloide</li>
+                            <li>
+                                <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
+                            </li>
+                            <li className="hidden"> {/* STAND BY HERE */}
+                                <Link href="/tabloides">Tablóides</Link>
+                            </li>
                         </ul>
                     </li>
                     <li className="relative cursor-pointer"
@@ -52,7 +56,9 @@ export default function Header() {
                         <Link href="/sobre">Sobre</Link>
                     </li>
                     <li>Conteúdos</li>
-                    <li>Contato</li>
+                    <li>
+                        <Link href="/contato">Contato</Link>
+                    </li>
                 </ul>
             </nav>
             <div className="flex gap-5">

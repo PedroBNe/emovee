@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 
-export default function Carta() {
+export default function Tablo() {
     return (
         <div className="relative w-full min-h-[100em] flex flex-col gap-12">
             <div className="w-full min-h-[20em] bg-[#1e65ff] text-white flex flex-col justify-center pl-12 shadow-xl">
-                <h1 className="text-5xl font-bold">Cartazeamento</h1>
+                <h1 className="text-5xl font-bold">Tablóides</h1>
             </div>
             <div className="w-full min-h-[10em] flex justify-start items-start">
                 <div className="w-[50%] h-[100%] flex flex-col justify-between items-center">
@@ -46,51 +46,6 @@ export default function Carta() {
                     </h2>
                     <p className="text-2xl">
                         Crie cartazes que captem a atenção dos seus clientes, sem renunciar à sua identidade visual! Nossa plataforma oferece uma comunicação visual atrativa e impactante para suas ofertas, garantindo que suas mensagens se destaquem melhorem a experiência dos consumidores.
-                    </p>
-                    <ul className="text-2xl list-disc w-full pl-16">
-                        <li>Personalização;</li>
-                        <li>Comunicação eficiente.</li>
-                    </ul>
-                    <h2 className="text-4xl font-bold text-[#1e90ff]">
-                        A sua identidade em destaque
-                    </h2>
-                    <p className="text-2xl">
-                        Destaque-se dos concorrentes com nossa plataforma de personalização exclusiva. Cada cartaz pode refletir o padrão visual único da sua rede, proporcionando clareza e eficiência na comunicação de suas ofertas. Aproveite nossa base para criar campanhas que atraiam o seu público-alvo com facilidade.
-                    </p>
-                    <ul className="text-2xl list-disc w-full pl-16">
-                        <li>Diferenciação;</li>
-                        <li>Impacto na mensagem;</li>
-                        <li>Eficiência;</li>
-                        <li>Fortalecimento de marca.</li>
-                    </ul>
-                    <h2 className="text-4xl font-bold text-[#1e90ff]">
-                        Agilidade e facilidade
-                    </h2>
-                    <p className="text-2xl">
-                        Otimize o gerenciamento de cartazes com nossa solução integrada e automatizada. Ao integrar o nosso software com o seu ERP, você elimina a necessidade de digitar as informações de maneira manual e individual! Ganhe agilidade, eficiência e segurança no processo de comunicação visual da sua empresa. 
-                    </p>
-                    <ul className="text-2xl list-disc w-full pl-16">
-                        <li>Agilidade;</li>
-                        <li>Eficiência;</li>
-                        <li>Praticidade;</li>
-                        <li>Segurança.</li>
-                    </ul>
-                    <h2 className="text-4xl font-bold text-[#1e90ff]">
-                        A eficiência que você deseja
-                    </h2>
-                    <p className="text-2xl">
-                        Economize tempo e aumente sua produtividade com nossa plataforma intuitiva! Em apenas alguns cliques, você cria o cartaz ideal para qualquer oferta, mantendo a consistência e a identidade visual da sua empresa. Além disso, você ganha acesso a uma biblioteca de templates modernos e personalizáveis, garantindo que cada peça publicitária seja atrativa e eficaz.
-                    </p>
-                    <ul className="text-2xl list-disc w-full pl-16">
-                        <li>Autonomia;</li>
-                        <li>Redução de custos;</li>
-                        <li>Personalização.</li>
-                    </ul>
-                    <h2 className="text-4xl font-bold text-[#1e90ff]">
-                        Redução de custo e tempo
-                    </h2>
-                    <p className="text-2xl">
-                        Modernize seu processo de cartazeamento com nossa solução integrada. Ao automatizar a criação de cartazes, elimine o trabalho manual. Nossa plataforma oferece recursos avançados, permitindo ajustes rápidos e precisos conforme necessário, aumentando a eficiência e a flexibilidade da sua operação.
                     </p>
                 </div>
             </div>
