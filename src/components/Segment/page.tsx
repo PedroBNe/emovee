@@ -22,10 +22,46 @@ export default function Seg() {
                     </p>
                 </div>
             </div>
-            <div>
-                <div>
-                    <div></div>
-                    <div></div>
+            <div className="w-full min-h-[25em] flex flex-col justify-center items-center gap-14">
+                <div className="w-full h-[25em] flex flex-row">
+                    <div className="w-[50%] bg-red-500 flex justify-center items-center">
+                        foto
+                    </div>
+                    <div className="w-[50%] bg-blue-600 flex justify-center items-center">
+                        texto
+                    </div>
+                </div>
+                <div className="w-full h-[25em] flex flex-row">
+                    <div className="w-[50%] bg-blue-600 flex justify-center items-center">
+                        texto
+                    </div>
+                    <div className="w-[50%] bg-red-500 flex justify-center items-center">
+                        foto
+                    </div>
+                </div>
+                <div className="w-full h-[25em] flex flex-row">
+                    <div className="w-[50%] bg-red-500 flex justify-center items-center">
+                        foto
+                    </div>
+                    <div className="w-[50%] bg-blue-600 flex justify-center items-center">
+                        texto
+                    </div>
+                </div>
+                <div className="w-full h-[25em] flex flex-row">
+                    <div className="w-[50%] bg-blue-600 flex justify-center items-center">
+                        texto
+                    </div>
+                    <div className="w-[50%] bg-red-500 flex justify-center items-center">
+                        foto
+                    </div>
+                </div>
+                <div className="w-full h-[25em] flex flex-row">
+                    <div className="w-[50%] bg-red-500 flex justify-center items-center">
+                        foto
+                    </div>
+                    <div className="w-[50%] bg-blue-600 flex justify-center items-center">
+                        texto
+                    </div>
                 </div>
             </div>
         </div>
