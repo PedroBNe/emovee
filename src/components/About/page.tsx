@@ -20,7 +20,7 @@ export default function About() {
                     <h2 className="text-center text-3xl font-bold">
                         Sobre a E-movee
                     </h2>
-                    <div className="text-2xl flex flex-col gap-8">
+                    <div className="text-xl flex flex-col gap-8">
                         <p className="pl-7">Fruto da busca pela otimização e eficiência, a E-moviee se insere no mercado com uma plataforma intuitiva capaz de simplificar processos e aumentar a produtividade e reduzir custos operacionais. Em um ambiente de negócios cada vez mais competitivo e dinâmico, a necessidade de ferramentas que proporcionem rapidez e precisão nas operações é imprescindível.</p>
                         <p className="pl-7">Com uma interface de fácil aprendizado e funcionalidades avançadas, nossa plataforma permite que sua equipe tenha mais agilidade no dia a dia. Estamos preparados para nos adaptarmos a sua necessidade específica, oferecendo soluções personalizadas que atendem às particularidades do seu setor.
                         </p>
@@ -122,7 +122,7 @@ export default function About() {
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-3xl font-bold">Descubra com um clique!</h2>
                 <Link href="">
-                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-6 px-10 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-3 px-6 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
                         Fale com um especialista
                     </button>
                 </Link>

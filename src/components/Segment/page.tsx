@@ -1,5 +1,8 @@
 'use client'
 
+import Link from "next/link";
+import Button from "../utils/Button";
+
 export default function Seg() {
     return (
         <div className="w-full min-h-[100em] flex flex-col gap-12">
@@ -11,13 +14,13 @@ export default function Seg() {
                     <h2 className="text-4xl font-bold text-[#1e90ff]">
                         Descubra os segmentos que podemos ajudar com as nossas soluções! 
                     </h2>
-                    <p className="text-2xl">
+                    <p className="text-xl">
                         Descubra como nossa plataforma pode transformar a gestão de cartazes em diversos setores, proporcionando uma solução eficiente e precisa para substituir métodos manuais. 
                     </p>
-                    <p className="text-2xl">
+                    <p className="text-xl">
                         Supermercados, atacarejos, home centers e farmácias são apenas alguns dos segmentos que podem revolucionar sua operação com nossa tecnologia. 
                     </p>
-                    <p className="text-2xl">
+                    <p className="text-xl">
                         Ganhe em eficiência, reduza erros e aumente a agilidade na atualização de informações, garantindo uma comunicação visual eficaz e alinhada com suas estratégias de marketing e vendas.
                     </p>
                 </div>
@@ -63,6 +66,14 @@ export default function Seg() {
                         texto
                     </div>
                 </div>
+            </div>
+            <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
+                <h2 className="text-white text-3xl font-bold">Dúvidas?</h2>
+                <Link href="">
+                    <Button>
+                        Fale com um Especialista
+                    </Button>
+                </Link>
             </div>
         </div>
     );

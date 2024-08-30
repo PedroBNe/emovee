@@ -1,6 +1,8 @@
 'use client'
 
 import Link from "next/link";
+import FormInterface from "../utils/Form";
+import Button from "../utils/Button";
 
 export default function Tablo() {
     return (
@@ -26,11 +28,7 @@ export default function Tablo() {
                     </div>
                 </div>
                 <div className="w-[50%] absolute right-0 top-40">
-                    <div className="w-[70%] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl">
-                        <form>
-                            formulario
-                        </form>
-                    </div>
+                    <FormInterface />
                 </div>
             </div>
             <div className="w-full flex justify-center items-center">
@@ -52,9 +50,9 @@ export default function Tablo() {
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-3xl font-bold">Dúvidas?</h2>
                 <Link href="">
-                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-6 px-10 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                        Fale com um especialista
-                    </button>
+                    <Button>
+                        Fale com um Especialista
+                    </Button>
                 </Link>
             </div>
         </div>
