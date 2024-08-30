@@ -4,6 +4,7 @@ import Image from "next/image";
 import Logo from "@/assets/logo-blue.jpg";
 import { useState } from "react";
 import Link from "next/link";
+import Button from "@/components/utils/Button";
 
 export default function Header() {
 
@@ -67,9 +68,9 @@ export default function Header() {
                 <button className="transition w-fit font-semibold rounded-full p-2 px-4 bg-slate-300 items-center hover:bg-[#1e65ff] hover:text-slate-100 delay-400">
                     Entrar
                 </button>
-                <button className="transition w-fit text-slate-100 font-bold rounded-full p-2 px-3  bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                    Fale com um especialista
-                </button>
+                <Button>
+                    Fale com um Especialista
+                </Button>
             </div>
         </header>
     )

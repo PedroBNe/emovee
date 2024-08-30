@@ -6,6 +6,7 @@ import Values from '@/assets/values.png';
 import Mission from '@/assets/mission.png';
 import Image from "next/image";
 import Link from "next/link";
+import Button from "../utils/Button";
 // import { CarouselPage } from "./carousel";
 
 
@@ -111,7 +112,7 @@ export default function About() {
                 <div>
                     <CarouselPage title="ola"/>
                 </div>
-            </div> */}                  {/* STAND BY HERE */}
+            </div> */}              
             <div className="w-full flex justify-center items-center gap-2">
                 <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
                     <h2 className="font-bold text-2xl">
@@ -122,9 +123,9 @@ export default function About() {
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-3xl font-bold">Descubra com um clique!</h2>
                 <Link href="">
-                    <button className="transition w-fit text-slate-100 font-bold rounded-full p-3 px-6 text-xl bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                        Fale com um especialista
-                    </button>
+                    <Button>
+                        Fale com um Especialista
+                    </Button>
                 </Link>
             </div>
         </div>
