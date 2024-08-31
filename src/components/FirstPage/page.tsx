@@ -4,14 +4,11 @@ import { Carousel } from "./Carousel";
 import Imagem from "@/assets/logo-white.png";
 import { StaticImageData } from "next/image";
 import SlideIn from "../utils/SlideIn";
-import { motion } from "framer-motion";
-import Link from "next/link";
 import Header from "../utils/Header";
-import Button from "../utils/Button";
 import Emoviee from "./Emoviee";
 import Services from "./Services";
 import Benefits from "./Benefits";
-import Testimonials from "./Testimonials";
+// import Testimonials from "./Testimonials";
 import CardLink from "./CardLink";
 
 interface slide {

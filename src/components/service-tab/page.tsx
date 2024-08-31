@@ -16,13 +16,13 @@ export default function Tablo() {
                         <h2 className="text-4xl font-bold text-[#1e90ff]">
                             A otimização para a precificação de ofertas! 
                         </h2>
-                        <p className="text-2xl">
+                        <p className="text-xl">
                             Transforme a comunicação visual da sua empresa com nossa plataforma. Alcance a padronização e agilidade que você sempre desejou com mais de dois mil modelos de cartazes à sua disposição. Encontre rapidamente o design perfeito para atender às suas necessidades e eleve a qualidade da sua comunicação visual.
                         </p>
                         <h2 className="text-4xl font-bold text-[#1e90ff]">
                             Um software, uma solução 
                         </h2>
-                        <p className="text-2xl">
+                        <p className="text-xl">
                             Ao utilizar nosso software, você poderá dizer adeus aos processos manuais e erros indesejados. Nossa solução é ideal para quem busca criar cartazes atrativos de maneira rápida e fácil. Simplifique seu trabalho e eleve a qualidade da sua comunicação visual com nossa plataforma.
                         </p>
                     </div>
@@ -36,13 +36,13 @@ export default function Tablo() {
                     <h2 className="text-4xl font-bold text-[#1e90ff]">
                         Benefícios 
                     </h2>
-                    <p className="text-2xl">
+                    <p className="text-xl">
                         Nossa plataforma é a solução para quem busca padronizar a comunicação de suas lojas, criando cartazes alinhados com a identidade visual e a oferta desejada. Integrando-se ao seu ERP, nossa plataforma facilita a criação de campanhas de cartazes em grande escala, garantindo distribuição rápida e eficiente em diversos locais. Com gestão centralizada, você ganha agilidade e reduz significativamente os custos operacionais, eliminando erros e otimizando recursos. 
                     </p>
                     <h2 className="text-4xl font-bold text-[#1e90ff]">
                         Experiência do cliente 
                     </h2>
-                    <p className="text-2xl">
+                    <p className="text-xl">
                         Crie cartazes que captem a atenção dos seus clientes, sem renunciar à sua identidade visual! Nossa plataforma oferece uma comunicação visual atrativa e impactante para suas ofertas, garantindo que suas mensagens se destaquem melhorem a experiência dos consumidores.
                     </p>
                 </div>

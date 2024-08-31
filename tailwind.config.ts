@@ -1,3 +1,4 @@
+import {nextui} from '@nextui-org/theme';
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -6,6 +7,8 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/components/[object Object].js",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -22,6 +25,7 @@ const config: Config = {
         },
       },
     },
+    darkMode: "class",
     keyframes: {
         typewriter: {
           '0%': { width: '0' },
@@ -43,7 +47,7 @@ const config: Config = {
         slideIn: 'slideIn 0.5s ease-out',
       },    
     },
-  plugins: [],
+  plugins: [nextui()],
 };
 
 export default config;

@@ -11,7 +11,7 @@ export default function Seg() {
             </div>
             <div className="w-full flex justify-center items-center">
                 <div className="w-[85%] flex flex-col justify-center items-center text-center p-16 gap-12">
-                    <h2 className="text-4xl font-bold text-[#1e90ff]">
+                    <h2 className="text-3xl font-bold text-[#1e90ff]">
                         Descubra os segmentos que podemos ajudar com as nossas soluções! 
                     </h2>
                     <p className="text-xl">

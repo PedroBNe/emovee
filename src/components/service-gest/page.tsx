@@ -16,13 +16,13 @@ export default function Gest() {
                         <h2 className="text-4xl font-bold text-[#1e90ff]">
                             Gerencie suas ofertas de maneira segura e eficaz!
                         </h2>
-                        <p className="text-2xl">
+                        <p className="text-xl">
                             Integramos todas as fases do processo de criação de ofertas em nossa plataforma, promovendo colaboração eficiente entre todos os setores envolvidos. Oferecemos flexibilidade para realizar ajustes em tempo real, garantindo um fluxo de trabalho otimizado e colaborativo. Além disso, nosso software proporciona análise de dados em tempo real, auxiliando na tomada de decisões estratégicas. 
                         </p>
                         <h2 className="text-4xl font-bold text-[#1e90ff]">
                             A solução que você procura
                         </h2>
-                        <p className="text-2xl">
+                        <p className="text-xl">
                             Administre as suas ofertas de maneira unificada, concentrando todas as informações essenciais em um único ambiente. Ganhe em produtividade e clareza ao unificar seus processos, facilitando a tomada de decisões estratégicas e a execução de campanhas com maior precisão e impacto.
                         </p>
                     </div>
