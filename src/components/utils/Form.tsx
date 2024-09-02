@@ -1,10 +1,21 @@
+'use client'
+
 import { Input } from "@nextui-org/input";
 import {RadioGroup, Radio} from "@nextui-org/radio";
 import {Select, SelectItem} from "@nextui-org/react";
 import { SegmentsForm } from "./Segments-form";
 import React from "react";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 export default function FormInterface() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true, 
+        });
+    }, []);
     
     const [selected, setSelected] = React.useState("CPF");
     const [email, setEmail] = React.useState("");
@@ -38,7 +49,7 @@ export default function FormInterface() {
     }, [tel]); // Phone
 
     return(
-        <div className="w-[70%] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative">
+        <div className="w-[38em] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative" data-aos="fade-left">
             <form className="flex flex-col w-[60%] flex-wrap md:flex-nowrap gap-10 justify-center items-center" action="" id="form-contact">
                 <Input type="name" id="name" label="Nome Completo" variant="underlined"/>
                 <Input 
@@ -52,7 +63,7 @@ export default function FormInterface() {
                     onValueChange={setEmail}
                 />
                 <Input 
-                    type="tel" 
+                    type="text" 
                     label="Telefone" 
                     variant="underlined"
                     value={tel}

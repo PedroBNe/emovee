@@ -7,17 +7,26 @@ import Mission from '@/assets/mission.png';
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../utils/Button";
+import Banner from "../utils/BannerTop";
 // import { CarouselPage } from "./carousel";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 
 export default function About() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true, 
+        });
+    }, []);
+
     return (
         <div className="w-full min-h-[100em] flex flex-col gap-12 justify-center items-center">
-            <div className="w-full min-h-[20em] bg-[#1e65ff] text-white flex flex-col justify-center pl-12 gap-3 shadow-xl">
-                <h1 className="text-5xl font-bold">Soluções inteligentes para a sua loja</h1>
-            </div>
+            <Banner>Soluções inteligentes para a sua loja</Banner>
             <div className="w-full min-h-[35em] flex gap-5 mb-[8em]">
-                <div className="w-[50%] h-full m-3 flex flex-col gap-12">
+                <div className="w-[50%] h-full m-3 flex flex-col gap-12" data-aos="fade-right">
                     <h2 className="text-center text-3xl font-bold">
                         Sobre a E-movee
                     </h2>
@@ -28,7 +37,7 @@ export default function About() {
                         <p className="pl-7">Nosso objetivo vai além de fornecer um simples software; buscamos ser um parceiro estratégico para empresas que almejam excelência operacional e competitividade no mercado. Ao facilitar uma gestão de ofertas mais eficiente e inteligente, contribuímos significativamente para o crescimento sustentável e o sucesso contínuo do seu negócio.</p>
                     </div>
                 </div>
-                <div className="w-[50%] flex justify-center items-center">
+                <div className="w-[50%] flex justify-center items-center" data-aos="fade-left">
                     <div className="w-[60%] h-[95%] flex flex-col gap-5 justify-center items-center">
                         <div className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl">
                             Fotos
@@ -45,7 +54,7 @@ export default function About() {
             </div>
             <div>
                 <div className="w-full min-h-[35em] flex flex-row gap-16 justify-center">
-                    <div className="w-[20%] flex items-center justify-center">
+                    <div className="w-[20%] flex items-center justify-center" data-aos="fade-right">
                             <motion.div
                                 className="w-[100%] h-[50%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                                 whileHover={{ scale: 1.1 }}
@@ -63,7 +72,7 @@ export default function About() {
                                 </p>
                             </motion.div>
                     </div>
-                    <div className="w-[20%] flex items-center justify-center">
+                    <div className="w-[20%] flex items-center justify-center" data-aos="fade-up">
                         <motion.div
                             className="w-[100%] h-[50%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                             whileHover={{ scale: 1.1 }}
@@ -81,7 +90,7 @@ export default function About() {
                             </p>
                         </motion.div>
                     </div>
-                    <div className="w-[20%] flex items-center justify-center">
+                    <div className="w-[20%] flex items-center justify-center" data-aos="fade-left">
                         <motion.div
                             className="w-[100%] h-[50%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                             whileHover={{ scale: 1.1 }}

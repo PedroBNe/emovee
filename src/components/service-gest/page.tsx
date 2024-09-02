@@ -3,15 +3,24 @@
 import Link from "next/link";
 import FormInterface from "../utils/Form";
 import Button from "../utils/Button";
+import Banner from "../utils/BannerTop";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 export default function Gest() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true, 
+        });
+    }, []);
+
     return (
         <div className="relative w-full min-h-[65em] flex flex-col gap-12">
-            <div className="w-full min-h-[20em] bg-[#1e65ff] text-white flex flex-col justify-center pl-12 shadow-xl">
-                <h1 className="text-5xl font-bold">Gestão de Ofertas</h1>
-            </div>
+            <Banner>Gestão de Ofertas</Banner>
             <div className="w-full min-h-[10em] flex justify-start items-start">
-                <div className="w-[50%] h-[100%] flex flex-col justify-between items-center">
+                <div className="w-[50%] h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
                     <div className="w-[70%] flex flex-col items-start justify-around gap-12">
                         <h2 className="text-4xl font-bold text-[#1e90ff]">
                             Gerencie suas ofertas de maneira segura e eficaz!

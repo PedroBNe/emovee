@@ -5,8 +5,17 @@ import Logo from "@/assets/logo-blue.jpg";
 import { useState } from "react";
 import Link from "next/link";
 import Button from "@/components/utils/Button";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 export default function Header() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true, 
+        });
+    }, []);
 
     const [ IsHiddenSolution, setIsHiddenSolution ] = useState(false);
     const [ IsHiddenSeg, setIsHiddenSeg ] = useState(false);
@@ -18,26 +27,33 @@ export default function Header() {
             </div>
             <nav>
                 <ul className="flex flex-row gap-10">
-                    <li className="relative cursor-pointer"
+                    <li className="relative cursor-pointer justify-center items-center flex"
                         onMouseEnter={() => setIsHiddenSolution(true)}
                         onMouseLeave={() => setIsHiddenSolution(false)}
                     >
-                        <p>
+                        <Link href="/cartazeamento">
                             Serviços
-                        </p>
-                        <ul className={`${IsHiddenSolution ? 'flex' : 'hidden'} z-10 transition delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center translate-x-[-50%] left-[50%] flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap`}>
-                            <li>
-                                <Link href="/cartazeamento">Cartazeamento</Link>
-                            </li>
-                            <li>
-                                <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
-                            </li>
-                            <li className="hidden"> {/* STAND BY HERE */}
-                                <Link href="/tabloides">Tablóides</Link>
-                            </li>
-                        </ul>
+                        </Link>
+                        {IsHiddenSolution && (
+                            <ul 
+                                className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap" 
+                                data-aos="fade-up"
+                                data-aos-duration="400"    
+                                data-aos-offset="400"
+                            >
+                                <li>
+                                    <Link href="/cartazeamento">Cartazeamento</Link>
+                                </li>
+                                <li>
+                                    <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
+                                </li>
+                                <li className="hidden"> {/* STAND BY HERE */}
+                                    <Link href="/tabloides">Tablóides</Link>
+                                </li>
+                            </ul>
+                        )}
                     </li>
-                    <li className="relative cursor-pointer"
+                    <li className="relative cursor-pointer justify-center items-center flex"
                         onMouseEnter={() => setIsHiddenSeg(true)}
                         onMouseLeave={() => setIsHiddenSeg(false)}
                     >
@@ -46,21 +62,29 @@ export default function Header() {
                                 Segmentos
                             </Link>
                         </p>
-                        <ul className={`${IsHiddenSeg ? 'flex' : 'hidden'} z-10 transition delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center translate-x-[-50%] left-[50%] flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap`}>
-                            <li>Supermercados</li>
-                            <li>Farmácias</li>
-                            <li>Home Centers</li>
-                            <li>Atacarejos</li>
-                            <li>Eletromóveis</li>
-                            <li>Outros segmentos</li>
-                        </ul>
+                        {IsHiddenSeg && (
+                            <ul 
+                                className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap" data-aos="fade-down"
+                                data-aos-duration="400"    
+                                data-aos-offset="400"
+                            >
+                                <li>Supermercados</li>
+                                <li>Farmácias</li>
+                                <li>Home Centers</li>
+                                <li>Atacarejos</li>
+                                <li>Eletromóveis</li>
+                                <li>Outros segmentos</li>
+                            </ul>
+                        )}
                     </li>
                     <li>
                         <Link href="/sobre">Sobre</Link>
                     </li>
-                    <li>Conteúdos</li>
                     <li>
-                        <Link href="/contato">Contato</Link>
+                        <Link href="/conteudo">Conteúdos</Link>
+                    </li>
+                    <li>
+                        <Link href="/fale-especialista">Contato</Link>
                     </li>
                 </ul>
             </nav>
@@ -68,9 +92,11 @@ export default function Header() {
                 <button className="transition w-fit font-semibold rounded-full p-2 px-4 bg-slate-300 items-center hover:bg-[#1e65ff] hover:text-slate-100 delay-400">
                     Entrar
                 </button>
-                <Button>
-                    Fale com um Especialista
-                </Button>
+                <Link href="/fale-especialista">
+                    <Button>
+                        Fale com um Especialista
+                    </Button>
+                </Link>
             </div>
         </header>
     )

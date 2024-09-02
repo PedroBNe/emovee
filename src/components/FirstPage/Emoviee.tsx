@@ -1,12 +1,22 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "../utils/Button";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 export default function Emoviee() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true, 
+        });
+    }, []);
+    
     return(
         <div className="w-full h-[35em] flex flex-row gap-16 justify-center">
             <div className="w-[50%] flex justify-center items-center">
-                <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center">
+                <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center" data-aos="fade-right">
                     <motion.div
                         className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                         whileHover={{ scale: 1.1 }}
@@ -20,7 +30,7 @@ export default function Emoviee() {
                 </div>
             </div>               
             <div className="w-[50%] flex justify-center items-center font-bold">
-                <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center">
+                <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center" data-aos="fade-left">
                     <motion.div
                         className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                         whileHover={{ scale: 1.1 }}

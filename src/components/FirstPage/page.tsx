@@ -2,9 +2,7 @@
 
 import { Carousel } from "./Carousel";
 import Imagem from "@/assets/logo-white.png";
-import { StaticImageData } from "next/image";
-import SlideIn from "../utils/SlideIn";
-import Header from "../utils/Header";
+import { StaticImageData } from "next/image";import Header from "../utils/Header";
 import Emoviee from "./Emoviee";
 import Services from "./Services";
 import Benefits from "./Benefits";
@@ -42,56 +40,36 @@ export default function FirstPage() {
                 <Carousel slides={slides} />
             </div>
             <div className="w-full">
-                <SlideIn Content={
-                    <Header>
-                        E-moviee
-                    </Header>
-                } />
+                <Header>
+                    E-moviee
+                </Header>
             </div>     
             <div className="w-full min-h-[105em] flex flex-col items-center">
-                <SlideIn Content={
-                    <Emoviee />
-                } />
+                <Emoviee />
                 <div className="w-full">
-                    <SlideIn Content={
-                        <Header>
-                            Serviços
-                        </Header>
-                    } />
+                    <Header>
+                        Serviços
+                    </Header>
                 </div>         
-                <SlideIn Content={
-                    <Services />
-                } />
+                <Services />
                 <div className="w-full">
-                    <SlideIn Content={
-                        <Header>
-                            Benefícios
-                        </Header>
-                    } />
+                    <Header>
+                        Benefícios
+                    </Header>
                 </div>                    
-                <SlideIn Content={
                     <Benefits />
-                } />
                 {/* <div className="w-full">
-                    <SlideIn Content={
-                        <Header>
-                            Depoimentos
-                        </Header>
-                    } />
+                    <Header>
+                        Depoimentos
+                    </Header>
                 </div>   
-                 <SlideIn Content={
-                    <Testimonials />
-                } />  */}
+                <Testimonials /> */}
                 <div className="w-full">
-                    <SlideIn Content={
-                        <Header>
-                            Teste grátis
-                        </Header>
-                    } />
+                    <Header>
+                        Teste grátis
+                    </Header>
                 </div>                  
-                <SlideIn Content={
-                    <CardLink />
-                } />
+                <CardLink />
             </div>
         </div>
     );
