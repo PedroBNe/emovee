@@ -37,9 +37,9 @@ export default function Header() {
                         {IsHiddenSolution && (
                             <ul 
                                 className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap" 
-                                data-aos="fade-up"
-                                data-aos-duration="400"    
-                                data-aos-offset="400"
+                                data-aos="fade-down"
+                                data-aos-duration="300"    
+                                data-aos-offset="300"
                             >
                                 <li>
                                     <Link href="/cartazeamento">Cartazeamento</Link>
@@ -47,8 +47,8 @@ export default function Header() {
                                 <li>
                                     <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
                                 </li>
-                                <li className="hidden"> {/* STAND BY HERE */}
-                                    <Link href="/tabloides">Tablóides</Link>
+                                <li>
+                                    <Link href="/tabloide">Tablóides</Link>
                                 </li>
                             </ul>
                         )}
@@ -65,8 +65,8 @@ export default function Header() {
                         {IsHiddenSeg && (
                             <ul 
                                 className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap" data-aos="fade-down"
-                                data-aos-duration="400"    
-                                data-aos-offset="400"
+                                data-aos-duration="300"    
+                                data-aos-offset="300"
                             >
                                 <li>Supermercados</li>
                                 <li>Farmácias</li>
