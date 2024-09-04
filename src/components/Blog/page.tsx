@@ -7,7 +7,7 @@ import {Pagination} from "@nextui-org/react";
 export default function Blog() {
     return(
         <div className="w-full min-h-[100vh] items-center flex flex-col gap-3 bg-slate-300">
-            <Banner>Blog E-moviee</Banner>
+            <Banner>Blog E-movee</Banner>
             <Input 
                 variant="faded"
                 type="search" 

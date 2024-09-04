@@ -13,12 +13,18 @@
     "@nextui-org/react": "^2.4.6",
     "@nextui-org/system": "^2.2.5",
     "@nextui-org/theme": "^2.2.9",
+    "@radix-ui/react-slot": "^1.1.0",
     "aos": "^2.3.4",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.2.0",
     "framer-motion": "^11.3.31",
+    "lucide-react": "^0.438.0",
     "next": "14.2.4",
+    "punycode": "^2.3.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
@@ -30,7 +36,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
-    "tailwind-merge": "^2.4.0",
+    "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

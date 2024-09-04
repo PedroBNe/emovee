@@ -1,26 +1,47 @@
-import Image from "next/image"
-import Link from "next/link"
+import * as React from "react"
+ 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Image, { StaticImageData } from "next/image";
 
-interface CarouselPageProps {
-  title: string
+interface slide {
+    imagem: StaticImageData,
 }
 
-export const CarouselPage = ({ title }: CarouselPageProps) => {
-  return (
-    <div className="mt-2">
-      <div>
-        <h2 className="ml-2 text-xl font-black">{title}</h2>
-      </div>
-      <div>
-        <ul className="flex px-[10px] w-full py-2 overflow-x-scroll whitespace-nowrap list-none scroll-p-12 scrollbar-none">
-          <li className="relative inline-block w-[calc((100vw_-_216px)_/_7.25)] h-[calc(((((100vw_-_216px)_/_7.25)_-_4px)_*_0.5617977528089888)_+_4px)] flex-shrink-0">
-            <Link href="/" className="flex rounded-[10px] border-2 border-solid border-transparent transition relative w-full h-full mr-1">
-              <Image src="" width={230} height={150} alt="1" className="absolute w-full h-full transition rounded-lg" />
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div >
-  )
+
+interface CarouselProps {
+    slides: slide[];
 }
 
+
+export function CarouselSize({ slides }: CarouselProps) {
+    return (
+      <Carousel
+        opts={{
+          align: "start",
+        }}
+        className="w-[80%]"
+      >
+        <CarouselContent>
+          {Array.from(slides).map((p, index) => (
+            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/5">
+                <div className="p-1">
+                    <div className="flex aspect-square items-center justify-center p-6">
+                        <span className="text-3xl font-semibold">
+                            <Image src={p.imagem} alt={`imagem ${index}`} width={40} height={40} />
+                        </span>
+                    </div>
+                </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    )
+  }
