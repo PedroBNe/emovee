@@ -1,11 +1,21 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Quotam from '@/assets/quotation-marks.png';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from "react";
 
 export default function Testimonials() {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            once: true, 
+        });
+    }, []);
+
     return(                    
         <div className="w-full min-h-[35em] flex flex-row gap-16 justify-center">
-            <div className="w-[20%] flex items-center justify-center">
+            <div className="w-[20%] flex items-center justify-center" data-aos="fade-right">
                 <motion.div
                     className="w-[100%] h-[50%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                     whileHover={{ scale: 1.1 }}
@@ -23,7 +33,7 @@ export default function Testimonials() {
                     </p>
                 </motion.div>
             </div>
-            <div className="w-[20%] flex items-center justify-center">
+            <div className="w-[20%] flex items-center justify-center" data-aos="fade-up">
                 <motion.div
                     className="w-[100%] h-[50%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                     whileHover={{ scale: 1.1 }}
@@ -41,7 +51,7 @@ export default function Testimonials() {
                     </p>
                 </motion.div>
             </div>
-            <div className="w-[20%] flex items-center justify-center">
+            <div className="w-[20%] flex items-center justify-center" data-aos="fade-left">
                 <motion.div
                     className="w-[100%] h-[50%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
                     whileHover={{ scale: 1.1 }}

@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { useEffect } from "react";
 
-export default function Emoviee() {
+export default function Emovee() {
     useEffect(() => {
         AOS.init({
             duration: 1000,

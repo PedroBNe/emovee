@@ -3,10 +3,10 @@
 import { Carousel } from "./Carousel";
 import Imagem from "@/assets/logo-white.png";
 import { StaticImageData } from "next/image";import Header from "../utils/Header";
-import Emoviee from "./Emoviee";
+import Emovee from "./Emovee";
 import Services from "./Services";
 import Benefits from "./Benefits";
-// import Testimonials from "./Testimonials";
+import Testimonials from "./Testimonials";
 import CardLink from "./CardLink";
 
 interface slide {
@@ -45,7 +45,7 @@ export default function FirstPage() {
                 </Header>
             </div>     
             <div className="w-full min-h-[105em] flex flex-col items-center">
-                <Emoviee />
+                <Emovee />
                 <div className="w-full">
                     <Header>
                         Serviços
@@ -58,12 +58,12 @@ export default function FirstPage() {
                     </Header>
                 </div>                    
                     <Benefits />
-                {/* <div className="w-full">
+                <div className="w-full">
                     <Header>
                         Depoimentos
                     </Header>
                 </div>   
-                <Testimonials /> */}
+                <Testimonials />
                 <div className="w-full">
                     <Header>
                         Teste grátis

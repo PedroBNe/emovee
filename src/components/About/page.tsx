@@ -4,15 +4,49 @@ import { motion } from "framer-motion";
 import Vision from '@/assets/vision.png';
 import Values from '@/assets/values.png';
 import Mission from '@/assets/mission.png';
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import Button from "../utils/Button";
 import Banner from "../utils/BannerTop";
-// import { CarouselPage } from "./carousel";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { useEffect } from "react";
+import Imagem from '@/assets/location.png'
+import Imagem2 from '@/assets/insta-media.png'
+import Imagem3 from '@/assets/social-insta.png'
+import Imagem4 from '@/assets/values.png'
+import { CarouselSize } from "./Carousel";
 
+interface slide {
+    imagem: StaticImageData,
+}
+
+const slides: slide[] = [
+    {
+        imagem: Imagem,
+    },
+    {
+        imagem: Imagem2,
+    },
+    {
+        imagem: Imagem3,
+    },
+    {
+        imagem: Imagem4,
+    },
+    {
+        imagem: Imagem,
+    },
+    {
+        imagem: Imagem2,
+    },
+    {
+        imagem: Imagem3,
+    },
+    {
+        imagem: Imagem4,
+    }
+]
 
 export default function About() {
     useEffect(() => {
@@ -110,18 +144,18 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            {/* <div className="w-full flex justify-center items-center gap-2">
+            <div className="w-full flex justify-center items-center gap-2">
                 <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
                     <h2 className="font-bold text-2xl">
                         Empresas parceiras
                     </h2>
                 <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
             </div>
-            <div className="w-[80%] min-h-[7em] flex flex-row justify-between items-center">
-                <div>
-                    <CarouselPage title="ola"/>
+            <div className="w-[80%] min-h-[7em] flex flex-row justify-center items-center">
+                <div className="w-[70%] flex flex-col justify-center items-center">
+                    <CarouselSize slides={slides} />
                 </div>
-            </div> */}              
+            </div>
             <div className="w-full flex justify-center items-center gap-2">
                 <hr className="w-[25%] border-2 border-[#1E293B] rounded-full"/>
                     <h2 className="font-bold text-2xl">
