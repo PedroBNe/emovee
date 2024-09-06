@@ -23,7 +23,7 @@ export default function Seg() {
     }, []);
 
     return (
-        <div className="w-full min-h-[100em] flex flex-col gap-12">
+        <div className="w-full min-h-[270em] flex flex-col gap-12">
             <Banner>Segmentos</Banner>
             <div className="w-full flex justify-center items-center mb-10">
                 <div className="w-[85%] flex flex-col justify-center items-center text-center p-16 gap-12" data-aos="fade-up">
@@ -41,19 +41,17 @@ export default function Seg() {
                     </p>
                 </div>
             </div>
-            <div>
+            <div className="w-full">
                 <Header>
                     Nossos Segmentos
                 </Header>
             </div>
-            <div className="w-full min-h-[35em] flex flex-col justify-center items-center gap-14 mt-10">
-                <div data-aos="fade-left"><SegSup /></div>
-                <div data-aos="fade-right"><SegFarma /></div>
-                <div data-aos="fade-left"><SegHome /></div>
-                <div data-aos="fade-right"><SegAta /></div>
-                <div data-aos="fade-left"><SegElec /></div>
-                <div data-aos="fade-right"><SegOut /></div>
-            </div>
+            <SegSup />
+            <SegFarma />
+            <SegHome />
+            <SegAta />
+            <SegElec />
+            <SegOut />
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-3xl font-bold">Dúvidas?</h2>
                 <Link href="">

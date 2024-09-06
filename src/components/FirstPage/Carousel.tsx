@@ -29,8 +29,8 @@ export const Carousel = ({ slides }: CarouselProps) => {
     });
 
     return (
-        <div className="relative w-full min-h-[800px] flex">
-            <div className="w-full min-h[800px] flex overflow-hidden items-center">
+        <div className="relative w-full min-h-[100vh] flex justify-center items-center">
+            <div className="w-full min-h[800px] flex justify-center overflow-hidden items-center">
                 {slides.map((b, index) => (
                 <div
                     key={index}
@@ -38,11 +38,11 @@ export const Carousel = ({ slides }: CarouselProps) => {
                     index === currentIndex ? "block" : "hidden"
                     }`}
                 >
-                    <div className='flex flex-col gap-40 items-center'>
-                        <Image src={b.imagem} alt={`Slide ${index}`} />
-                        <div className='flex flex-col items-center gap-16 text-xl'>
-                            <div className='flex flex-row'>
-                                <div className="inline-block overflow-hidden whitespace-nowrap animate-typewriter text-3xl">
+                    <div className='flex flex-col gap-40 justify-center items-center'>
+                        <Image src={b.imagem} alt={`Slide ${index}`} width={200} height={200}/>
+                        <div className='flex flex-col justify-center items-center gap-16 text-xl'>
+                            <div className='w-full flex flex-row'>
+                                <div className="w-full inline-block overflow-hidden whitespace-nowrap animate-typewriter text-sm md:text-3xl justify-center items-center">
                                     {b.text}
                                 </div>
                                 <div className="animate-blinkTextCursor border-l-2"></div>

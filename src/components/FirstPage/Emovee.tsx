@@ -14,25 +14,23 @@ export default function Emovee() {
     }, []);
     
     return(
-        <div className="w-full h-[35em] flex flex-row gap-16 justify-center">
-            <div className="w-[50%] flex justify-center items-center">
-                <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center" data-aos="fade-right">
+        <div className="w-full min-h-[35em] flex flex-col lg:flex-row gap-14 items-center justify-center">
+            <div className="w-full xl:w-[50%] h-full flex justify-center items-center">
+                <div className="w-[85%] xl:w-[75%] lg:w-[85%] h-[400px] flex flex-col gap-5 justify-center items-center" data-aos="fade-right">
                     <motion.div
-                        className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
+                        className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl py-3"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                        <p>
-                            Video
-                        </p>
+                        video
                     </motion.div>
                 </div>
-            </div>               
-            <div className="w-[50%] flex justify-center items-center font-bold">
-                <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center" data-aos="fade-left">
+            </div>           
+            <div className="w-full xl:w-[50%] h-full flex justify-center items-center">
+                <div className="w-[85%] xl:w-[75%] lg:w-[85%] h-[450px] sm:h-[400px] flex flex-col gap-5 justify-center items-center" data-aos="fade-left">
                     <motion.div
-                        className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl"
+                        className="w-[100%] h-[100%] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl py-3"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}

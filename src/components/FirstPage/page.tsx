@@ -35,16 +35,16 @@ const slides: slide[] = [
 
 export default function FirstPage() {
     return(
-        <div>
-            <div className="w-full min-h-[54em] bg-black text-white mb-10">
+        <div className="w-full h-full">
+            <div className="w-full h-[53em] bg-black text-white mb-10">
                 <Carousel slides={slides} />
             </div>
-            <div className="w-full">
-                <Header>
-                    E-moviee
-                </Header>
-            </div>     
             <div className="w-full min-h-[105em] flex flex-col items-center">
+                <div className="w-full">
+                    <Header>
+                        E-moviee
+                    </Header>
+                </div>     
                 <Emovee />
                 <div className="w-full">
                     <Header>

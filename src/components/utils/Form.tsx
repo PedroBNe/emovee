@@ -49,8 +49,8 @@ export default function FormInterface() {
     }, [tel]); // Phone
 
     return(
-        <div className="w-[38em] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative" data-aos="fade-left">
-            <form className="flex flex-col w-[60%] flex-wrap md:flex-nowrap gap-10 justify-center items-center" action="" id="form-contact">
+        <div className="w-[23em] lg:w-[30em] md:w-[38em] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative" data-aos="fade-left">
+            <form className="flex flex-col w-[75%] flex-wrap md:flex-nowrap gap-10 justify-center items-center" action="" id="form-contact">
                 <Input type="name" id="name" label="Nome Completo" variant="underlined"/>
                 <Input 
                     type="email" 

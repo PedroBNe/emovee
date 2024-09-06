@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function SegSup() {
     return(
-        <div className="w-full h-[30em] flex flex-row">
+        <div className="w-full h-[30em] flex flex-row" data-aos="fade-left" id="super">
             <div className="w-[50%] flex justify-center items-center">
                 <div className="w-[75%] h-[70%] flex flex-col gap-5 justify-center items-center">
                     <motion.div

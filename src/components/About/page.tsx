@@ -96,7 +96,7 @@ export default function About() {
                                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                             >
                                 <div className="flex flex-col gap-2 justify-center items-center m-2">
-                                    <Image src={Mission} alt="mission-icon" width={40} />
+                                    <Image src={Mission} alt="mission-icon" width={40} height={40} />
                                     <h1 className="font-bold text-xl">
                                         Missão
                                     </h1>
@@ -114,7 +114,7 @@ export default function About() {
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >                     
                             <div className="flex flex-col gap-2 justify-center items-center m-2">
-                                <Image src={Vision} alt="vision-icon" width={40} />
+                                <Image src={Vision} alt="vision-icon" width={40} height={40} /> 
                                 <h1 className="font-bold text-xl">
                                     Visão
                                 </h1>
@@ -132,7 +132,7 @@ export default function About() {
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >                           
                             <div className="flex flex-col gap-2 justify-center items-center m-2">
-                                <Image src={Values} alt="value-icon" width={40} />
+                                <Image src={Values} alt="value-icon" width={40} height={40} />
                                 <h1 className="font-bold text-xl">
                                     Valores
                                 </h1>
