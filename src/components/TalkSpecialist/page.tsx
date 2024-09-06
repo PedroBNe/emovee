@@ -10,14 +10,11 @@ import Insta from '@/assets/insta-media.png'
 
 export default function Specialist() {
     return(
-        <div className="relative w-full min-h-[115vh]">
+        <div className="xl:relative w-full h-[108em] xl:h-[70em] flex flex-col gap-12">
             <Banner>Entre em Contato!</Banner>
-            <div className="w-[40%] absolute right-0 top-40">
-                <FormInterface />
-            </div>
-            <div className="w-[60%] min-h-[50vh] flex flex-col gap-3 items-center mt-10" data-aos="fade-right">
-                <h2 className="text-xl font-bold">Nossa equipe sempre a postos!</h2>
-                <div className="flex flex-col gap-2">
+            <div className="w-full xl:w-[50%] min-h-[10em] flex flex-col justify-center xl:justify-start items-center xl:items-start my-16" data-aos="fade-right">
+                <h2 className="text-xl font-bold mb-3">Nossa equipe sempre a postos!</h2>
+                <div className="flex flex-col justify-center items-start gap-3">
                     <div className="flex gap-2">
                         <Image src={WhatsApp} alt='whats-icon' width={20} />WhatsApp
                     </div>
@@ -35,16 +32,19 @@ export default function Specialist() {
                         <p className="font-semibold">Endereco:</p>
                         <p>endereco</p>
                     </div>
-                    <div>
+                    <div className="w-[58vh] lg:w-[88vh] h-[50vh] lg:h-[60vh]">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5946.610424963373!2d-48.55423345806331!3d-27.597382620183385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952739822cdb22b3%3A0xec7a45661537149d!2sTerminal%20rodovi%C3%A1rio%20de%20Florian%C3%B3polis!5e0!3m2!1spt-BR!2sbr!4v1725289110847!5m2!1spt-BR!2sbr" 
-                            width="600" 
-                            height="450" 
+                            width="100%" 
+                            height="100%" 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
                 </div>
+            </div>
+            <div className="w-full flex justify-center items-center xl:w-[50%] xl:absolute xl:right-0 xl:top-40 my-12">
+                <FormInterface />
             </div>
         </div>
     )

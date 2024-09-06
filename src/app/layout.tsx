@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="relative">
-      <body className={clsx(dmSans.className, "antialiased bg-[#EAEEFE]")}>
+    <html lang="en" className="relative overflow-x-hidden">
+      <body className={clsx(dmSans.className, "antialiased bg-[#EAEEFE] overflow-x-hidden")}>
         <Header />
         <main>
           {children}

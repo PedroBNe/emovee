@@ -12,11 +12,6 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-  	screens: {
-  		sm: '375px',
-  		md: '768px',
-  		lg: '1200px'
-  	},
   	extend: {
   		container: {
   			padding: {
