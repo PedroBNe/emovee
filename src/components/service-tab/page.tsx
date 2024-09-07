@@ -58,7 +58,7 @@ export default function Tablo() {
             </div>
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-xl lg:text-3xl font-bold">Dúvidas?</h2>
-                <Link href="">
+                <Link href="/fale-especialista">
                     <Button>
                         Fale com um Especialista
                     </Button>

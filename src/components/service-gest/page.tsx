@@ -21,7 +21,7 @@ export default function Gest() {
             <Banner>Gestão de Ofertas</Banner>
             <div className="w-full min-h-[10em] flex flex-col justify-center xl:justify-start items-center xl:items-start">
                 <div className="w-full xl:w-[50%] h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
-                    <div className="w-[70%] flex flex-col items-start justify-around gap-12">
+                    <div className="w-[90%] flex flex-col items-start justify-around gap-12">
                         <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]">
                             Gerencie suas ofertas de maneira segura e eficaz!
                         </h2>
@@ -42,7 +42,7 @@ export default function Gest() {
             </div>
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-xl lg:text-3xl font-bold">Dúvidas?</h2>
-                <Link href="">
+                <Link href="/fale-especialista">
                     <Button>
                         Fale com um Especialista
                     </Button>

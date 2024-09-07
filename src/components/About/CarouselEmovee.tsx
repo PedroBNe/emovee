@@ -19,20 +19,20 @@ interface CarouselProps {
 }
 
 
-export function CarouselSize({ slides }: CarouselProps) {
+export function CarouselEmovee({ slides }: CarouselProps) {
     return (
       <Carousel
         opts={{
           align: "start",
         }}
-        className="w-[80%]"
+        className="w-[50%]"
       >
         <CarouselContent>
           {Array.from(slides).map((p, index) => (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/5">
+            <CarouselItem key={index} className="md:basis-1/1">
                 <div className="p-1">
-                    <div className="flex aspect-square items-center justify-center p-6">
-                        <span className="text-3xl font-semibold">
+                    <div className="flex aspect-square items-center justify-center">
+                        <span>
                             <Image src={p.imagem} alt={`imagem ${index}`} width={40} height={40} />
                         </span>
                     </div>

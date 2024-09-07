@@ -28,7 +28,7 @@ export default function Services() {
                     <p className="text-center m-5">
                         Em poucos cliques, crie e imprima cartazes promocionais atrativos, que despertem desejo nos consumidores. 
                     </p>
-                    <Link href="/tabloides">
+                    <Link href="/cartazeamento">
                         <Button>
                             Saiba mais
                         </Button>    
@@ -48,7 +48,7 @@ export default function Services() {
                     <p className="text-center m-5">
                         De maneira ágil e simplificada, gerencie e organize seu calendário promocional.
                     </p>
-                    <Link href="/tabloides">
+                    <Link href="/gestao-ofertas">
                         <Button>
                             Saiba mais
                         </Button>    

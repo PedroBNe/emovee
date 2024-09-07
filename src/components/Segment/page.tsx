@@ -23,20 +23,20 @@ export default function Seg() {
     }, []);
 
     return (
-        <div className="w-full min-h-[270em] flex flex-col gap-12">
+        <div className="w-full min-h-[270em] flex flex-col justify-between gap-12">
             <Banner>Segmentos</Banner>
             <div className="w-full flex justify-center items-center mb-10">
-                <div className="w-[85%] flex flex-col justify-center items-center text-center p-16 gap-12" data-aos="fade-up">
-                    <h2 className="text-3xl font-bold text-[#1e90ff]">
+                <div className="w-full md:w-[85%] flex flex-col justify-center items-center text-center py-8 md:px-8 gap-12" data-aos="fade-up">
+                    <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]">
                         Descubra os segmentos que podemos ajudar com as nossas soluções! 
                     </h2>
-                    <p className="text-xl">
+                    <p className="text-sm lg:text-xl">
                         Descubra como nossa plataforma pode transformar a gestão de cartazes em diversos setores, proporcionando uma solução eficiente e precisa para substituir métodos manuais. 
                     </p>
-                    <p className="text-xl">
+                    <p className="text-sm lg:text-xl">
                         Supermercados, atacarejos, home centers e farmácias são apenas alguns dos segmentos que podem revolucionar sua operação com nossa tecnologia. 
                     </p>
-                    <p className="text-xl">
+                    <p className="text-sm lg:text-xl">
                         Ganhe em eficiência, reduza erros e aumente a agilidade na atualização de informações, garantindo uma comunicação visual eficaz e alinhada com suas estratégias de marketing e vendas.
                     </p>
                 </div>
@@ -46,12 +46,14 @@ export default function Seg() {
                     Nossos Segmentos
                 </Header>
             </div>
-            <SegSup />
-            <SegFarma />
-            <SegHome />
-            <SegAta />
-            <SegElec />
-            <SegOut />
+            <div className="w-full h-full flex flex-col gap-8">
+                <SegSup />
+                <SegFarma />
+                <SegHome />
+                <SegAta />
+                <SegElec />
+                <SegOut />
+            </div>
             <div className="w-full min-h-[15em] bg-black flex flex-col justify-evenly items-center">
                 <h2 className="text-white text-3xl font-bold">Dúvidas?</h2>
                 <Link href="">
