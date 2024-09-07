@@ -13,7 +13,7 @@ import Image from 'next/image';
 export default function Footer() {
     return (
         <footer className="w-full bg-slate-800 min-h-40 flex flex-col gap-6 justify-between text-slate-300">
-            <div className="flex flex-col sm:flex-row gap-8 justify-around items-start sm:items-start m-4 py-4 px-5">
+            <div className="flex flex-col lg:flex-row gap-8 justify-around items-start sm:items-start m-4 py-4 px-5">
                 <div className='hover:opacity-60'>
                     <Link href='/inicio'>
                         <Image src={Logo} alt='logo-emove' width={200} height={200} />
