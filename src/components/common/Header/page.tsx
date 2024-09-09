@@ -195,7 +195,7 @@ export default function Header() {
                             </ul>
                         </ul>
                         <button 
-                            className="absolute right-7 top-14"
+                            className="absolute right-9 top-[75px]"
                             onClick={() => { setMenu(!menu) }}
                         >
                             <CloseMenu w={20} h={20} />
