@@ -8,6 +8,7 @@ import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { useEffect } from "react";
 import MenuIcon from "@/assets/menu-icon";
+import CloseMenu from "@/assets/close-menu-icon";
 
 export default function Header() {
     const [windowSize, setWindowSize] = useState({
@@ -43,10 +44,7 @@ export default function Header() {
 
     const [ IsHiddenSolution, setIsHiddenSolution ] = useState(false);
     const [ IsHiddenSeg, setIsHiddenSeg ] = useState(false);
-
-    const teste = () => {
-        console.log("testanto")
-    }
+    const [ menu, setMenu ] = useState(false);
 
     return(
         <header className="w-full h-[12vh] 2xl:h-[8vh] flex justify-between items-center bg-[#f7f7f7] px-5">
@@ -142,10 +140,70 @@ export default function Header() {
                     </div>
                 </>
             )}
-            { windowSize.width <= 1024 && (
-                <button onClick={teste}>
+
+            { windowSize.width <= 1024 && menu === false && (
+                <button onClick={() => { setMenu(!menu) }}>
                     <MenuIcon w={25} h={25} />
                 </button>
+            )}
+
+            { menu && (
+                <div className="w-full h-[100vh] fixed left-0 bottom-0 bg-white z-20">
+                    <nav className="relative w-full h-full flex justify-center items-center">
+                        <ul className="flex flex-col gap-7 justify-center items-center font-bold">
+                            <li>
+                                <Link href="/inicio" onClick={() => { setMenu(!menu) }}>Inicio</Link>
+                            </li>
+                            <li 
+                                className="text-[#1e90ff]"
+                                onClick={() => { setMenu(!menu) }}
+                            >
+                                <Link href="/cartazeamento">Cartazeamento</Link>
+                            </li>
+                            <li 
+                                className="text-[#1e90ff]"
+                                onClick={() => { setMenu(!menu) }}
+                            >
+                                <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
+                            </li>
+                            <li 
+                                className="text-[#1e90ff]"
+                                onClick={() => { setMenu(!menu) }}
+                            >
+                                <Link href="/tabloides">Tablóides</Link>
+                            </li>
+                            <li>
+                                <Link href="/segmentos" onClick={() => { setMenu(!menu) }}>Segmentos</Link>
+                            </li>
+                            <li>
+                                <Link href="/sobre" onClick={() => { setMenu(!menu) }}>Sobre</Link>
+                            </li>
+                            <li>
+                                <Link href="/conteudo" onClick={() => { setMenu(!menu) }}>Conteúdos</Link>
+                            </li>
+                            <ul className="flex flex-col justify-center items-center gap-3">
+                                <li>
+                                    <button className="transition w-fit font-semibold rounded-full py-3 px-4 bg-slate-300 items-center hover:bg-[#1e65ff] hover:text-slate-100 delay-400">
+                                        Entrar
+                                    </button>
+                                </li>
+                                <li>
+                                    <Link href="/fale-especialista" onClick={() => { setMenu(!menu) }}>
+                                        <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 px-4 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                                            Fale com um Especialista
+                                        </button>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </ul>
+                        <button 
+                            className="absolute right-7 top-7"
+                            onClick={() => { setMenu(!menu) }}
+                        >
+                            <CloseMenu w={20} h={20} />
+                        </button>
+                    </nav>
+                </div>
             )}
         </header>
     )
