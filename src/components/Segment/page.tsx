@@ -25,8 +25,8 @@ export default function Seg() {
     return (
         <div className="w-full min-h-[270em] flex flex-col justify-between gap-12">
             <Banner>Segmentos</Banner>
-            <div className="w-full flex justify-center items-center mb-10">
-                <div className="w-full md:w-[85%] flex flex-col justify-center items-center text-center py-8 md:px-8 gap-12" data-aos="fade-up">
+            <div className="w-full flex flex-col justify-between items-center px-3 mb-10">
+                <div className="w-full md:w-[85%] flex flex-col items-start justify-around text-center py-8 md:px-8 gap-12" data-aos="fade-up">
                     <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]">
                         Descubra os segmentos que podemos ajudar com as nossas soluções! 
                     </h2>

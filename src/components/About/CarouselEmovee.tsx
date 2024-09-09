@@ -1,12 +1,12 @@
 import * as React from "react"
  
 import {
-  Carousel,
+  Carousel2,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel-2"
 import Image, { StaticImageData } from "next/image";
 
 interface slide {
@@ -21,7 +21,7 @@ interface CarouselProps {
 
 export function CarouselEmovee({ slides }: CarouselProps) {
     return (
-      <Carousel
+      <Carousel2
         opts={{
           align: "start",
         }}
@@ -42,6 +42,6 @@ export function CarouselEmovee({ slides }: CarouselProps) {
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
-      </Carousel>
+      </Carousel2>
     )
   }

@@ -7,7 +7,7 @@ import Mission from '@/assets/mission.png';
 export default function WeHave() {
     return(
         <div className="w-full min-h-[35em] flex flex-col lg:flex-row gap-14 items-center justify-center px-10">
-            <div className="w-[90%] xl:w-[20%] h-full flex items-center justify-center" data-aos="fade-right">
+            <div className="w-[95%] xl:w-[20%] h-full flex items-center justify-center" data-aos="fade-right">
                 <motion.div
                     className="w-[100%] sm:w-[50%] lg:w-full h-[320px] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl py-4"
                     whileHover={{ scale: 1.1 }}
@@ -25,7 +25,7 @@ export default function WeHave() {
                     </p>
                 </motion.div>
             </div>
-            <div className="w-[90%] xl:w-[20%] flex items-center justify-center" data-aos="fade-up">
+            <div className="w-[95%] xl:w-[20%] flex items-center justify-center" data-aos="fade-up">
                 <motion.div
                     className="w-[100%] sm:w-[50%] lg:w-full h-[320px] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl py-4"
                     whileHover={{ scale: 1.1 }}
@@ -43,7 +43,7 @@ export default function WeHave() {
                     </p>
                 </motion.div>
             </div>
-            <div className="w-[90%] xl:w-[20%] flex items-center justify-center" data-aos="fade-left">
+            <div className="w-[95%] xl:w-[20%] flex items-center justify-center" data-aos="fade-left">
                 <motion.div
                     className="w-[100%] sm:w-[50%] lg:w-full h-[320px] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl py-4"
                     whileHover={{ scale: 1.1 }}
