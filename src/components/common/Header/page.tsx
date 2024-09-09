@@ -140,17 +140,15 @@ export default function Header() {
                     </div>
                 </>
             )}
-
             { windowSize.width <= 1024 && menu === false && (
                 <button onClick={() => { setMenu(!menu) }}>
                     <MenuIcon w={25} h={25} />
                 </button>
             )}
-
             { menu && (
                 <div className="w-full h-[100vh] fixed left-0 bottom-0 bg-white z-20">
                     <nav className="relative w-full h-full flex justify-center items-center">
-                        <ul className="flex flex-col gap-7 justify-center items-center font-bold">
+                        <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
                             <li>
                                 <Link href="/inicio" onClick={() => { setMenu(!menu) }}>Inicio</Link>
                             </li>
@@ -197,7 +195,7 @@ export default function Header() {
                             </ul>
                         </ul>
                         <button 
-                            className="absolute right-7 top-7"
+                            className="absolute right-7 top-14"
                             onClick={() => { setMenu(!menu) }}
                         >
                             <CloseMenu w={20} h={20} />
