@@ -5,7 +5,7 @@ import clsx from "clsx";
 import Footer from "@/components/common/Footer/page";
 import Header from "@/components/common/Header/page";
 import WhatsButton from "@/components/common/WhatsButton/WhatsButton";
-import Cookie from "@/components/common/Cookies/page";
+import CookiePage from "@/components/common/Cookies/page";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -26,10 +26,10 @@ export default function RootLayout({
         <main>
           {children}
         </main>
-        <WhatsButton />
-        {Cookie && (
-          <Cookie /> 
+        {CookiePage && (
+          <CookiePage /> 
         )}
+        <WhatsButton />
         <Footer />
       </body>
     </html>

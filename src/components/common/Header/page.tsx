@@ -195,10 +195,10 @@ export default function Header() {
                             </ul>
                         </ul>
                         <button 
-                            className="absolute right-9 top-[75px]"
+                            className="absolute right-9 top-[85px]"
                             onClick={() => { setMenu(!menu) }}
                         >
-                            <CloseMenu w={20} h={20} />
+                            <CloseMenu Width={25} Height={25} />
                         </button>
                     </nav>
                 </div>

@@ -1,11 +1,11 @@
-export default function CloseMenu({ w, h }: any) {
+export default function CloseMenu({ Width = 20, Height = 20 }: any) {
     return(
         <svg 
         viewBox="0 0 1024 1024" 
         xmlns="http://www.w3.org/2000/svg" 
         fill="#000000"
-        width={w}
-        height={h}
+        width={Width}
+        height={Height}
         >
         <g id="SVGRepo_bgCarrier" 
             stroke-width="0">

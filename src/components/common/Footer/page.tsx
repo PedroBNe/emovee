@@ -37,8 +37,28 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li className='hover:opacity-60'>
-                            <Link href=''>
+                            <Link href='/fale-especialista'>
                                 Suporte
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href='/politicas-privacidade'>
+                                Politicas de Privacidade
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href='/cookies'>
+                                Aviso de Cookies
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href='/solicitacao-de-privacidade'>
+                                Solicitação de Privacidade
+                            </Link>
+                        </li>
+                        <li className='hover:opacity-60'>
+                            <Link href='/termos-de-uso'>
+                                Termos de Uso
                             </Link>
                         </li>
                     </ul>
