@@ -2,13 +2,7 @@ import React from 'react';
 
 export default function MenuIcon({ w, h }: any) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      width = {w}
-      height = {h}
-    >
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={w} height={h}>
       <g strokeWidth="0"></g>
       <g strokeLinecap="round" strokeLinejoin="round"></g>
       <g>
@@ -22,4 +16,4 @@ export default function MenuIcon({ w, h }: any) {
       </g>
     </svg>
   );
-};
+}
