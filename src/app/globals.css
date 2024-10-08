@@ -6,10 +6,6 @@
   scrollbar-width: none;
 }
 
-.scrollbar-thin::-webkit-scrollbar {
-  width: 8px; /* Para Chrome, Safari e Edge */
-}
-
 .scrollbar-thin:hover {
   scrollbar-width: thin;
 }
@@ -19,8 +15,25 @@
   -ms-overflow-style: none;
 }
 
-.scrollbar-none::-webkit-scrollbar {
+.scrollbar-none {
   display: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @layer base {

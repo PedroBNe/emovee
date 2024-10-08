@@ -19,9 +19,9 @@ export default function Tablo() {
   return (
     <div className="xl:relative w-full min-h-[50em] flex flex-col gap-12">
       <Banner>Tablóides</Banner>
-      <div className="w-full min-h-[10em] flex flex-col justify-center xl:justify-start items-center xl:items-start">
-        <div className="w-full xl:w-[50%] h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
-          <div className="w-[90%] flex flex-col items-start justify-around gap-12">
+      <div className="w-full min-h-[10em] flex flex-col gap-12 justify-center items-center">
+        <div className="w-full h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
+          <div className="w-[80%] flex flex-col items-start justify-around gap-12">
             <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]">
               A otimização para a precificação de ofertas!
             </h2>
@@ -38,12 +38,10 @@ export default function Tablo() {
             </p>
           </div>
         </div>
-        <div className="w-full flex justify-center items-center mt-16 xl:mt-0 xl:w-[50%] xl:absolute xl:right-0 xl:top-40">
-          <FormInterface />
-        </div>
+        <div className="w-[600px] h-[400px] rounded-xl bg-white shadow-2xl flex justify-center items-center">Video</div>
       </div>
-      <div className="w-full flex justify-center items-center mt-8">
-        <div className="w-[90%] flex flex-col items-start justify-around gap-12">
+      <div className="w-full flex flex-col justify-center items-center mt-8">
+        <div className="w-[80%] flex flex-col items-start justify-around gap-12">
           <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]" data-aos="fade-right">
             Benefícios
           </h2>
@@ -62,6 +60,9 @@ export default function Tablo() {
             plataforma oferece uma comunicação visual atrativa e impactante para suas ofertas, garantindo que suas
             mensagens se destaquem melhorem a experiência dos consumidores.
           </p>
+        </div>
+        <div className="mt-16">
+          <FormInterface />
         </div>
       </div>
       <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">

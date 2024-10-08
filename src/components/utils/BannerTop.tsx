@@ -33,7 +33,7 @@ export default function Banner({ children }: any) {
   }, []);
 
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center px-4">
       <motion.div
         className="w-full h-[13em] lg:h-[25em] text-white flex flex-col justify-center pl-[30px] lg:pl-[65px] shadow-2xl mb-12 rounded-b-[50px]"
         variants={gradientVariants}

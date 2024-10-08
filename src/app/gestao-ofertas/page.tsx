@@ -31,6 +31,9 @@ export default function Gest() {
               garantindo um fluxo de trabalho otimizado e colaborativo. Além disso, nosso software proporciona análise
               de dados em tempo real, auxiliando na tomada de decisões estratégicas.
             </p>
+            <div className="w-[600px] h-[400px] bg-white shadow-2xl flex justify-center items-center rounded-xl">
+              Video
+            </div>
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">A solução que você procura</h2>
             <p className="text-md lg:text-xl">
               Administre as suas ofertas de maneira unificada, concentrando todas as informações essenciais em um único

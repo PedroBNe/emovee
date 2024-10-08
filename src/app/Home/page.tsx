@@ -68,7 +68,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative px-4">
       <motion.div
         className="w-full h-[55em] text-white mb-10 z-10 rounded-b-[70px]"
         variants={gradientVariants}
@@ -79,9 +79,11 @@ export default function Home() {
       </motion.div>
       <div className="w-full min-h-[105em] flex flex-col items-center rounded-t-[70px]">
         <Emovee />
-        <Services />
-        <Benefits />
-        <Testimonials />
+        <div className="w-full">
+          <Services />
+          <Benefits />
+          <Testimonials />
+        </div>
         <div className="w-full">
           <Header>Teste grátis</Header>
         </div>
