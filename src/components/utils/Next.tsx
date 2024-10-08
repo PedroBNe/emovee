@@ -8,7 +8,13 @@ type ArrowIconProps = {
   className?: string;
 };
 
-const Next: React.FC<ArrowIconProps> = ({ width = 24, height = 24, color = '#0F0F0F', rotate = 180, className = '' }) => {
+const Next: React.FC<ArrowIconProps> = ({
+  width = 24,
+  height = 24,
+  color = '#0F0F0F',
+  rotate = 180,
+  className = '',
+}) => {
   return (
     <svg
       viewBox="0 0 24 24"
