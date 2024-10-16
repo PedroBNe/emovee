@@ -1,4 +1,4 @@
-import Market from '@/assets/Market';
+import Market from '@/assets/market';
 import { motion } from 'framer-motion';
 
 export default function SegSup() {
