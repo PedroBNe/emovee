@@ -81,7 +81,7 @@ export default function Header() {
                     data-aos-offset="300"
                   >
                     <li>
-                      <Link href="/segmentos#super">Supermercados</Link>
+                      <Link href="/segmentos#sup">Supermercados</Link>
                     </li>
                     <li>
                       <Link href="/segmentos#farma">Farmácias</Link>
