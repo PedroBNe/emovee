@@ -60,9 +60,9 @@ export default function EditMidia() {
   };
 
   return (
-    <div className='w-full min-h-screen flex flex-col text-black'>
+    <div className='w-full min-h-screen flex flex-col gap-4 text-black'>
       <h2 className='font-bold text-3xl'>Editar Post Midia</h2>
-      <form onSubmit={handleSubmit} className='w-fit h-auto m-5 p-4 flex flex-col gap-2 bg-[#111827] text-white rounded-lg'>
+      <form onSubmit={handleSubmit} className='w-fit h-auto p-4 flex flex-col gap-2 bg-white rounded-lg'>
         <h2 className='font-semibold'>Post</h2>
         <Input placeholder='Titulo' name="title" value={form.title} onChange={handleChange} required />
         <Input placeholder='Subtitulo' name="subtitle" value={form.subtitle} onChange={handleChange} required />

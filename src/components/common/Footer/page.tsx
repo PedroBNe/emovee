@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import { Sites } from './Sites';
 import Instagram from '@/assets/social-insta.png';
@@ -9,8 +11,19 @@ import Logo from '@/assets/logo-white.png';
 import { Images } from './Images';
 import { Information } from './Information';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    setIsVisible(!pathname.startsWith('/dashboard'));
+  }, [pathname]);
+
+  if (!isVisible) return null;
+
   return (
     <footer className="w-full bg-slate-800 min-h-40 flex flex-col justify-between text-slate-200">
       <div className="flex flex-col md:flex-row justify-center gap-[90px] md:gap-[120px] xl:gap-[250px] items-center md:items-start py-10">

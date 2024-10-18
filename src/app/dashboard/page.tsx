@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import AboutPage from "./about/page";
+import Analytic from "./analytics/page";
 
 export default function Dashboard() {
-  return (<AboutPage />);
+  return (<Analytic />);
 }

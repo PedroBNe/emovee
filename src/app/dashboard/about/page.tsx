@@ -88,9 +88,9 @@ export default function AboutPage() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="container">
-      <h1 className="text-3xl font-bold mb-4">Editar Sobre Nós</h1>
-      <form onSubmit={handleSubmit} className="w-fit flex flex-col items-center gap-4 bg-[#111827] text-white rounded-xl p-4 m-5">
+    <div className="flex flex-col gap-4">
+      <h1 className="text-3xl font-bold">Editar Sobre Nós</h1>
+      <form onSubmit={handleSubmit} className="w-fit flex flex-col items-center gap-4 bg-white rounded-xl p-4">
         <Input
           type="text"
           name="title"
@@ -100,7 +100,7 @@ export default function AboutPage() {
           required
         />
         <Input type="file" onChange={handleFileChange} required />
-        <Button variant={"secondary"} type="submit" disabled={loading} className="w-fit p-4 px-5">
+        <Button type="submit" disabled={loading} className="w-fit p-4 px-5">
           {loading ? "Enviando..." : "Salvar"}
         </Button>
       </form>

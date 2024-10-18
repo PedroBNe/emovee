@@ -30,13 +30,13 @@ export default function CategoryList() {
             <Button>Criar Categoria</Button>
           </Link>
         </div>
-        <ul className='w-[50%] p-4 m-5 flex flex-col gap-2 justify-center items-center bg-[#111827] text-white rounded-xl'>
+        <ul className='w-[50%] p-4 m-5 flex flex-col gap-2 justify-center items-center bg-white rounded-xl'>
           <div className='w-full flex justify-start mb-2'>
             <p>Categorias criadas</p>
           </div>
           {categories.map((category) => (
             <div key={category.id} className='w-full flex items-center gap-2'>
-              <li className='w-full p-2 rounded-lg flex justify-center font-semibold bg-white text-black'>
+              <li className='w-full p-2 rounded-lg flex justify-center font-semibold bg-slate-200'>
                 {category.name}
               </li>
               <Button variant={'destructive'}>Deletar</Button>

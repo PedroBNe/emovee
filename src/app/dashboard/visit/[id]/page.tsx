@@ -52,10 +52,10 @@ export default function EditVisit() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='bg-[#111827] text-white'>
+    <form onSubmit={handleSubmit} className='bg-white'>
       <input name="title" value={form.title} onChange={handleChange} required />
       <input name="imageUrl" value={form.imageUrl} onChange={handleChange} />
-      <Button variant={'secondary'} type="submit">Update Visit</Button>
+      <Button type="submit">Update Visit</Button>
     </form>
   );
 }

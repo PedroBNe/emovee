@@ -64,9 +64,9 @@ export default function CreateMidiaPost() {
   };
 
   return (
-    <div className="container">
+    <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Criar Nova Mídia</h1>
-      <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 p-4 m-5 bg-[#111827] text-white rounded-xl">
+      <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 p-4 bg-white rounded-xl">
         <Input
           type="text"
           name="title"
@@ -99,7 +99,7 @@ export default function CreateMidiaPost() {
           required
         />
         <Input type="file" onChange={handleFileChange} required />
-        <Button variant={'secondary'} type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           {loading ? "Enviando..." : "Criar Mídia"}
         </Button>
       </form>

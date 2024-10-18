@@ -37,7 +37,7 @@ export default function MidiaList() {
         </div>
         <ul className='p-5 gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
           {midias.map((midia, index) => (
-            <Card key={midia.id} className='bg-[#111827] text-white'>
+            <Card key={midia.id}>
               <CardHeader className='w-full'>
                 <CardTitle>{midia.title}</CardTitle>
                 <CardDescription>{midia.subtitle}</CardDescription>
@@ -57,6 +57,6 @@ export default function MidiaList() {
           ))}
         </ul>
       </div>
-    </div> 
+    </div>
   );
 }

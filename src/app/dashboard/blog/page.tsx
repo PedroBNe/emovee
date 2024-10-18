@@ -49,7 +49,7 @@ export default function BlogList() {
         </div>
         <ul className='p-5 gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
           {blogs.map((blog) => (
-            <li key={blog.id} className='w-auto max-h-[350px] p-4 flex flex-col justify-between items-center bg-[#111827] text-white rounded-xl'>
+            <li key={blog.id} className='w-auto max-h-[350px] p-4 flex flex-col justify-between items-center bg-white rounded-xl'>
               <h2 className='w-full font-bold text-lg'>{blog.title}</h2>
               <div className='w-full'>
                 <p>Sobre: {blog.subtitle}</p>

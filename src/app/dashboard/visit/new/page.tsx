@@ -57,9 +57,9 @@ export default function CreateVisit() {
   };
 
   return (
-    <div className="container">
+    <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Criar Nova Visita</h1>
-      <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 m-5 p-4 bg-[#111827] text-white rounded-xl">
+      <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 p-4 bg-white rounded-xl">
         <h2 className="font-semibold">New visit</h2>
         <Input
           type="text"
@@ -70,7 +70,7 @@ export default function CreateVisit() {
           required
         />
         <Input type="file" onChange={handleFileChange} required />
-        <Button variant={'secondary'} type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           {loading ? "Enviando..." : "Criar Visita"}
         </Button>
       </form>

@@ -110,7 +110,7 @@ export default function EditInfo() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Editar Informações</h1>
+      <h1 className="text-3xl font-bold">Configurações</h1>
       <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 bg-white rounded-xl p-4">
         <label className="font-semibold">Logo Atual:</label>
         {info?.logo && <Image src={info.logo} alt="Logo Atual" width={50} height={50} />}

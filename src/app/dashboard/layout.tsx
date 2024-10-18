@@ -37,21 +37,21 @@ export default function DashboardLayout({
     }
   };
 
-  // Chama a função ao carregar o componente
   useEffect(() => {
     fetchInfo();
   }, []);
 
   return (
-    <div className="w-full bg-white min-h-screen absolute top-0 z-30">
-      <nav className="w-full h-[11vh] flex justify-between items-center p-8 bg-[#111827]">
-        <div className="w-fit flex justify-center items-center">
+    <div className="w-full bg-slate-100 min-h-screen  top-0 z-50">
+      <nav className="w-full h-[8vh] flex justify-between items-center p-8 bg-white">
+        <div className="w-fit flex justify-center items-center text-3xl font-bold">
           {info && (
-            <Image src={info.logo} alt="logo" width={120} height={120} />
+            <Image src={info.logo} alt="logo" width={100} height={100} />
           )}
+          Dashboard
         </div>
         <div className="flex gap-8">
-          <Button variant={'secondary'}>Administração</Button>
+          <Button>Administração</Button>
           <Link href={'/Home'}>
             <Button variant={'destructive'}>Sair</Button>
           </Link>
@@ -59,40 +59,39 @@ export default function DashboardLayout({
       </nav>
       <div className="w-full h-auto flex text-black">
         <nav className="w-[350px] flex justify-center bg-gray-900 text-white">
-          <hr className="w-[250px] bg-white absolute"/>
           <div className="w-full flex flex-col items-center text-start font-bold">
             <Link
-              href={`/dashboard/about`}
+              href={`/dashboard/analytics`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Analytics
             </Link>
             <Link
-              href={`/dashboard/blog`}
+              href={`/dashboard/client`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Clientes
             </Link>
             <Link
-              href={`/dashboard/category`}
+              href={`/dashboard/config`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Configuração
             </Link>
             <Link
-              href={`/dashboard/info`}
+              href={`/dashboard/emails`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               E-mails
             </Link>
             <Link
-              href={`/dashboard/midia`}
+              href={`/dashboard/forms`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Formulários
             </Link>
             <Link
-              href={`/dashboard/onlineclass`}
+              href={`/dashboard/leads`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Leads
@@ -104,7 +103,7 @@ export default function DashboardLayout({
               LGPD
             </Link>
             <Link
-              href={`/dashboard/about`}
+              href={`/dashboard/blog`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Pagina Blog
@@ -158,22 +157,10 @@ export default function DashboardLayout({
               Sobre
             </Link>
             <Link
-              href={`/dashboard/blog`}
-              className="w-full h-fit p-3 hover:bg-slate-600 transition"
-            >
-              Blog
-            </Link>
-            <Link
               href={`/dashboard/category`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Categoria
-            </Link>
-            <Link
-              href={`/dashboard/info`}
-              className="w-full h-fit p-3 hover:bg-slate-600 transition"
-            >
-              Informação
             </Link>
             <Link
               href={`/dashboard/midia`}

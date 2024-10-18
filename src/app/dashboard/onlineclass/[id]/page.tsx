@@ -60,15 +60,15 @@ export default function EditOnlineClass() {
   };
 
   return (
-    <div className='w-full min-h-screen flex flex-col text-black'>
+    <div className='w-full min-h-screen flex flex-col gap-4 text-black'>
       <h2 className='font-bold text-3xl'>Editar Aula</h2>
-      <form onSubmit={handleSubmit} className='w-fit h-auto m-5 p-4 flex flex-col gap-2 bg-[#111827] text-white rounded-lg'>
+      <form onSubmit={handleSubmit} className='w-fit h-auto p-4 flex flex-col gap-2 bg-white rounded-lg'>
         <Input placeholder='Titulo' name="title" value={form.title} onChange={handleChange} required />
         <Input placeholder='Subtitulo' name="subtitle" value={form.subtitle} onChange={handleChange} required />
         <Input name="date" type="date" value={form.date} onChange={handleChange} required />
         <Input name="imageUrl" value={form.imageUrl} onChange={handleChange} />
         <Textarea placeholder="Descrição" name="students" value={form.students} onChange={handleChange} />
-        <Button variant={'secondary'} type="submit">Update Online Class</Button>
+        <Button type="submit">Update Online Class</Button>
       </form>
     </div>
   );

@@ -63,9 +63,9 @@ export default function CreateOnlineClass() {
   };
 
   return (
-    <div className="container">
+    <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Criar Nova Aula Online</h1>
-      <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 m-5 p-4 bg-[#111827] text-white rounded-xl">
+      <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 p-4 bg-white rounded-xl">
         <Input
           type="text"
           name="title"
@@ -98,7 +98,7 @@ export default function CreateOnlineClass() {
           required
         />
         <Input type="file" onChange={handleFileChange} required />
-        <Button variant={"secondary"} type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           {loading ? "Enviando..." : "Criar Aula"}
         </Button>
       </form>

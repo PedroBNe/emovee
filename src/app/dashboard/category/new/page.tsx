@@ -33,7 +33,7 @@ export default function NewCategory() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='w-fit flex flex-col gap-3 bg-[#111827] text-white rounded-xl p-4'>
+    <form onSubmit={handleSubmit} className='w-fit flex flex-col gap-3 bg-white rounded-xl p-4'>
       <h2 className='font-semibold '>New Category</h2>
       <Input
         name="name"
@@ -42,7 +42,7 @@ export default function NewCategory() {
         onChange={handleChange}
         required
       />
-      <Button variant={'secondary'} type="submit">Create Category</Button>
+      <Button type="submit">Create Category</Button>
     </form>
   );
 }
