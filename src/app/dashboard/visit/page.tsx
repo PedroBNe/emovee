@@ -28,7 +28,7 @@ export default function VisitList() {
     <div className='w-full min-h-screen py-4 flex justify-center text-black'>
       <div className='w-full flex flex-col'>
         <div className='w-full flex justify-between'>
-          <h1 className='font-bold text-3xl'>Lista</h1>
+          <h1 className='font-bold text-3xl'>Lista de visitas</h1>
           <Link href={"/dashboard/visit/new"}>
             <Button>Criar visita</Button>
           </Link>

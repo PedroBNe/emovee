@@ -89,7 +89,7 @@ export default function AboutPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Editar Sobre Nós</h1>
+      <h1 className="text-3xl font-bold">Editar &quot;Sobre&quot;</h1>
       <form onSubmit={handleSubmit} className="w-fit flex flex-col items-center gap-4 bg-white rounded-xl p-4">
         <Input
           type="text"

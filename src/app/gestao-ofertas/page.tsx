@@ -20,8 +20,8 @@ export default function Gest() {
     <div className="xl:relative w-full min-h-[50em] flex flex-col justify-center items-center gap-12">
       <Banner>Gestão de Ofertas</Banner>
       <div className="w-full min-h-[10em] flex flex-col justify-center xl:justify-start items-center xl:items-start">
-        <div className="w-full h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
-          <div className="w-[95%] sm:w-[85%] flex flex-col items-center justify-around gap-12 text-start">
+        <div className="w-full h-[100%] flex flex-col justify-between items-center">
+          <div className="w-[95%] sm:w-[75%] flex flex-col items-center justify-around gap-[75px] text-start">
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">
               Gerencie suas ofertas de maneira segura e eficaz!
             </h2>
@@ -31,7 +31,7 @@ export default function Gest() {
               garantindo um fluxo de trabalho otimizado e colaborativo. Além disso, nosso software proporciona análise
               de dados em tempo real, auxiliando na tomada de decisões estratégicas.
             </p>
-            <div className="w-[600px] h-[400px] bg-white shadow-2xl flex justify-center items-center rounded-xl">
+            <div className="w-[600px] h-[400px] bg-white shadow-2xl flex justify-center items-center rounded-xl mb-8">
               Video
             </div>
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">A solução que você procura</h2>
@@ -39,6 +39,22 @@ export default function Gest() {
               Administre as suas ofertas de maneira unificada, concentrando todas as informações essenciais em um único
               ambiente. Ganhe em produtividade e clareza ao unificar seus processos, facilitando a tomada de decisões
               estratégicas e a execução de campanhas com maior precisão e impacto.
+            </p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">Criação de Tabloides</h2>
+            <p className="text-md lg:text-xl">
+              Nosso software é integrado, por isso, você conseguirá gerir suas ofertas e criar tabloides estratégicos e assertivos. Desta maneira, os materiais promocionais ficam prontos em alguns segundos, de maneira rápida e intuitiva.
+            </p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">100% completo</h2>
+            <p className="text-md lg:text-xl">
+              Por ser integrada com o ERP, nossa plataforma possui uma grande biblioteca de fotos dos produtos, bem cadastro com informações completas e relevantes.
+            </p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">Acompanhamento em tempo real</h2>
+            <p className="text-md lg:text-xl">
+              Temos um local exclusivo para você acompanhar como está o processo de desenvolvimento dos cartazes de oferta, para facilitar a aprovação e eliminar erros de diagramação antes da impressão.
+            </p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">Economize tempo</h2>
+            <p className="text-md lg:text-xl">
+              Elimine atividades manuais e simplifique o processo de criação dos materiais de oferta! Com poucos cliques, sua equipe ganha eficiência operacional e consegue focar em processos estratégicos.
             </p>
           </div>
         </div>

@@ -15,6 +15,7 @@ export default function WhatsButton() {
   }, [pathname]);
 
   if (!isVisible) return null;
+
   return (
     <div className="fixed block bottom-[20px] right-[20px] rounded-full p-2 shadow-2xl bg-white hover:opacity-80 cursor-pointer transition">
       <Link href="">

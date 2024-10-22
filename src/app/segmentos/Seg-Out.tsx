@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export default function SegOut() {
   return (
     <div
-      className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-4"
+      className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-8"
       data-aos="fade-left"
       id="out"
     >

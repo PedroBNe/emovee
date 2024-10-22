@@ -42,7 +42,7 @@ export default function BlogList() {
     <div className='w-full min-h-screen py-4 flex justify-center text-black'>
       <div className='w-full flex flex-col h-auto'>
         <div className='w-full flex justify-between'>
-          <h1 className='font-bold text-3xl'>Blog List</h1>
+          <h1 className='font-bold text-3xl'>Lista de Posts</h1>
           <Link href={"/dashboard/blog/new"}>
             <Button>Criar Post</Button>
           </Link>

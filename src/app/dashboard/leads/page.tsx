@@ -71,7 +71,7 @@ export default function Leads() {
 
   return (
     <div className="w-full bg-gray-100 flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Projetos</h1>
+      <h1 className="text-3xl font-bold">Leads</h1>
       <DragDropContext onDragEnd={onDragEnd}>
         <div className='w-full flex flex-col bg-white'>
           <div className='border-b-1 mb-5 p-5'>
