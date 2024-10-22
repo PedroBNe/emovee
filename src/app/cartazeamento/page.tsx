@@ -26,14 +26,16 @@ export default function Carta() {
           </h2>
         </div>
         <div
-          className="w-full md:w-[85%] flex flex-col items-start justify-around text-start md:px-8 gap-12"
-          data-aos="fade-up"
+          className="w-full md:w-[85%] flex flex-col items-center justify-around text-start md:px-8 gap-12"
         >
           <p className="text-md lg:text-xl">
             Transforme a comunicação visual da sua empresa com nossa plataforma. Alcance a padronização e agilidade que
             você sempre desejou com mais de dois mil modelos de cartazes à sua disposição. Encontre rapidamente o design
             perfeito para atender às suas necessidades e eleve a qualidade da sua comunicação visual.
           </p>
+          <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">
+            Um software, uma solução
+          </h2>
           <p className="text-md lg:text-xl">
             Ao utilizar nosso software, você poderá dizer adeus aos processos manuais e erros indesejados. Nossa solução
             é ideal para quem busca criar cartazes atrativos de maneira rápida e fácil. Simplifique seu trabalho e eleve
