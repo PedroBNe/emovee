@@ -11,21 +11,26 @@ import MenuIcon from '@/assets/menu-icon';
 import CloseMenu from '@/assets/close-menu-icon';
 import React from 'react';
 import useWindowSize from '@/components/utils/Window';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const window = useWindowSize();
-
+  const [menu, setMenu] = useState(false);
   const [IsHiddenSolution, setIsHiddenSolution] = useState(false);
   const [IsHiddenSeg, setIsHiddenSeg] = useState(false);
-  const [menu, setMenu] = useState(false);
+
+  const [isVisible, setIsVisible] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
-  });
+    setIsVisible(!pathname.startsWith('/dashboard'));
+  }, [pathname]);
 
+  if (!isVisible) return null;
   return (
     <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-[#f7f7f7] px-5 relative">
       <div className="w-fit h-full flex items-center justify-center">

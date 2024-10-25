@@ -96,27 +96,27 @@ export default function Testimonials() {
 
   return (
     <motion.div
-      className="w-full h-[40em] flex flex-col shadow-2xl rounded-[70px] my-8"
+      className="w-full h-[50em] lg:h-[40em] flex shadow-2xl rounded-[70px] my-8"
       variants={gradientVariants}
       animate={currentGradient}
       transition={{ duration: 2 }}
     >
-      <div className="w-full h-full flex flex-col lg:flex-row items-center justify-center px-10 mx-4">
-        <div className="w-full h-full flex relative">
-          <div className="w-[40%] h-full flex flex-col gap-12 items-center justify-center">
-            <h2 className="w-[70%] text-center text-4xl text-white">
+      <div className="w-full h-full flex items-center justify-center p-10 mx-4">
+        <div className="w-full h-full flex flex-col justify-between lg:flex-row relative">
+          <div className="lg:w-[40%] h-full flex flex-col gap-12 items-center justify-center">
+            <h2 className="lg:w-[70%] text-center text-4xl text-white">
               Venha descobrir o que estao falando sobre a gente!!!
             </h2>
             <Link href={``}>
               <Button>Saiba mais</Button>
             </Link>
           </div>
-          <div className="h-full flex justify-center items-center">
-            <Carousel2 className="w-fit absolute right-8">
-              <CarouselContent className="max-w-[1000px]">
+          <div className="lg:w-fit h-full flex justify-center items-center">
+            <Carousel2 className="lg:w-fit md:absolute lg:right-8">
+              <CarouselContent className="w-[300px] md:w-[400px] lg:w-[600px] xl:w-[750px]">
                 {testimonials.map((post, index) => (
-                  <CarouselItem key={index} className="basis-1/3">
-                    <div className="w-full h-[50vh] p-1">
+                  <CarouselItem key={index} className="basis-1/1 lg:basis-1/2">
+                    <div className="w-[60vw] sm:w-[35vw] lg:w-[23vw] xl:w-[18vw] h-fit p-1">
                       <CardTestimonials key={post.id} post={post} />
                     </div>
                   </CarouselItem>
