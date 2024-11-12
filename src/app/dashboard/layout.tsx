@@ -61,6 +61,12 @@ export default function DashboardLayout({
         <nav className="w-[350px] flex justify-center bg-gray-900 text-white">
           <div className="w-full flex flex-col items-center text-start font-bold">
             <Link
+              href={"/dashboard/servicos"}
+              className="w-full h-fit p-3 hover:bg-slate-600 transition"
+            >
+              Serviços
+            </Link>
+            {/* <Link
               href={`/dashboard/analytics`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
@@ -179,7 +185,7 @@ export default function DashboardLayout({
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
             >
               Visitas
-            </Link>
+            </Link> */}
           </div>
         </nav>
         <main className="w-full p-6">{children}</main>

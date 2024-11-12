@@ -28,7 +28,7 @@ const nextConfig = {
 
   // Configuração de imagens para permitir domínios externos
   images: {
-    domains: ['th.bing.com'],
+    domains: ['th.bing.com', 'imagensladingpage.s3.sa-east-1.amazonaws.com'],
   },
 
   // ...other config

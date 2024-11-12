@@ -4,6 +4,7 @@ import Button from '@/components/utils/Button';
 import 'aos/dist/aos.css';
 import Header from '@/components/utils/Header';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 type Props = {
   id: number;
@@ -38,7 +39,7 @@ const service = [
   },
 ];
 
-const ServicesCard = ({ service }: { service: Props }) => {
+const ServicesCard = ({ service }: { service: Service }) => {
   return (
     <div className="w-full sm:w-[80%] h-full flex items-center justify-center" data-aos="fade-right">
       <motion.div
@@ -48,13 +49,13 @@ const ServicesCard = ({ service }: { service: Props }) => {
         transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       >
         <div className="lg:w-[50%] h-full flex justify-center items-center">
-          <div className="w-[300px] md:w-[600px] lg:w-full h-[23vh] md:h-[42vh] border-2 border-black rounded-lg flex justify-center items-center">
-            Foto
+          <div className="relative w-[300px] md:w-[600px] lg:w-full h-[23vh] md:h-[42vh] border-2 border-black rounded-lg flex justify-center items-center">
+            <Image src={service.imageUrl} alt={service.title} fill />
           </div>
         </div>
         <div className="w-full lg:w-[50%] h-full p-5 flex flex-col justify-between items-center">
           <p className="font-bold text-2xl">{service.title}</p>
-          <p className="text-start text-xl m-5">{service.subtitle}</p>
+          <p className="text-start text-xl m-5">{service.description}</p>
           <Link href={`${service.link}`}>
             <Button>Saiba mais</Button>
           </Link>
@@ -70,8 +71,17 @@ const gradientVariants = {
   gradient3: { background: 'linear-gradient(to right, #000080, #800000)' },
 };
 
+interface Service {
+  id: number
+  title: string
+  description: string
+  link: string
+  imageUrl: string
+}
+
 export default function Services() {
   const [currentGradient, setCurrentGradient] = useState('gradient1');
+  const [services, setServices] = useState<Service[]>([])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,6 +95,16 @@ export default function Services() {
     return () => clearInterval(interval); // Limpa o intervalo ao desmontar o componente
   }, []);
 
+  const loadServices = async () => {
+    const response = await fetch('/api/services')
+    const servicesData = await response.json()
+    setServices(servicesData)
+  }
+
+  useEffect(() => {
+    loadServices()
+  }, [])
+
   return (
     <motion.div
       className="w-full flex flex-col shadow-2xl rounded-[70px] my-8"
@@ -94,7 +114,7 @@ export default function Services() {
     >
       <h2 className="w-full pt-10 flex justify-center items-center text-white text-4xl">Nossos Serviços</h2>
       <div className="w-full h-auto flex flex-col gap-10 items-center justify-center px-10 py-16">
-        {service.map((ser) => (
+        {services.map((ser) => (
           <ServicesCard key={ser.id} service={ser} />
         ))}
       </div>

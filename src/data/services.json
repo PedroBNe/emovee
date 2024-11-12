@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Cartazeamento",
+    "description": "Em poucos cliques, crie e imprima cartazes promocionais atrativos, que despertem desejo nos consumidores.",
+    "link": "/cartazeamento",
+    "imageUrl": "https://imagensladingpage.s3.sa-east-1.amazonaws.com/images/14fa0491-4408-4e94-b00e-15c5038aed19_image.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Gestão de ofertas",
+    "description": "De maneira ágil e simplificada, gerencie e organize seu calendário promocional.",
+    "link": "/gestao-ofertas",
+    "imageUrl": "https://imagensladingpage.s3.sa-east-1.amazonaws.com/images/be63a947-1bb5-4744-a34a-1d2638db0ebb_Design sem nome.png"
+  },
+  {
+    "id": 3,
+    "title": "Tablóides",
+    "description": "De maneira ágil e simplificada, gerencie e organize seu calendário promocional.",
+    "link": "/tabloides",
+    "imageUrl": "/placeholder.svg?height=100&width=100"
+  }
+]
