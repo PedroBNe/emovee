@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { PlusCircle, Save, X } from 'lucide-react'
 import Image from 'next/image'
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3"
+import { v4 as uuidv4 } from 'uuid';
 
 // Configuração do S3 Client para o AWS SDK v3
 const s3 = new S3Client({
@@ -50,9 +51,9 @@ export default function AboutEmovieeDashboard() {
   const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([])
   const [cardSections, setCardSections] = useState<CardSection[]>([])
   const [sideImages, setSideImages] = useState<SideImage[]>([])
-  const [newLogoUrl, setNewLogoUrl] = useState('')
-  const [newLogoName, setNewLogoName] = useState('')
-  const [newSideImageUrl, setNewSideImageUrl] = useState('')
+  const [newLogoFile, setNewLogoFile] = useState<File | null>(null);
+  const [newLogoName, setNewLogoName] = useState('');
+  const [newSideImageFile, setNewSideImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     loadAboutContent()
@@ -82,15 +83,15 @@ export default function AboutEmovieeDashboard() {
   };
 
   const saveAboutContent = async () => {
-    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME
-    const key = 'data/about.json'
+    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+    const key = 'data/about.json';
 
     const aboutData = {
       content,
       partnerLogos,
       cardSections,
       sideImages,
-    }
+    };
 
     try {
       const command = new PutObjectCommand({
@@ -98,13 +99,13 @@ export default function AboutEmovieeDashboard() {
         Key: key,
         Body: JSON.stringify(aboutData),
         ContentType: 'application/json',
-      })
-      await s3.send(command)
-      console.log("Conteúdo 'Sobre' salvo com sucesso!")
+      });
+      await s3.send(command);
+      console.log("Conteúdo 'Sobre' salvo com sucesso!");
     } catch (error) {
-      console.error("Erro ao salvar conteúdo 'Sobre' no S3:", error)
+      console.error("Erro ao salvar conteúdo 'Sobre' no S3:", error);
     }
-  }
+  };
 
   const handleSave = async () => {
     await saveAboutContent()
@@ -116,13 +117,37 @@ export default function AboutEmovieeDashboard() {
     setIsEditing(false)
   }
 
-  const handleAddPartner = () => {
-    if (newLogoUrl && newLogoName) {
-      setPartnerLogos([...partnerLogos, { id: Date.now(), url: newLogoUrl, name: newLogoName }])
-      setNewLogoUrl('')
-      setNewLogoName('')
+  const uploadImageToS3 = async (file: File) => {
+    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+    const uniqueFileName = `images/${uuidv4()}_${file.name}`;
+
+    const params = {
+      Bucket: bucketName,
+      Key: uniqueFileName,
+      Body: file,
+      ContentType: file.type,
+    };
+
+    try {
+      const command = new PutObjectCommand(params);
+      await s3.send(command);
+      return `https://${bucketName}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${uniqueFileName}`;
+    } catch (error) {
+      console.error("Erro ao enviar imagem para o S3:", error);
+      return null;
     }
-  }
+  };
+
+  const handleAddPartner = async () => {
+    if (newLogoFile && newLogoName) {
+      const uploadedUrl = await uploadImageToS3(newLogoFile);
+      if (uploadedUrl) {
+        setPartnerLogos([...partnerLogos, { id: Date.now(), url: uploadedUrl, name: newLogoName }]);
+        setNewLogoFile(null);
+        setNewLogoName('');
+      }
+    }
+  };
 
   const handleRemovePartner = (id: number) => {
     setPartnerLogos(partnerLogos.filter(logo => logo.id !== id))
@@ -132,10 +157,13 @@ export default function AboutEmovieeDashboard() {
     setCardSections(cardSections.map(card => card.id === id ? { ...card, [field]: value } : card))
   }
 
-  const handleAddSideImage = () => {
-    if (newSideImageUrl) {
-      setSideImages([...sideImages, { id: Date.now(), url: newSideImageUrl }]);
-      setNewSideImageUrl('');
+  const handleAddSideImage = async () => {
+    if (newSideImageFile) {
+      const uploadedUrl = await uploadImageToS3(newSideImageFile);
+      if (uploadedUrl) {
+        setSideImages([...sideImages, { id: Date.now(), url: uploadedUrl }]);
+        setNewSideImageFile(null);
+      }
     }
   };
 
@@ -232,7 +260,7 @@ export default function AboutEmovieeDashboard() {
                         variant="destructive"
                         size="icon"
                         className="absolute -top-2 -right-2"
-                        onClick={() => handleRemoveSideImage(image.id)}
+                        onClick={() => setSideImages(sideImages.filter(img => img.id !== image.id))}
                       >
                         <X className="h-4 w-4" />
                       </Button>
@@ -241,12 +269,9 @@ export default function AboutEmovieeDashboard() {
                 ))}
               </div>
               {isEditing && (
-                <div className="space-y-2">
-                  <Input
-                    value={newSideImageUrl}
-                    onChange={(e) => setNewSideImageUrl(e.target.value)}
-                    placeholder="URL da nova imagem"
-                  />
+                <div className="space-y-4">
+                  <Label>Arquivo de Imagem</Label>
+                  <Input type="file" onChange={(e) => setNewSideImageFile(e.target.files?.[0] || null)} />
                   <Button onClick={handleAddSideImage}>
                     <PlusCircle className="h-4 w-4 mr-2" /> Adicionar Imagem
                   </Button>
@@ -336,14 +361,14 @@ export default function AboutEmovieeDashboard() {
           <div className="grid grid-cols-3 gap-4 mb-4">
             {partnerLogos.map((logo) => (
               <div key={logo.id} className="relative flex flex-col items-center">
-                <Image src={logo.url} alt={logo.name} width={100} height={50} />
+                <Image src={logo.url} alt={`Parceiro ${logo.name}`} width={100} height={50} />
                 <span className="mt-2 text-sm">{logo.name}</span>
                 {isEditing && (
                   <Button
                     variant="destructive"
                     size="icon"
                     className="absolute -top-2 -right-2"
-                    onClick={() => handleRemovePartner(logo.id)}
+                    onClick={() => setPartnerLogos(partnerLogos.filter(l => l.id !== logo.id))}
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -353,17 +378,13 @@ export default function AboutEmovieeDashboard() {
           </div>
           {isEditing && (
             <div className="space-y-4">
-              <Label htmlFor="newLogoUrl">URL do Logo</Label>
+              <Label>Arquivo do Logo</Label>
+              <Input type="file" onChange={(e) => setNewLogoFile(e.target.files?.[0] || null)} />
+              <Label>Nome da Empresa</Label>
               <Input
-                id="newLogoUrl"
-                value={newLogoUrl}
-                onChange={(e) => setNewLogoUrl(e.target.value)}
-              />
-              <Label htmlFor="newLogoName">Nome da Empresa</Label>
-              <Input
-                id="newLogoName"
                 value={newLogoName}
                 onChange={(e) => setNewLogoName(e.target.value)}
+                placeholder="Nome da Empresa"
               />
               <Button onClick={handleAddPartner}>
                 <PlusCircle className="h-4 w-4 mr-2" /> Adicionar Parceiro
