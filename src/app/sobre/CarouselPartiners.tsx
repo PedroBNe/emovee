@@ -23,9 +23,9 @@ export function CarouselPartiners({ slides }: CarouselProps) {
         {Array.from(slides).map((p, index) => (
           <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5">
             <div className="p-1">
-              <div className="flex aspect-square items-center justify-center p-6">
-                <span className="text-3xl font-semibold">
-                  <Image src={p.imagem} alt={`imagem ${index}`} width={40} height={40} />
+              <div className="flex aspect-square items-center justify-center">
+                <span>
+                  <Image src={p.imagem} alt={`imagem ${index}`} width={160} height={160} quality={100} />
                 </span>
               </div>
             </div>

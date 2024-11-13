@@ -66,6 +66,12 @@ export default function DashboardLayout({
             >
               Serviços
             </Link>
+            <Link
+              href={"/dashboard/sobre"}
+              className="w-full h-fit p-3 hover:bg-slate-600 transition"
+            >
+              Sobre
+            </Link>
             {/* <Link
               href={`/dashboard/analytics`}
               className="w-full h-fit p-3 hover:bg-slate-600 transition"
