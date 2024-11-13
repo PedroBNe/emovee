@@ -16,15 +16,21 @@ export async function GET() {
   try {
     const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
     const data = await s3.send(command);
-    const body = await streamToString(data.Body);
-    return NextResponse.json(JSON.parse(body));
+
+    // Verifica se o data.Body existe e é do tipo correto
+    if (data.Body) {
+      const bodyContents = await streamToString(data.Body);
+      return NextResponse.json(JSON.parse(bodyContents));
+    } else {
+      throw new Error('O conteúdo do body não foi retornado do S3.');
+    }
   } catch (error) {
     console.error('Erro ao carregar serviços do S3:', error);
     return NextResponse.error();
   }
 }
 
-export async function POST(request) {
+export async function POST(request: Request) {
   const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
   const key = 'data/services.json';
   const services = await request.json();
@@ -45,11 +51,12 @@ export async function POST(request) {
 }
 
 // Função auxiliar para converter o stream para string
-const streamToString = (stream) => {
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    stream.on('data', (chunk) => chunks.push(chunk));
-    stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
-    stream.on('error', reject);
-  });
-};
+async function streamToString(stream: any): Promise<string> {
+  const chunks = [];
+
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+  }
+
+  return Buffer.concat(chunks).toString('utf-8');
+}
