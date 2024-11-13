@@ -4,7 +4,7 @@ import { Carousel2, CarouselContent, CarouselItem, CarouselNext, CarouselPreviou
 import Image, { StaticImageData } from 'next/image';
 
 interface slide {
-  imagem: StaticImageData;
+  imagem: StaticImageData | string;
 }
 
 interface CarouselProps {
