@@ -13,16 +13,64 @@ import { Information } from './Information';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+
+// Configuração do S3 Client
+const s3 = new S3Client({
+  region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY!,
+  },
+});
+
+interface CompanyInfo {
+  celular: string;
+  email: string;
+  endereco: string;
+  instagram: string;
+  linkedin: string;
+}
 
 export default function Footer() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
+  const [companyInfo, setCompanyInfo] = useState<CompanyInfo | null>(null);
 
   useEffect(() => {
     setIsVisible(!pathname.startsWith('/dashboard'));
+    loadCompanyInfo();
   }, [pathname]);
 
-  if (!isVisible) return null;
+  const loadCompanyInfo = async () => {
+    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+    const key = 'data/informacoes.json';
+
+    try {
+      const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
+      const data = await s3.send(command);
+
+      if (data.Body) {
+        const bodyContents = await streamToString(data.Body);
+        const info = JSON.parse(bodyContents);
+        setCompanyInfo(info);
+      } else {
+        console.error("Erro: Dados de 'informacoes.json' não encontrados no S3.");
+      }
+    } catch (error) {
+      console.error("Erro ao carregar 'informacoes.json' do S3:", error);
+    }
+  };
+
+  async function streamToString(stream: any): Promise<string> {
+    const chunks: any[] = [];
+    for await (const chunk of stream) {
+      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk));
+    }
+    return Buffer.concat(chunks).toString('utf-8');
+  }
+
+  if (!isVisible || !companyInfo) return null;
 
   return (
     <footer className="w-full bg-slate-800 min-h-40 flex flex-col justify-between text-slate-200">
@@ -47,13 +95,7 @@ export default function Footer() {
               <Link href="/fale-especialista">Suporte</Link>
             </li>
             <li className="hover:opacity-60 hover:underline">
-              <Link href="/politicas-privacidade">Politicas de Privacidade</Link>
-            </li>
-            <li className="hover:opacity-60 hover:underline">
-              <Link href="/cookies">Aviso de Cookies</Link>
-            </li>
-            <li className="hover:opacity-60 hover:underline">
-              <Link href="/solicitacao-de-privacidade">Solicitação de Privacidade</Link>
+              <Link href="/privacidade">Politicas de Privacidade</Link>
             </li>
             <li className="hover:opacity-60 hover:underline">
               <Link href="/termos-de-uso">Termos de Uso</Link>
@@ -64,31 +106,29 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <div>
               <Images image={WhatsApp} alt="whatsapp" text="Telefone:" />
-              <Link href="">
-                <Information text="numero" />
+              <Link href={`tel:${companyInfo.celular}`}>
+                <Information text={companyInfo.celular} />
               </Link>
             </div>
             <div>
               <Images image={Email} alt="email" text="E-mail:" />
-              <Link href="">
-                <Information text="emails" />
+              <Link href={`mailto:${companyInfo.email}`}>
+                <Information text={companyInfo.email} />
               </Link>
             </div>
             <div>
               <Images image={Location} alt="location" text="Localizacao" />
-              <Link href="">
-                <Information text="rua tal" />
-              </Link>
+              <Information text={companyInfo.endereco} />
             </div>
           </div>
         </div>
         <div>
           <p className="pb-1">Nossas Redes:</p>
           <div className="flex flex-row justify-around">
-            <Link href="">
+            <Link href={companyInfo.instagram} target='_blank'>
               <Sites image={Instagram} alt="instagram" />
             </Link>
-            <Link href="">
+            <Link href={companyInfo.linkedin} target='_blank'>
               <Sites image={Linkedin} alt="linkedin" />
             </Link>
           </div>

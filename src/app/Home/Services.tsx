@@ -49,8 +49,8 @@ const ServicesCard = ({ service }: { service: Service }) => {
         transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       >
         <div className="lg:w-[50%] h-full flex justify-center items-center">
-          <div className="relative w-[300px] md:w-[600px] lg:w-full h-[23vh] md:h-[42vh] border-2 border-black rounded-lg flex justify-center items-center">
-            <Image src={service.imageUrl} alt={service.title} fill />
+          <div className="relative w-[300px] md:w-[600px] lg:w-full h-[23vh] md:h-[42vh] rounded-lg flex justify-center items-center">
+            <Image src={service.imageUrl} alt={service.title} fill className='rounded-lg' />
           </div>
         </div>
         <div className="w-full lg:w-[50%] h-full p-5 flex flex-col justify-between items-center">

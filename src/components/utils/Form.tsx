@@ -4,114 +4,146 @@ import { Input } from '@nextui-org/input';
 import { RadioGroup, Radio } from '@nextui-org/radio';
 import { Select, SelectItem } from '@nextui-org/react';
 import { SegmentsForm } from './Segments-form';
-import React from 'react';
-import 'aos/dist/aos.css';
-import AOS from 'aos';
-import { useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function FormInterface() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
+  const [selected, setSelected] = useState('CPF');
+  const [email, setEmail] = useState('');
+  const [value, setValue] = useState('');
+  const [tel, setTel] = useState('');
+  const [nome, setNome] = useState('');
+  const [empresa, setEmpresa] = useState('');
+  const [segmento, setSegmento] = useState('');
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
-  const [selected, setSelected] = React.useState('CPF');
-  const [email, setEmail] = React.useState('');
-  const [value, setValue] = React.useState('');
-  const [tel, setTel] = React.useState('');
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const isInvalid = React.useMemo(() => {
-    const validate = (value: string) => {
-      if (selected === 'CNPJ') {
-        return value.match(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/);
-      }
-      return value.match(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/);
+    const contato = {
+      nome,
+      email,
+      telefone: tel,
+      documento: value,
+      tipoDocumento: selected,
+      empresa,
+      segmento,
     };
 
-    if (value === '') return false;
-    return !validate(value);
-  }, [value, selected]); // CPF e CNPJ
+    try {
+      const response = await fetch('/api/register-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contato),
+      });
 
-  const isInvalidEmail = React.useMemo(() => {
-    const validateEmail = (email: string) => email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i);
-    if (email === '') return false;
-
-    return validateEmail(email) ? false : true;
-  }, [email]); // Email
-
-  const isInvalidTel = React.useMemo(() => {
-    const validateTel = (tel: string) => tel.match(/^\(?\d{2}\)?\s?\d{5}-?\d{4}$/);
-    if (tel === '') return false;
-
-    return validateTel(tel) ? false : true;
-  }, [tel]); // Phone
+      if (response.ok) {
+        setIsPopupVisible(true); // Exibe o popup
+        setNome('');
+        setEmail('');
+        setTel('');
+        setValue('');
+        setEmpresa('');
+        setSegmento('');
+      } else {
+        const error = await response.json();
+        console.error('Erro:', error.error || 'Ocorreu um erro ao enviar o formulário.');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+    }
+  };
 
   return (
-    <div
-      className="w-[23em] lg:w-[30em] md:w-[38em] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative mt-4 xl:mt-0"
-      data-aos="fade-up"
-    >
+    <div className="w-[23em] lg:w-[30em] md:w-[38em] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative mt-4 xl:mt-0">
       <form
         className="flex flex-col w-[75%] flex-wrap md:flex-nowrap gap-10 justify-center items-center"
-        action=""
-        id="form-contact"
+        onSubmit={handleSubmit}
       >
-        <Input type="name" id="name" label="Nome Completo" variant="underlined" />
+        <Input
+          type="text"
+          label="Nome Completo"
+          variant="underlined"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          required
+        />
         <Input
           type="email"
           label="E-mail"
           variant="underlined"
           value={email}
-          isInvalid={isInvalidEmail}
-          color={isInvalidEmail ? 'danger' : 'default'}
-          errorMessage={`Please enter a valid Email ( your_email@exemple.com )`}
-          onValueChange={setEmail}
+          onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <Input
           type="text"
           label="Telefone"
           variant="underlined"
           value={tel}
-          isInvalid={isInvalidTel}
-          color={isInvalidTel ? 'danger' : 'default'}
-          errorMessage={`Please enter a valid Phone number ( 056012340123 )`}
-          onValueChange={setTel}
+          onChange={(e) => setTel(e.target.value)}
+          required
         />
-        <Input type="name" id="name-enterprise" label="Nome da Empresa" variant="underlined" />
+        <Input
+          type="text"
+          label="Nome da Empresa"
+          variant="underlined"
+          value={empresa}
+          onChange={(e) => setEmpresa(e.target.value)}
+          required
+        />
         <RadioGroup
           label="Seleciona uma opção"
           orientation="horizontal"
           defaultValue="CPF"
           value={selected}
-          onValueChange={setSelected}
-          size="sm"
+          onChange={(e) => setSelected(e.target.value)}
         >
           <Radio value="CPF">CPF</Radio>
           <Radio value="CNPJ">CNPJ</Radio>
-          <Input
-            type="text"
-            variant="underlined"
-            label={selected}
-            value={value}
-            isInvalid={isInvalid}
-            color={isInvalid ? 'danger' : 'default'}
-            errorMessage={`Please enter a valid ${selected} ( ${selected === 'CNPJ' ? 'xx.xxx.xxx/xxxx-xx' : 'xxx.xxx.xxx-xx'} )`}
-            onValueChange={setValue}
-          />
         </RadioGroup>
-        <Select label="Segmentos" placeholder="Selecione um segmento">
+        <Input
+          type="text"
+          variant="underlined"
+          label={selected}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          required
+        />
+        <Select
+          label="Segmentos"
+          placeholder="Selecione um segmento"
+          value={segmento}
+          onChange={(e) => setSegmento(e.target.value)}
+        >
           {SegmentsForm.map((seg) => (
-            <SelectItem key={seg.key}>{seg.label}</SelectItem>
+            <SelectItem key={seg.key} value={seg.label}>
+              {seg.label}
+            </SelectItem>
           ))}
         </Select>
-        <input
+        <button
           type="submit"
-          value="Submit"
           className="bg-[#1e90ff] hover:bg-[#1e65ff] transition w-fit text-slate-100 font-bold rounded-full p-4 px-[40%] cursor-pointer"
-        />
+        >
+          Enviar
+        </button>
       </form>
+
+      {/* Popup de Sucesso */}
+      {isPopupVisible && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+            <h2 className="text-lg font-semibold">Contato enviado com sucesso!</h2>
+            <p className="mt-2 text-gray-600">Obrigado por entrar em contato. Retornaremos em breve.</p>
+            <button
+              onClick={() => setIsPopupVisible(false)}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -115,9 +115,6 @@ export default function Header() {
             </ul>
           </nav>
           <div className="hidden gap-5 lg:flex justify-center items-center absolute right-2">
-            <button className="transition w-fit font-semibold rounded-full py-3 px-5 bg-slate-300 items-center hover:bg-[#1e65ff] hover:text-slate-100 delay-400">
-              Entrar
-            </button>
             <Link href="/fale-especialista">
               <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
                 Fale com um Especialista
@@ -204,11 +201,6 @@ export default function Header() {
                 </Link>
               </li>
               <ul className="flex flex-col justify-center items-center gap-3">
-                <li>
-                  <button className="transition w-fit font-semibold rounded-full py-3 px-4 bg-slate-300 items-center hover:bg-[#1e65ff] hover:text-slate-100 delay-400">
-                    Entrar
-                  </button>
-                </li>
                 <li>
                   <Link
                     href="/fale-especialista"
