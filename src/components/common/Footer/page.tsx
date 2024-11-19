@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import { Sites } from './Sites';
@@ -7,7 +7,6 @@ import Linkedin from '@/assets/social-linkedin.png';
 import WhatsApp from '@/assets/social-whatsapp.png';
 import Email from '@/assets/social-email.png';
 import Location from '@/assets/location.png';
-import Logo from '@/assets/logo-white.png';
 import { Images } from './Images';
 import { Information } from './Information';
 import Image from 'next/image';
@@ -30,6 +29,7 @@ interface CompanyInfo {
   endereco: string;
   instagram: string;
   linkedin: string;
+  logoUrl: string; // Adicionamos o logoUrl
 }
 
 export default function Footer() {
@@ -77,7 +77,13 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-center gap-[90px] md:gap-[120px] xl:gap-[250px] items-center md:items-start py-10">
         <div className="hover:opacity-60">
           <Link href="/inicio">
-            <Image src={Logo} alt="logo-emove" width={200} height={200} />
+            <Image
+              src={companyInfo.logoUrl}
+              alt="Logo da Empresa"
+              width={200}
+              height={200}
+              className="rounded-lg"
+            />
           </Link>
         </div>
         <div>
@@ -125,10 +131,10 @@ export default function Footer() {
         <div>
           <p className="pb-1">Nossas Redes:</p>
           <div className="flex flex-row justify-around">
-            <Link href={companyInfo.instagram} target='_blank'>
+            <Link href={companyInfo.instagram} target="_blank">
               <Sites image={Instagram} alt="instagram" />
             </Link>
-            <Link href={companyInfo.linkedin} target='_blank'>
+            <Link href={companyInfo.linkedin} target="_blank">
               <Sites image={Linkedin} alt="linkedin" />
             </Link>
           </div>
