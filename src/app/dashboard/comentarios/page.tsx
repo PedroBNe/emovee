@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { PlusCircle, Pencil, Trash2 } from 'lucide-react';
 import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
@@ -35,7 +35,7 @@ export default function DashboardComentarios() {
     nome: '',
     cargo: '',
     comentario: '',
-    imagemUrl: ''
+    imagemUrl: '',
   });
   const [editandoId, setEditandoId] = useState<number | null>(null);
   const [imagemFile, setImagemFile] = useState<File | null>(null);
@@ -58,7 +58,7 @@ export default function DashboardComentarios() {
         setComentarios(comentariosData);
       }
     } catch (error) {
-      console.error("Erro ao carregar os comentários do S3:", error);
+      console.error('Erro ao carregar os comentários do S3:', error);
     }
   };
 
@@ -72,7 +72,7 @@ export default function DashboardComentarios() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setNovoComentario(prev => ({ ...prev, [name]: value }));
+    setNovoComentario((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleImagemChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +96,7 @@ export default function DashboardComentarios() {
       await s3.send(command);
       return `https://${bucketName}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${uniqueFileName}`;
     } catch (error) {
-      console.error("Erro ao enviar imagem para o S3:", error);
+      console.error('Erro ao enviar imagem para o S3:', error);
       return null;
     }
   };
@@ -112,7 +112,7 @@ export default function DashboardComentarios() {
     const comentarioAtualizado = { ...novoComentario, imagemUrl };
 
     if (editandoId !== null) {
-      setComentarios(comentarios.map(c => c.id === editandoId ? { ...comentarioAtualizado, id: editandoId } : c));
+      setComentarios(comentarios.map((c) => (c.id === editandoId ? { ...comentarioAtualizado, id: editandoId } : c)));
       setEditandoId(null);
     } else {
       comentarioAtualizado.id = Date.now();
@@ -139,14 +139,14 @@ export default function DashboardComentarios() {
     try {
       const command = new PutObjectCommand(params);
       await s3.send(command);
-      console.log("Comentários salvos no S3 com sucesso!");
+      console.log('Comentários salvos no S3 com sucesso!');
     } catch (error) {
-      console.error("Erro ao salvar comentários no S3:", error);
+      console.error('Erro ao salvar comentários no S3:', error);
     }
   };
 
   const handleEditar = (id: number) => {
-    const comentarioParaEditar = comentarios.find(c => c.id === id);
+    const comentarioParaEditar = comentarios.find((c) => c.id === id);
     if (comentarioParaEditar) {
       setNovoComentario(comentarioParaEditar);
       setEditandoId(id);
@@ -154,7 +154,7 @@ export default function DashboardComentarios() {
   };
 
   const handleRemover = async (id: number) => {
-    const updatedComentarios = comentarios.filter(c => c.id !== id);
+    const updatedComentarios = comentarios.filter((c) => c.id !== id);
     setComentarios(updatedComentarios);
     await saveComentarios(updatedComentarios);
   };
@@ -202,12 +202,7 @@ export default function DashboardComentarios() {
             </div>
             <div>
               <Label htmlFor="imagem">Imagem do Cliente</Label>
-              <Input
-                id="imagem"
-                type="file"
-                onChange={handleImagemChange}
-                accept="image/*"
-              />
+              <Input id="imagem" type="file" onChange={handleImagemChange} accept="image/*" />
             </div>
           </form>
         </CardContent>
@@ -219,7 +214,7 @@ export default function DashboardComentarios() {
       </Card>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {comentarios.map(comentario => (
+        {comentarios.map((comentario) => (
           <Card key={comentario.id}>
             <CardHeader>
               <CardTitle className="flex items-center space-x-4">

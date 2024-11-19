@@ -1,43 +1,43 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Trash2 } from 'lucide-react'
-import { toast } from '@/hooks/use-toast'
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Trash2 } from 'lucide-react';
+import { toast } from '@/hooks/use-toast';
 
 interface Contato {
-  id: number
-  nome: string
-  email: string
-  telefone: string
-  documento: string
-  tipoDocumento: string
-  empresa: string
-  segmento: string
+  id: number;
+  nome: string;
+  email: string;
+  telefone: string;
+  documento: string;
+  tipoDocumento: string;
+  empresa: string;
+  segmento: string;
 }
 
 export default function DashboardContatos() {
-  const [contatos, setContatos] = useState<Contato[]>([])
+  const [contatos, setContatos] = useState<Contato[]>([]);
 
   useEffect(() => {
-    loadContatos()
-  }, [])
+    loadContatos();
+  }, []);
 
   const loadContatos = async () => {
     try {
-      const response = await fetch('/api/register-contact')
+      const response = await fetch('/api/register-contact');
       if (response.ok) {
-        const data = await response.json()
-        setContatos(data.contatos || [])
+        const data = await response.json();
+        setContatos(data.contatos || []);
       } else {
-        console.error('Erro ao carregar contatos:', await response.json())
+        console.error('Erro ao carregar contatos:', await response.json());
       }
     } catch (error) {
-      console.error('Erro ao carregar contatos:', error)
+      console.error('Erro ao carregar contatos:', error);
     }
-  }
+  };
 
   const handleRemover = async (id: number) => {
     try {
@@ -48,32 +48,31 @@ export default function DashboardContatos() {
       });
 
       if (response.ok) {
-        const updatedContatos = contatos.filter(c => c.id !== id);
+        const updatedContatos = contatos.filter((c) => c.id !== id);
         setContatos(updatedContatos);
 
         toast({
-          title: "Contato removido",
-          description: "O contato foi removido com sucesso.",
-          variant: "destructive",
+          title: 'Contato removido',
+          description: 'O contato foi removido com sucesso.',
+          variant: 'destructive',
         });
       } else {
         console.error('Erro ao remover contato:', await response.json());
         toast({
-          title: "Erro",
-          description: "Não foi possível remover o contato.",
-          variant: "destructive",
+          title: 'Erro',
+          description: 'Não foi possível remover o contato.',
+          variant: 'destructive',
         });
       }
     } catch (error) {
       console.error('Erro ao remover contato:', error);
       toast({
-        title: "Erro",
-        description: "Ocorreu um erro ao tentar remover o contato.",
-        variant: "destructive",
+        title: 'Erro',
+        description: 'Ocorreu um erro ao tentar remover o contato.',
+        variant: 'destructive',
       });
     }
   };
-
 
   return (
     <div className="container mx-auto p-4">
@@ -98,7 +97,7 @@ export default function DashboardContatos() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {contatos.map(contato => (
+              {contatos.map((contato) => (
                 <TableRow key={contato.id}>
                   <TableCell>{contato.nome}</TableCell>
                   <TableCell>{contato.email}</TableCell>
@@ -119,5 +118,5 @@ export default function DashboardContatos() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

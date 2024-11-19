@@ -7,13 +7,7 @@ interface ElecProps extends React.SVGProps<SVGSVGElement> {
   style?: React.CSSProperties;
 }
 
-const Elec: React.FC<ElecProps> = ({
-  fill = '#000000',
-  width = 50,
-  height = 50,
-  style = {},
-  ...props
-}) => (
+const Elec: React.FC<ElecProps> = ({ fill = '#000000', width = 50, height = 50, style = {}, ...props }) => (
   <svg
     fill={fill}
     viewBox="0 0 50 50"

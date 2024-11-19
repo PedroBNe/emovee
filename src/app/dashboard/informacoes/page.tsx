@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { toast } from '@/hooks/use-toast'
-import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3'
-import Image from 'next/image'
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { toast } from '@/hooks/use-toast';
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import Image from 'next/image';
 import { v4 as uuidv4 } from 'uuid';
 
 const s3 = new S3Client({
@@ -18,52 +18,52 @@ const s3 = new S3Client({
     accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID!,
     secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY!,
   },
-})
+});
 
 interface EmpresaInfo {
-  celular: string
-  endereco: string
-  email: string
-  instagram: string
-  linkedin: string
-  politicasPrivacidade: string
-  termosUso: string
-  logoUrl: string
-  nomeSite: string
+  celular: string;
+  endereco: string;
+  email: string;
+  instagram: string;
+  linkedin: string;
+  politicasPrivacidade: string;
+  termosUso: string;
+  logoUrl: string;
+  nomeSite: string;
 }
 
 export default function InformacoesEmpresaDashboard() {
-  const [info, setInfo] = useState<EmpresaInfo | null>(null)
-  const [editando, setEditando] = useState(false)
+  const [info, setInfo] = useState<EmpresaInfo | null>(null);
+  const [editando, setEditando] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
 
   useEffect(() => {
-    loadEmpresaInfo()
-  }, [])
+    loadEmpresaInfo();
+  }, []);
 
   const loadEmpresaInfo = async () => {
-    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME
-    const key = 'data/informacoes.json'
+    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+    const key = 'data/informacoes.json';
 
     try {
-      const command = new GetObjectCommand({ Bucket: bucketName, Key: key })
-      const data = await s3.send(command)
+      const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
+      const data = await s3.send(command);
 
       if (data.Body) {
-        const bodyContents = await streamToString(data.Body)
-        const empresaInfo = JSON.parse(bodyContents)
-        setInfo(empresaInfo)
+        const bodyContents = await streamToString(data.Body);
+        const empresaInfo = JSON.parse(bodyContents);
+        setInfo(empresaInfo);
       } else {
-        console.error("Erro: Dados de 'informacoes.json' não encontrados no S3.")
+        console.error("Erro: Dados de 'informacoes.json' não encontrados no S3.");
       }
     } catch (error) {
-      console.error("Erro ao carregar 'informacoes.json' do S3:", error)
+      console.error("Erro ao carregar 'informacoes.json' do S3:", error);
     }
-  }
+  };
 
   const saveEmpresaInfo = async () => {
-    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME
-    const key = 'data/informacoes.json'
+    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+    const key = 'data/informacoes.json';
 
     try {
       const command = new PutObjectCommand({
@@ -71,16 +71,16 @@ export default function InformacoesEmpresaDashboard() {
         Key: key,
         Body: JSON.stringify(info),
         ContentType: 'application/json',
-      })
-      await s3.send(command)
+      });
+      await s3.send(command);
       toast({
-        title: "Informações atualizadas",
-        description: "As informações da empresa foram salvas com sucesso.",
-      })
+        title: 'Informações atualizadas',
+        description: 'As informações da empresa foram salvas com sucesso.',
+      });
     } catch (error) {
-      console.error("Erro ao salvar 'informacoes.json' no S3:", error)
+      console.error("Erro ao salvar 'informacoes.json' no S3:", error);
     }
-  }
+  };
 
   const uploadLogoToS3 = async (file: File) => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -96,7 +96,7 @@ export default function InformacoesEmpresaDashboard() {
       await s3.send(command);
       return `https://${bucketName}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${uniqueFileName}`;
     } catch (error) {
-      console.error("Erro ao fazer upload da logo no S3:", error);
+      console.error('Erro ao fazer upload da logo no S3:', error);
       return null;
     }
   };
@@ -107,40 +107,40 @@ export default function InformacoesEmpresaDashboard() {
       setLogoFile(file);
       const uploadedUrl = await uploadLogoToS3(file);
       if (uploadedUrl) {
-        setInfo((prev) => prev ? { ...prev, logoUrl: uploadedUrl } : null);
+        setInfo((prev) => (prev ? { ...prev, logoUrl: uploadedUrl } : null));
         toast({
-          title: "Logo atualizada",
-          description: "A logo foi enviada com sucesso.",
+          title: 'Logo atualizada',
+          description: 'A logo foi enviada com sucesso.',
         });
       }
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setInfo(prev => prev ? { ...prev, [name]: value } : null)
-  }
+    const { name, value } = e.target;
+    setInfo((prev) => (prev ? { ...prev, [name]: value } : null));
+  };
 
   const handleSalvar = async () => {
-    await saveEmpresaInfo()
-    setEditando(false)
-  }
+    await saveEmpresaInfo();
+    setEditando(false);
+  };
 
   const handleCancelar = () => {
-    loadEmpresaInfo()
-    setEditando(false)
-  }
+    loadEmpresaInfo();
+    setEditando(false);
+  };
 
   async function streamToString(stream: any): Promise<string> {
-    const chunks: any[] = []
+    const chunks: any[] = [];
     for await (const chunk of stream) {
-      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk))
+      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk));
     }
-    return Buffer.concat(chunks).toString('utf-8')
+    return Buffer.concat(chunks).toString('utf-8');
   }
 
   if (!info) {
-    return <div>Carregando...</div>
+    return <div>Carregando...</div>;
   }
 
   return (
@@ -162,7 +162,7 @@ export default function InformacoesEmpresaDashboard() {
               <CardTitle className="flex justify-between items-center">
                 Informações de Contato
                 <Button variant="outline" onClick={() => setEditando(!editando)}>
-                  {editando ? "Cancelar Edição" : "Editar"}
+                  {editando ? 'Cancelar Edição' : 'Editar'}
                 </Button>
               </CardTitle>
             </CardHeader>
@@ -210,7 +210,7 @@ export default function InformacoesEmpresaDashboard() {
               <CardTitle className="flex justify-between items-center">
                 Redes Sociais
                 <Button variant="outline" onClick={() => setEditando(!editando)}>
-                  {editando ? "Cancelar Edição" : "Editar"}
+                  {editando ? 'Cancelar Edição' : 'Editar'}
                 </Button>
               </CardTitle>
             </CardHeader>
@@ -247,7 +247,7 @@ export default function InformacoesEmpresaDashboard() {
               <CardTitle className="flex justify-between items-center">
                 Documentos Legais
                 <Button variant="outline" onClick={() => setEditando(!editando)}>
-                  {editando ? "Cancelar Edição" : "Editar"}
+                  {editando ? 'Cancelar Edição' : 'Editar'}
                 </Button>
               </CardTitle>
             </CardHeader>
@@ -283,9 +283,12 @@ export default function InformacoesEmpresaDashboard() {
         <TabsContent value="logo">
           <Card>
             <CardHeader>
-              <CardTitle className="flex justify-between items-center">Logo da Empresa <Button variant="outline" onClick={() => setEditando(!editando)}>
-                {editando ? "Cancelar Edição" : "Editar"}
-              </Button></CardTitle>
+              <CardTitle className="flex justify-between items-center">
+                Logo da Empresa{' '}
+                <Button variant="outline" onClick={() => setEditando(!editando)}>
+                  {editando ? 'Cancelar Edição' : 'Editar'}
+                </Button>
+              </CardTitle>
             </CardHeader>
             <CardContent>
               {info.logoUrl && (
@@ -305,9 +308,12 @@ export default function InformacoesEmpresaDashboard() {
         <TabsContent value="nome-site">
           <Card>
             <CardHeader>
-              <CardTitle className="flex justify-between items-center">Nome do Site <Button variant="outline" onClick={() => setEditando(!editando)}>
-                {editando ? "Cancelar Edição" : "Editar"}
-              </Button></CardTitle>
+              <CardTitle className="flex justify-between items-center">
+                Nome do Site{' '}
+                <Button variant="outline" onClick={() => setEditando(!editando)}>
+                  {editando ? 'Cancelar Edição' : 'Editar'}
+                </Button>
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div>
@@ -325,13 +331,14 @@ export default function InformacoesEmpresaDashboard() {
         </TabsContent>
       </Tabs>
 
-
       {editando && (
         <div className="mt-6 flex justify-end space-x-2">
-          <Button variant="outline" onClick={handleCancelar}>Cancelar</Button>
+          <Button variant="outline" onClick={handleCancelar}>
+            Cancelar
+          </Button>
           <Button onClick={handleSalvar}>Salvar Alterações</Button>
         </div>
       )}
     </div>
-  )
+  );
 }

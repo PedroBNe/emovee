@@ -25,24 +25,26 @@ export default function VisitList() {
   }, []);
 
   return (
-    <div className='w-full min-h-screen py-4 flex justify-center text-black'>
-      <div className='w-full flex flex-col'>
-        <div className='w-full flex justify-between'>
-          <h1 className='font-bold text-3xl'>Lista de visitas</h1>
-          <Link href={"/dashboard/visit/new"}>
+    <div className="w-full min-h-screen py-4 flex justify-center text-black">
+      <div className="w-full flex flex-col">
+        <div className="w-full flex justify-between">
+          <h1 className="font-bold text-3xl">Lista de visitas</h1>
+          <Link href={'/dashboard/visit/new'}>
             <Button>Criar visita</Button>
           </Link>
         </div>
-        <ul className='p-5 gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
+        <ul className="p-5 gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           {visits.map((visit, index) => (
-            <Card key={visit.id} className='max-h-[350px] flex flex-col justify-between bg-white'>
+            <Card key={visit.id} className="max-h-[350px] flex flex-col justify-between bg-white">
               <CardHeader>
                 <CardTitle>{visit.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                {visit.imageUrl && <Image src={visit.imageUrl} alt={visit.title} width={200} height={200} className='max-h-[90px]' />}
+                {visit.imageUrl && (
+                  <Image src={visit.imageUrl} alt={visit.title} width={200} height={200} className="max-h-[90px]" />
+                )}
               </CardContent>
-              <CardFooter className='w-full flex justify-between'>
+              <CardFooter className="w-full flex justify-between">
                 <Button variant={'destructive'}>Excluir</Button>
                 <Link href={`/dashboard/onlineclass/${index}`}>
                   <Button>Editar</Button>

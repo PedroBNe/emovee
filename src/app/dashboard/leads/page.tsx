@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
@@ -19,23 +19,23 @@ interface Columns {
 
 const initialData: Columns = {
   cancelado: {
-    name: "Cancelado",
+    name: 'Cancelado',
     items: [{ id: '1', content: 'Ajuste de servidores' }],
   },
   aguardando: {
-    name: "Aguardando",
+    name: 'Aguardando',
     items: [{ id: '2', content: 'Implantação CRM' }],
   },
   emAtraso: {
-    name: "Em atraso",
+    name: 'Em atraso',
     items: [{ id: '3', content: 'Relatório trimestral' }],
   },
   desenvolvimento: {
-    name: "Desenvolvimento",
+    name: 'Desenvolvimento',
     items: [{ id: '4', content: 'Criação de landing page' }],
   },
   entregue: {
-    name: "Entregue",
+    name: 'Entregue',
     items: [{ id: '5', content: 'Entrega de relatório' }],
   },
 };
@@ -73,22 +73,14 @@ export default function Leads() {
     <div className="w-full bg-gray-100 flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Leads</h1>
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className='w-full flex flex-col bg-white'>
-          <div className='border-b-1 mb-5 p-5'>
-            Todos os Projetos e Status
-          </div>
+        <div className="w-full flex flex-col bg-white">
+          <div className="border-b-1 mb-5 p-5">Todos os Projetos e Status</div>
           <div className="min-h-[300px] p-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
             {Object.entries(data).map(([columnId, column]) => (
               <Droppable key={columnId} droppableId={columnId}>
                 {(provided: any) => (
-                  <div
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                    className="border-1 p-4"
-                  >
-                    <h2 className="text-xl font-semibold text-center mb-4">
-                      {column.name}
-                    </h2>
+                  <div {...provided.droppableProps} ref={provided.innerRef} className="border-1 p-4">
+                    <h2 className="text-xl font-semibold text-center mb-4">{column.name}</h2>
                     {column.items.map((item, index) => (
                       <Draggable key={item.id} draggableId={item.id} index={index}>
                         {(provided: any) => (

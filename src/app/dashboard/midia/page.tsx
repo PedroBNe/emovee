@@ -27,18 +27,18 @@ export default function MidiaList() {
   }, []);
 
   return (
-    <div className='w-full min-h-screen py-4 flex justify-center text-black'>
-      <div className='w-full flex flex-col'>
-        <div className='w-full flex justify-between'>
-          <h1 className='font-bold text-3xl'>Midia List</h1>
-          <Link href={"/dashboard/midia/new"}>
+    <div className="w-full min-h-screen py-4 flex justify-center text-black">
+      <div className="w-full flex flex-col">
+        <div className="w-full flex justify-between">
+          <h1 className="font-bold text-3xl">Midia List</h1>
+          <Link href={'/dashboard/midia/new'}>
             <Button>Criar midia</Button>
           </Link>
         </div>
-        <ul className='p-5 gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
+        <ul className="p-5 gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           {midias.map((midia, index) => (
             <Card key={midia.id}>
-              <CardHeader className='w-full'>
+              <CardHeader className="w-full">
                 <CardTitle>{midia.title}</CardTitle>
                 <CardDescription>{midia.subtitle}</CardDescription>
               </CardHeader>
@@ -47,7 +47,7 @@ export default function MidiaList() {
                 <p>{midia.content}</p>
                 {/* {midia.imageUrl && <img src={midia.imageUrl} alt={midia.title} width={100} />} */}
               </CardContent>
-              <CardFooter className='w-full flex justify-between'>
+              <CardFooter className="w-full flex justify-between">
                 <Button variant={'destructive'}>Excluir</Button>
                 <Link href={`/dashboard/midia/${index}`}>
                   <Button variant={'secondary'}>Editar</Button>

@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 interface Category {
   id: string;
@@ -12,11 +12,11 @@ interface Category {
 
 export default function CreateBlogPost() {
   const [form, setForm] = useState({
-    title: "",
-    subtitle: "",
-    content: "",
-    date: "",
-    categoryId: "",
+    title: '',
+    subtitle: '',
+    content: '',
+    date: '',
+    categoryId: '',
   });
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -25,11 +25,11 @@ export default function CreateBlogPost() {
   // Função para buscar as categorias da API
   const fetchCategories = async () => {
     try {
-      const res = await fetch("/api/category");
+      const res = await fetch('/api/category');
       const data = await res.json();
       setCategories(data);
     } catch (err) {
-      console.error("Erro ao buscar categorias:", err);
+      console.error('Erro ao buscar categorias:', err);
     }
   };
 
@@ -52,7 +52,7 @@ export default function CreateBlogPost() {
     e.preventDefault();
 
     if (!selectedFile) {
-      alert("Por favor, selecione uma imagem.");
+      alert('Por favor, selecione uma imagem.');
       return;
     }
 
@@ -60,25 +60,25 @@ export default function CreateBlogPost() {
 
     try {
       const formData = new FormData();
-      formData.append("title", form.title);
-      formData.append("subtitle", form.subtitle);
-      formData.append("content", form.content);
-      formData.append("date", form.date);
-      formData.append("categoryId", form.categoryId); // Categoria selecionada
-      formData.append("file", selectedFile);
+      formData.append('title', form.title);
+      formData.append('subtitle', form.subtitle);
+      formData.append('content', form.content);
+      formData.append('date', form.date);
+      formData.append('categoryId', form.categoryId); // Categoria selecionada
+      formData.append('file', selectedFile);
 
-      const res = await fetch("/api/blog", {
-        method: "POST",
+      const res = await fetch('/api/blog', {
+        method: 'POST',
         body: formData,
       });
 
-      if (!res.ok) throw new Error("Erro ao criar postagem.");
+      if (!res.ok) throw new Error('Erro ao criar postagem.');
 
-      alert("Postagem criada com sucesso!");
-      setForm({ title: "", subtitle: "", content: "", date: "", categoryId: "" });
+      alert('Postagem criada com sucesso!');
+      setForm({ title: '', subtitle: '', content: '', date: '', categoryId: '' });
       setSelectedFile(null);
     } catch (error) {
-      console.error("Erro ao criar postagem:", error);
+      console.error('Erro ao criar postagem:', error);
     } finally {
       setLoading(false);
     }
@@ -88,14 +88,7 @@ export default function CreateBlogPost() {
     <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold mb-8">Criar Nova Postagem</h1>
       <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 bg-white rounded-lg p-4 m-5">
-        <Input
-          type="text"
-          name="title"
-          placeholder="Título"
-          value={form.title}
-          onChange={handleChange}
-          required
-        />
+        <Input type="text" name="title" placeholder="Título" value={form.title} onChange={handleChange} required />
         <Input
           type="text"
           name="subtitle"
@@ -112,13 +105,7 @@ export default function CreateBlogPost() {
           rows={5}
           required
         />
-        <Input
-          type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-          required
-        />
+        <Input type="date" name="date" value={form.date} onChange={handleChange} required />
         <select
           className="border-[1px] p-2 rounded-lg text-black"
           name="categoryId"
@@ -135,7 +122,7 @@ export default function CreateBlogPost() {
         </select>
         <Input type="file" onChange={handleFileChange} required />
         <Button type="submit" disabled={loading}>
-          {loading ? "Enviando..." : "Criar Postagem"}
+          {loading ? 'Enviando...' : 'Criar Postagem'}
         </Button>
       </form>
     </div>

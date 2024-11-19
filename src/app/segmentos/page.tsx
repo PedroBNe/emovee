@@ -50,17 +50,17 @@ export default function Seg() {
         </div>
       </div>
       <div className="w-full h-auto flex flex-col gap-[90px] py-5">
-        <p id='sup'></p>
+        <p id="sup"></p>
         <SegSup />
-          <p id='farmma'></p>
+        <p id="farmma"></p>
         <SegFarma />
-          <p id='home'></p>
+        <p id="home"></p>
         <SegHome />
-          <p id='ata'></p>
+        <p id="ata"></p>
         <SegAta />
-          <p id='elec'></p>
+        <p id="elec"></p>
         <SegElec />
-          <p id='out'></p>
+        <p id="out"></p>
         <SegOut />
       </div>
       <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">

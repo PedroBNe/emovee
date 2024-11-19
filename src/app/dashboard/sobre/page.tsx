@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { PlusCircle, Save, X } from 'lucide-react'
-import Image from 'next/image'
-import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3"
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { PlusCircle, Save, X } from 'lucide-react';
+import Image from 'next/image';
+import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 
 // Configuração do S3 Client para o AWS SDK v3
@@ -21,43 +21,43 @@ const s3 = new S3Client({
 });
 
 interface AboutContent {
-  videoUrl: string
-  title: string
-  description: string
-  sideText: string
+  videoUrl: string;
+  title: string;
+  description: string;
+  sideText: string;
 }
 
 interface PartnerLogo {
-  id: number
-  url: string
-  name: string
+  id: number;
+  url: string;
+  name: string;
 }
 
 interface CardSection {
-  id: number
-  icon: string
-  title: string
-  text: string
+  id: number;
+  icon: string;
+  title: string;
+  text: string;
 }
 
 interface SideImage {
-  id: number
-  url: string
+  id: number;
+  url: string;
 }
 
 export default function AboutEmovieeDashboard() {
-  const [content, setContent] = useState<AboutContent | null>(null)
-  const [isEditing, setIsEditing] = useState(false)
-  const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([])
-  const [cardSections, setCardSections] = useState<CardSection[]>([])
-  const [sideImages, setSideImages] = useState<SideImage[]>([])
+  const [content, setContent] = useState<AboutContent | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [partnerLogos, setPartnerLogos] = useState<PartnerLogo[]>([]);
+  const [cardSections, setCardSections] = useState<CardSection[]>([]);
+  const [sideImages, setSideImages] = useState<SideImage[]>([]);
   const [newLogoFile, setNewLogoFile] = useState<File | null>(null);
   const [newLogoName, setNewLogoName] = useState('');
   const [newSideImageFile, setNewSideImageFile] = useState<File | null>(null);
 
   useEffect(() => {
-    loadAboutContent()
-  }, [])
+    loadAboutContent();
+  }, []);
 
   const loadAboutContent = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -108,14 +108,14 @@ export default function AboutEmovieeDashboard() {
   };
 
   const handleSave = async () => {
-    await saveAboutContent()
-    setIsEditing(false)
-  }
+    await saveAboutContent();
+    setIsEditing(false);
+  };
 
   const handleCancel = () => {
-    loadAboutContent() // Recarrega o conteúdo original
-    setIsEditing(false)
-  }
+    loadAboutContent(); // Recarrega o conteúdo original
+    setIsEditing(false);
+  };
 
   const uploadImageToS3 = async (file: File) => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -133,7 +133,7 @@ export default function AboutEmovieeDashboard() {
       await s3.send(command);
       return `https://${bucketName}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${uniqueFileName}`;
     } catch (error) {
-      console.error("Erro ao enviar imagem para o S3:", error);
+      console.error('Erro ao enviar imagem para o S3:', error);
       return null;
     }
   };
@@ -150,12 +150,12 @@ export default function AboutEmovieeDashboard() {
   };
 
   const handleRemovePartner = (id: number) => {
-    setPartnerLogos(partnerLogos.filter(logo => logo.id !== id))
-  }
+    setPartnerLogos(partnerLogos.filter((logo) => logo.id !== id));
+  };
 
   const handleCardSectionChange = (id: number, field: keyof CardSection, value: string) => {
-    setCardSections(cardSections.map(card => card.id === id ? { ...card, [field]: value } : card))
-  }
+    setCardSections(cardSections.map((card) => (card.id === id ? { ...card, [field]: value } : card)));
+  };
 
   const handleAddSideImage = async () => {
     if (newSideImageFile) {
@@ -168,11 +168,11 @@ export default function AboutEmovieeDashboard() {
   };
 
   const handleRemoveSideImage = (id: number) => {
-    setSideImages(sideImages.filter(image => image.id !== id));
+    setSideImages(sideImages.filter((image) => image.id !== id));
   };
 
   if (!content) {
-    return <div>Carregando...</div> // Renderiza um estado de carregamento enquanto os dados estão sendo buscados
+    return <div>Carregando...</div>; // Renderiza um estado de carregamento enquanto os dados estão sendo buscados
   }
 
   return (
@@ -260,7 +260,7 @@ export default function AboutEmovieeDashboard() {
                         variant="destructive"
                         size="icon"
                         className="absolute -top-2 -right-2"
-                        onClick={() => setSideImages(sideImages.filter(img => img.id !== image.id))}
+                        onClick={() => setSideImages(sideImages.filter((img) => img.id !== image.id))}
                       >
                         <X className="h-4 w-4" />
                       </Button>
@@ -353,9 +353,7 @@ export default function AboutEmovieeDashboard() {
       {/* Partner Logos */}
       <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="flex justify-between items-center">
-            Empresas Parceiras
-          </CardTitle>
+          <CardTitle className="flex justify-between items-center">Empresas Parceiras</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-3 gap-4 mb-4">
@@ -368,7 +366,7 @@ export default function AboutEmovieeDashboard() {
                     variant="destructive"
                     size="icon"
                     className="absolute -top-2 -right-2"
-                    onClick={() => setPartnerLogos(partnerLogos.filter(l => l.id !== logo.id))}
+                    onClick={() => setPartnerLogos(partnerLogos.filter((l) => l.id !== logo.id))}
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -398,13 +396,15 @@ export default function AboutEmovieeDashboard() {
       <CardFooter className="flex justify-end space-x-2">
         {isEditing && (
           <>
-            <Button variant="outline" onClick={handleCancel}>Cancelar</Button>
+            <Button variant="outline" onClick={handleCancel}>
+              Cancelar
+            </Button>
             <Button onClick={handleSave}>Salvar Alterações</Button>
           </>
         )}
       </CardFooter>
     </div>
-  )
+  );
 }
 
 // Função auxiliar para converter o stream para string

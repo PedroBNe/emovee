@@ -42,19 +42,24 @@ export default function Gest() {
             </p>
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">Criação de Tabloides</h2>
             <p className="text-md lg:text-xl">
-              Nosso software é integrado, por isso, você conseguirá gerir suas ofertas e criar tabloides estratégicos e assertivos. Desta maneira, os materiais promocionais ficam prontos em alguns segundos, de maneira rápida e intuitiva.
+              Nosso software é integrado, por isso, você conseguirá gerir suas ofertas e criar tabloides estratégicos e
+              assertivos. Desta maneira, os materiais promocionais ficam prontos em alguns segundos, de maneira rápida e
+              intuitiva.
             </p>
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">100% completo</h2>
             <p className="text-md lg:text-xl">
-              Por ser integrada com o ERP, nossa plataforma possui uma grande biblioteca de fotos dos produtos, bem cadastro com informações completas e relevantes.
+              Por ser integrada com o ERP, nossa plataforma possui uma grande biblioteca de fotos dos produtos, bem
+              cadastro com informações completas e relevantes.
             </p>
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">Acompanhamento em tempo real</h2>
             <p className="text-md lg:text-xl">
-              Temos um local exclusivo para você acompanhar como está o processo de desenvolvimento dos cartazes de oferta, para facilitar a aprovação e eliminar erros de diagramação antes da impressão.
+              Temos um local exclusivo para você acompanhar como está o processo de desenvolvimento dos cartazes de
+              oferta, para facilitar a aprovação e eliminar erros de diagramação antes da impressão.
             </p>
             <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">Economize tempo</h2>
             <p className="text-md lg:text-xl">
-              Elimine atividades manuais e simplifique o processo de criação dos materiais de oferta! Com poucos cliques, sua equipe ganha eficiência operacional e consegue focar em processos estratégicos.
+              Elimine atividades manuais e simplifique o processo de criação dos materiais de oferta! Com poucos
+              cliques, sua equipe ganha eficiência operacional e consegue focar em processos estratégicos.
             </p>
           </div>
         </div>

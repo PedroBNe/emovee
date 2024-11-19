@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import Image from "next/image";
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import Image from 'next/image';
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 // Interface para os dados de Info
 interface Info {
@@ -33,8 +33,8 @@ export default function EditInfo() {
   // Função para buscar as informações da API
   const fetchInfo = async () => {
     try {
-      const res = await fetch("/api/info");
-      if (!res.ok) throw new Error("Erro ao carregar Info.");
+      const res = await fetch('/api/info');
+      if (!res.ok) throw new Error('Erro ao carregar Info.');
       const data = await res.json();
       setInfo(data);
       setForm(data); // Preenche o formulário com os dados recebidos
@@ -51,10 +51,7 @@ export default function EditInfo() {
   }, []);
 
   // Manipulação de arquivos
-  const handleFileChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    setFiles: (files: File[]) => void
-  ) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>, setFiles: (files: File[]) => void) => {
     if (e.target.files) {
       setFiles(Array.from(e.target.files));
     }
@@ -75,12 +72,12 @@ export default function EditInfo() {
       const formData = new FormData();
 
       // Envia apenas os arquivos modificados
-      if (logoFile) formData.append("logo", logoFile);
+      if (logoFile) formData.append('logo', logoFile);
       if (caroselFiles.length > 0) {
-        caroselFiles.forEach((file) => formData.append("carosel", file));
+        caroselFiles.forEach((file) => formData.append('carosel', file));
       }
       if (quemsoueuFiles.length > 0) {
-        quemsoueuFiles.forEach((file) => formData.append("quemsoueu", file));
+        quemsoueuFiles.forEach((file) => formData.append('quemsoueu', file));
       }
 
       // Adiciona apenas os campos que foram alterados
@@ -90,14 +87,14 @@ export default function EditInfo() {
         }
       });
 
-      const res = await fetch("/api/info", {
-        method: "PUT",
+      const res = await fetch('/api/info', {
+        method: 'PUT',
         body: formData,
       });
 
-      if (!res.ok) throw new Error("Erro ao atualizar Info.");
+      if (!res.ok) throw new Error('Erro ao atualizar Info.');
 
-      alert("Info atualizado com sucesso!");
+      alert('Info atualizado com sucesso!');
       fetchInfo(); // Recarrega os dados após a atualização
     } catch (error) {
       console.error(error);
@@ -129,16 +126,28 @@ export default function EditInfo() {
           ))}
         </div>
         <Input type="file" multiple onChange={(e) => handleFileChange(e, setQuemsoueuFiles)} />
-        <Input type="text" name="email" placeholder="Email" value={form.email || ""} onChange={handleChange} />
-        <Input type="text" name="phoneNumber" placeholder="Telefone" value={form.phoneNumber || ""} onChange={handleChange} />
-        <Input type="text" name="address" placeholder="Endereço" value={form.address || ""} onChange={handleChange} />
-        <Textarea name="politicas" placeholder="Políticas" value={form.politicas || ""} onChange={handleChange} />
-        <Textarea name="cookies" placeholder="Cookies" value={form.cookies || ""} onChange={handleChange} />
-        <Input type="text" name="whatsapp" placeholder="WhatsApp" value={form.whatsapp || ""} onChange={handleChange} />
-        <Input type="text" name="facebook" placeholder="Facebook" value={form.facebook || ""} onChange={handleChange} />
-        <Input type="text" name="instagram" placeholder="Instagram" value={form.instagram || ""} onChange={handleChange} />
+        <Input type="text" name="email" placeholder="Email" value={form.email || ''} onChange={handleChange} />
+        <Input
+          type="text"
+          name="phoneNumber"
+          placeholder="Telefone"
+          value={form.phoneNumber || ''}
+          onChange={handleChange}
+        />
+        <Input type="text" name="address" placeholder="Endereço" value={form.address || ''} onChange={handleChange} />
+        <Textarea name="politicas" placeholder="Políticas" value={form.politicas || ''} onChange={handleChange} />
+        <Textarea name="cookies" placeholder="Cookies" value={form.cookies || ''} onChange={handleChange} />
+        <Input type="text" name="whatsapp" placeholder="WhatsApp" value={form.whatsapp || ''} onChange={handleChange} />
+        <Input type="text" name="facebook" placeholder="Facebook" value={form.facebook || ''} onChange={handleChange} />
+        <Input
+          type="text"
+          name="instagram"
+          placeholder="Instagram"
+          value={form.instagram || ''}
+          onChange={handleChange}
+        />
         <Button type="submit" disabled={loading}>
-          {loading ? "Salvando..." : "Salvar"}
+          {loading ? 'Salvando...' : 'Salvar'}
         </Button>
       </form>
     </div>

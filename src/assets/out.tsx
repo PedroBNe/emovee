@@ -7,13 +7,7 @@ interface OutProps extends React.SVGProps<SVGSVGElement> {
   style?: React.CSSProperties;
 }
 
-const Out: React.FC<OutProps> = ({
-  fill = '#000000',
-  width = 50,
-  height = 50,
-  style = {},
-  ...props
-}) => (
+const Out: React.FC<OutProps> = ({ fill = '#000000', width = 50, height = 50, style = {}, ...props }) => (
   <svg
     version="1.1"
     id="_x32_"
@@ -27,26 +21,13 @@ const Out: React.FC<OutProps> = ({
     {...props}
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-    <g
-      id="SVGRepo_tracerCarrier"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    ></g>
+    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
     <g id="SVGRepo_iconCarrier">
       <g>
-        <path
-          className="st0"
-          d="M512,0H0v40h16v296h480V40h16V0z M464,304H48V40h416V304z"
-        ></path>
+        <path className="st0" d="M512,0H0v40h16v296h480V40h16V0z M464,304H48V40h416V304z"></path>
         <rect x="240" y="352" className="st0" width="32" height="160"></rect>
-        <polygon
-          className="st0"
-          points="113.273,512 145.273,512 212.179,352 180.179,352"
-        ></polygon>
-        <polygon
-          className="st0"
-          points="299.82,352 366.726,512 398.726,512 331.82,352"
-        ></polygon>
+        <polygon className="st0" points="113.273,512 145.273,512 212.179,352 180.179,352"></polygon>
+        <polygon className="st0" points="299.82,352 366.726,512 398.726,512 331.82,352"></polygon>
         <path
           className="st0"
           d="M149.797,214.883c12.969,0,23.469-10.508,23.469-23.469c0-1.805-0.25-3.547-0.633-5.242l53.726-34.774
