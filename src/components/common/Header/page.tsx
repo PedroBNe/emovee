@@ -77,9 +77,9 @@ export default function Header() {
 
   return (
     <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-[#f7f7f7] px-5 relative">
-      <div className="w-fit h-full flex items-center justify-center">
+      <div className="relative w-full max-w-36 h-full max-h-10 flex items-center justify-center">
         <Link href="/Home">
-          <Image src={companyInfo.logoUrl} alt="logo-emove" width={110} height={110} />
+          <Image src={companyInfo.logoUrl} alt="logo-emove" fill quality={100} />
         </Link>
       </div>
       {window.width > 1150 && (
