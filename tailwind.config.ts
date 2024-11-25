@@ -41,9 +41,10 @@ const config: Config = {
         },
         button: {
           DEFAULT: '#000000',
+          text: '#C0F205',
         },
         text: {
-          DEFAULT: "#000000",
+          DEFAULT: '#000000',
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',

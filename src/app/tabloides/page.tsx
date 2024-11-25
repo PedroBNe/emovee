@@ -22,9 +22,7 @@ export default function Tablo() {
       <div className="w-full min-h-[10em] flex flex-col gap-12 justify-center items-center">
         <div className="w-full h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
           <div className="w-[80%] flex flex-col items-start justify-around gap-12">
-            <h2 className="text-lg lg:text-4xl font-bold text-text">
-              A otimização para a precificação de ofertas!
-            </h2>
+            <h2 className="text-lg lg:text-4xl font-bold text-text">A otimização para a precificação de ofertas!</h2>
             <p className="text-sm lg:text-xl">
               Transforme a comunicação visual da sua empresa com nossa plataforma. Alcance a padronização e agilidade
               que você sempre desejou com mais de dois mil modelos de cartazes à sua disposição. Encontre rapidamente o
