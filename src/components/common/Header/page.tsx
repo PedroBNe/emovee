@@ -82,24 +82,116 @@ export default function Header() {
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-back relative">
-      <div className='w-full h-full flex justify-between items-center px-5'>
-        <div className="w-fit h-full flex items-center justify-center">
-          <Link href="/Home">
-            <Image src={companyInfo.logoUrl} alt="logo-emove" width={110} height={110} />
-          </Link>
-        </div>
-        {window.width > 1150 && (
-          <>
-            <nav className="hidden lg:flex justify-center items-center font-semibold absolute left-[15%] xl:left-[37%] text-text">
-              <ul className="flex flex-row gap-10">
-                <li>
-                  <Link href="/Home">Inicio</Link>
-                </li>
-                <li
-                  className="relative cursor-pointer justify-center items-center flex"
-                  onMouseEnter={() => setIsHiddenSolution(true)}
-                  onMouseLeave={() => setIsHiddenSolution(false)}
+    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-[#f7f7f7] px-5 relative">
+      <div className="relative w-full max-w-36 h-full max-h-10 flex items-center justify-center">
+        <Link href="/Home">
+          <Image src={companyInfo.logoUrl} alt="logo-emove" fill quality={100} />
+        </Link>
+      </div>
+      {window.width > 1150 && (
+        <>
+          <nav className="hidden lg:flex justify-center items-center font-semibold absolute left-[15%] xl:left-[37%]">
+            <ul className="flex flex-row gap-10">
+              <li>
+                <Link href="/Home">Inicio</Link>
+              </li>
+              <li
+                className="relative cursor-pointer justify-center items-center flex"
+                onMouseEnter={() => setIsHiddenSolution(true)}
+                onMouseLeave={() => setIsHiddenSolution(false)}
+              >
+                <Link href="/cartazeamento">Serviços</Link>
+                {IsHiddenSolution && (
+                  <ul
+                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap"
+                    data-aos="fade-down"
+                    data-aos-duration="200"
+                    data-aos-offset="300"
+                  >
+                    <li>
+                      <Link href="/cartazeamento">Cartazeamento</Link>
+                    </li>
+                    <li>
+                      <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
+                    </li>
+                    <li>
+                      <Link href="/tabloides">Tablóides</Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+              <li
+                className="relative cursor-pointer justify-center items-center flex"
+                onMouseEnter={() => setIsHiddenSeg(true)}
+                onMouseLeave={() => setIsHiddenSeg(false)}
+              >
+                <p>
+                  <Link href="/segmentos">Segmentos</Link>
+                </p>
+                {IsHiddenSeg && (
+                  <ul
+                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap"
+                    data-aos="fade-down"
+                    data-aos-duration="200"
+                    data-aos-offset="300"
+                  >
+                    <li>
+                      <Link href="/segmentos#sup">Supermercados</Link>
+                    </li>
+                    <li>
+                      <Link href="/segmentos#farma">Farmácias</Link>
+                    </li>
+                    <li>
+                      <Link href="/segmentos#home">Home Centers</Link>
+                    </li>
+                    <li>
+                      <Link href="/segmentos#ata">Atacarejos</Link>
+                    </li>
+                    <li>
+                      <Link href="/segmentos#elec">Eletromóveis</Link>
+                    </li>
+                    <li>
+                      <Link href="/segmentos#out">Outros segmentos</Link>
+                    </li>
+                  </ul>
+                )}
+              </li>
+              <li>
+                <Link href="/sobre">Sobre</Link>
+              </li>
+              <li>
+                <Link href="/Blog">Conteúdos</Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="hidden gap-5 lg:flex justify-center items-center absolute right-2">
+            <Link href="/fale-especialista">
+              <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                Fale com um Especialista
+              </button>
+            </Link>
+          </div>
+        </>
+      )}
+      {window.width <= 1150 && menu === false && (
+        <button
+          onClick={() => {
+            setMenu(!menu);
+          }}
+        >
+          <MenuIcon w={25} h={25} />
+        </button>
+      )}
+      {menu && (
+        <div className="w-full h-[100vh] fixed left-0 bottom-0 bg-white z-20">
+          <nav className="relative w-full h-full flex justify-center items-center">
+            <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
+              <li>
+                <Link
+                  href="/Home"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
                 >
                   <Link href="/cartazeamento">Serviços</Link>
                   {IsHiddenSolution && (
