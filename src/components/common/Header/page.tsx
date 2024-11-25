@@ -1,18 +1,17 @@
 'use client';
 
-import Image from 'next/image';
-import Logo from '@/assets/logo-blue.jpg';
-import { useState } from 'react';
-import Link from 'next/link';
-import 'aos/dist/aos.css';
-import AOS from 'aos';
-import { useEffect } from 'react';
-import MenuIcon from '@/assets/menu-icon';
-import CloseMenu from '@/assets/close-menu-icon';
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import AOS from 'aos';
+import { useState, useEffect } from 'react';
+import 'aos/dist/aos.css';
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import useWindowSize from '@/components/utils/Window';
 import { usePathname } from 'next/navigation';
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import MenuIcon from '@/assets/menu-icon';
+import CloseMenu from '@/assets/close-menu-icon';
+
 
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
@@ -104,7 +103,7 @@ export default function Header() {
                   <Link href="/cartazeamento">Serviços</Link>
                   {IsHiddenSolution && (
                     <ul
-                      className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap"
+                      className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-back text-text border-2 border-black p-5 overflow-ellipsis whitespace-nowrap"
                       data-aos="fade-down"
                       data-aos-duration="200"
                       data-aos-offset="300"
@@ -131,7 +130,7 @@ export default function Header() {
                   </p>
                   {IsHiddenSeg && (
                     <ul
-                      className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap"
+                      className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-back text-text border-2 border-black p-5 overflow-ellipsis whitespace-nowrap"
                       data-aos="fade-down"
                       data-aos-duration="200"
                       data-aos-offset="300"
