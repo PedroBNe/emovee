@@ -63,9 +63,9 @@ export default function Specialist() {
   }
 
   return (
-    <div className="xl:relative w-full h-[110em] md:h-[118em] xl:h-[75em] flex flex-col gap-12 pb-8">
+    <div className="xl:relative w-full flex flex-col gap-12 pb-8">
       <Banner>Entre em Contato!</Banner>
-      <div className="w-full xl:w-[60%] min-h-[20em] flex flex-col justify-center items-center" data-aos="fade-right">
+      <div className="w-full flex flex-col justify-center items-center xl:items-start xl:px-16" data-aos="fade-right">
         <h2 className="text-xl font-bold mb-3">Nossa equipe sempre a postos!</h2>
         <div className="flex flex-col justify-center items-start gap-3">
           <div className="flex gap-2">

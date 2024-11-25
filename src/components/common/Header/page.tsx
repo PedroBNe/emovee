@@ -36,12 +36,18 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
 
+  const handleScroll = () => (document.body.style.position = "sticky"); // Can scroll down
+
+  const handleNoScroll = () => (document.body.style.position = "fixed"); // Can not scroll down
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
+
     setIsVisible(!pathname.startsWith('/dashboard'));
+
     loadCompanyInfo();
   }, [pathname]);
 
@@ -161,7 +167,7 @@ export default function Header() {
             </nav>
             <div className="hidden gap-5 lg:flex justify-center items-center absolute right-2">
               <Link href="/fale-especialista">
-                <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-button hover:bg-opacity-80 items-center">
                   Fale com um Especialista
                 </button>
               </Link>
@@ -172,13 +178,14 @@ export default function Header() {
           <button
             onClick={() => {
               setMenu(!menu);
+              handleNoScroll();
             }}
           >
             <MenuIcon w={25} h={25} />
           </button>
         )}
         {menu && (
-          <div className="w-full h-[100vh] fixed left-0 bottom-0 bg-white z-20">
+          <div className="w-full h-screen fixed left-0 bottom-0 bg-white z-20">
             <nav className="relative w-full h-full flex justify-center items-center">
               <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
                 <li>
@@ -192,7 +199,7 @@ export default function Header() {
                   </Link>
                 </li>
                 <li
-                  className="text-[#1e90ff]"
+                  className="text-back"
                   onClick={() => {
                     setMenu(!menu);
                   }}
@@ -200,7 +207,7 @@ export default function Header() {
                   <Link href="/cartazeamento">Cartazeamento</Link>
                 </li>
                 <li
-                  className="text-[#1e90ff]"
+                  className="text-back"
                   onClick={() => {
                     setMenu(!menu);
                   }}
@@ -208,7 +215,7 @@ export default function Header() {
                   <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
                 </li>
                 <li
-                  className="text-[#1e90ff]"
+                  className="text-back"
                   onClick={() => {
                     setMenu(!menu);
                   }}
@@ -253,7 +260,7 @@ export default function Header() {
                         setMenu(!menu);
                       }}
                     >
-                      <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 px-4 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+                      <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 px-4 bg-button items-center">
                         Fale com um Especialista
                       </button>
                     </Link>
@@ -264,6 +271,7 @@ export default function Header() {
                 className="absolute right-9 top-[85px]"
                 onClick={() => {
                   setMenu(!menu);
+                  handleScroll();
                 }}
               >
                 <CloseMenu Width={25} Height={25} />

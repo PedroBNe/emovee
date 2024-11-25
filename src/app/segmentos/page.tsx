@@ -27,7 +27,7 @@ export default function Seg() {
       <Banner>Segmentos</Banner>
       <div className="w-[90%] flex flex-col gap-10 justify-between items-center px-3 mb-10 text-start">
         <div className="w-full md:w-[75%] flex items-center justify-center">
-          <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff]">
+          <h2 className="text-2xl lg:text-4xl font-bold text-text">
             Descubra os segmentos que podemos ajudar com as nossas soluções!
           </h2>
         </div>
