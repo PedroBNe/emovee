@@ -12,7 +12,6 @@ import { usePathname } from 'next/navigation';
 import MenuIcon from '@/assets/menu-icon';
 import CloseMenu from '@/assets/close-menu-icon';
 
-
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
   credentials: {
@@ -35,9 +34,9 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
 
-  const handleScroll = () => (document.body.style.position = "sticky"); // Can scroll down
+  const handleScroll = () => (document.body.style.position = 'sticky'); // Can scroll down
 
-  const handleNoScroll = () => (document.body.style.position = "fixed"); // Can not scroll down
+  const handleNoScroll = () => (document.body.style.position = 'fixed'); // Can not scroll down
 
   useEffect(() => {
     AOS.init({
@@ -182,101 +181,101 @@ export default function Header() {
           <MenuIcon w={25} h={25} />
         </button>
       )}
-        {menu && (
-          <div className="w-full h-screen fixed left-0 bottom-0 bg-white z-20">
-            <nav className="relative w-full h-full flex justify-center items-center">
-              <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
-                <li>
-                  <Link
-                    href="/Home"
-                    onClick={() => {
-                      setMenu(!menu);
-                    }}
-                  >
-                    Inicio
-                  </Link>
-                </li>
-                <li
-                  className="text-back"
+      {menu && (
+        <div className="w-full h-screen fixed left-0 bottom-0 bg-white z-20">
+          <nav className="relative w-full h-full flex justify-center items-center">
+            <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
+              <li>
+                <Link
+                  href="/Home"
                   onClick={() => {
                     setMenu(!menu);
                   }}
                 >
-                  <Link href="/cartazeamento">Cartazeamento</Link>
-                </li>
-                <li
-                  className="text-back"
-                  onClick={() => {
-                    setMenu(!menu);
-                  }}
-                >
-                  <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
-                </li>
-                <li
-                  className="text-back"
-                  onClick={() => {
-                    setMenu(!menu);
-                  }}
-                >
-                  <Link href="/tabloides">Tablóides</Link>
-                </li>
-                <li>
-                  <Link
-                    href="/segmentos"
-                    onClick={() => {
-                      setMenu(!menu);
-                    }}
-                  >
-                    Segmentos
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/sobre"
-                    onClick={() => {
-                      setMenu(!menu);
-                    }}
-                  >
-                    Sobre
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/Blog"
-                    onClick={() => {
-                      setMenu(!menu);
-                    }}
-                  >
-                    Conteúdos
-                  </Link>
-                </li>
-                <ul className="flex flex-col justify-center items-center gap-3">
-                  <li>
-                    <Link
-                      href="/fale-especialista"
-                      onClick={() => {
-                        setMenu(!menu);
-                      }}
-                    >
-                      <button className="transition w-fit text-text font-bold rounded-full py-3 px-4 bg-button items-center">
-                        Fale com um Especialista
-                      </button>
-                    </Link>
-                  </li>
-                </ul>
-              </ul>
-              <button
-                className="absolute right-9 top-[85px]"
+                  Inicio
+                </Link>
+              </li>
+              <li
+                className="text-back"
                 onClick={() => {
                   setMenu(!menu);
-                  handleScroll();
                 }}
               >
-                <CloseMenu Width={25} Height={25} />
-              </button>
-            </nav>
-          </div>
-        )}
+                <Link href="/cartazeamento">Cartazeamento</Link>
+              </li>
+              <li
+                className="text-back"
+                onClick={() => {
+                  setMenu(!menu);
+                }}
+              >
+                <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
+              </li>
+              <li
+                className="text-back"
+                onClick={() => {
+                  setMenu(!menu);
+                }}
+              >
+                <Link href="/tabloides">Tablóides</Link>
+              </li>
+              <li>
+                <Link
+                  href="/segmentos"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  Segmentos
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/sobre"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  Sobre
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/Blog"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  Conteúdos
+                </Link>
+              </li>
+              <ul className="flex flex-col justify-center items-center gap-3">
+                <li>
+                  <Link
+                    href="/fale-especialista"
+                    onClick={() => {
+                      setMenu(!menu);
+                    }}
+                  >
+                    <button className="transition w-fit text-text font-bold rounded-full py-3 px-4 bg-button items-center">
+                      Fale com um Especialista
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            </ul>
+            <button
+              className="absolute right-9 top-[85px]"
+              onClick={() => {
+                setMenu(!menu);
+                handleScroll();
+              }}
+            >
+              <CloseMenu Width={25} Height={25} />
+            </button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
