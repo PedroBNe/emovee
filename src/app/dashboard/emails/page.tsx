@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function Emails() {
-  return(
+  return (
     <div className="w-full flex flex-col gap-4">
       <h2 className="text-3xl font-semibold">Lista de E-mails</h2>
       <div className="w-full h-auto flex flex-col pb-10 items-center bg-white">
@@ -14,10 +14,10 @@ export default function Emails() {
             <Input type="date" />
           </div>
           <div>
-            <Button variant={"blue"}>Aplicar</Button>
+            <Button variant={'blue'}>Aplicar</Button>
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }

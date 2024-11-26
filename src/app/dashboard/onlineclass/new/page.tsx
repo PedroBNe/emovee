@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState, ChangeEvent, FormEvent } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState, ChangeEvent, FormEvent } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function CreateOnlineClass() {
   const [form, setForm] = useState({
-    title: "",
-    subtitle: "",
-    date: "",
-    students: "",
+    title: '',
+    subtitle: '',
+    date: '',
+    students: '',
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +29,7 @@ export default function CreateOnlineClass() {
     e.preventDefault();
 
     if (!selectedFile) {
-      alert("Por favor, selecione uma imagem.");
+      alert('Por favor, selecione uma imagem.');
       return;
     }
 
@@ -37,26 +37,26 @@ export default function CreateOnlineClass() {
 
     try {
       const formData = new FormData();
-      formData.append("title", form.title);
-      formData.append("subtitle", form.subtitle);
-      formData.append("date", form.date);
-      formData.append("students", form.students);
-      formData.append("file", selectedFile);
+      formData.append('title', form.title);
+      formData.append('subtitle', form.subtitle);
+      formData.append('date', form.date);
+      formData.append('students', form.students);
+      formData.append('file', selectedFile);
 
-      const res = await fetch("/api/onlineclass", {
-        method: "POST",
+      const res = await fetch('/api/onlineclass', {
+        method: 'POST',
         body: formData,
       });
 
       if (!res.ok) {
-        throw new Error("Erro ao criar aula online.");
+        throw new Error('Erro ao criar aula online.');
       }
 
-      alert("Aula criada com sucesso!");
-      setForm({ title: "", subtitle: "", date: "", students: "" });
+      alert('Aula criada com sucesso!');
+      setForm({ title: '', subtitle: '', date: '', students: '' });
       setSelectedFile(null);
     } catch (error) {
-      console.error("Erro ao criar aula online:", error);
+      console.error('Erro ao criar aula online:', error);
     } finally {
       setLoading(false);
     }
@@ -66,14 +66,7 @@ export default function CreateOnlineClass() {
     <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Criar Nova Aula Online</h1>
       <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 p-4 bg-white rounded-xl">
-        <Input
-          type="text"
-          name="title"
-          placeholder="Título"
-          value={form.title}
-          onChange={handleChange}
-          required
-        />
+        <Input type="text" name="title" placeholder="Título" value={form.title} onChange={handleChange} required />
         <Input
           type="text"
           name="subtitle"
@@ -82,13 +75,7 @@ export default function CreateOnlineClass() {
           onChange={handleChange}
           required
         />
-        <Input
-          type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-          required
-        />
+        <Input type="date" name="date" value={form.date} onChange={handleChange} required />
         <Input
           type="text"
           name="students"
@@ -99,7 +86,7 @@ export default function CreateOnlineClass() {
         />
         <Input type="file" onChange={handleFileChange} required />
         <Button type="submit" disabled={loading}>
-          {loading ? "Enviando..." : "Criar Aula"}
+          {loading ? 'Enviando...' : 'Criar Aula'}
         </Button>
       </form>
     </div>

@@ -47,9 +47,7 @@ export default function Analytic() {
   const [filteredData, setFilteredData] = useState<ChartData[]>([]);
 
   const handleFilter = () => {
-    const data = chartData
-      .filter((item) => item.year === selectedYear)
-      .sort((a, b) => a.month - b.month);
+    const data = chartData.filter((item) => item.year === selectedYear).sort((a, b) => a.month - b.month);
 
     setFilteredData(data);
   };
@@ -73,13 +71,13 @@ export default function Analytic() {
               <SelectValue placeholder="Selecione o ano" />
             </SelectTrigger>
             <SelectContent>
-            <SelectContent>
-              {Array.from(new Set(chartData.map((item) => item.year))).map((year) => (
-                <SelectItem key={year} value={year.toString()}>
-                  {year}
-                </SelectItem>
-              ))}
-            </SelectContent>
+              <SelectContent>
+                {Array.from(new Set(chartData.map((item) => item.year))).map((year) => (
+                  <SelectItem key={year} value={year.toString()}>
+                    {year}
+                  </SelectItem>
+                ))}
+              </SelectContent>
             </SelectContent>
           </Select>
           <Button variant="destructive" onClick={handleRemoveFilters}>
@@ -92,9 +90,7 @@ export default function Analytic() {
               <CartesianGrid vertical={false} />
               <XAxis
                 dataKey="month"
-                tickFormatter={(month) =>
-                  new Date(0, month - 1).toLocaleString('default', { month: 'short' })
-                }
+                tickFormatter={(month) => new Date(0, month - 1).toLocaleString('default', { month: 'short' })}
               />
               <ChartTooltip content={<ChartTooltipContent />} />
               <ChartLegend content={<ChartLegendContent />} />

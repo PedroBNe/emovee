@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 
 export default function LoginPage() {
@@ -62,11 +62,7 @@ export default function LoginPage() {
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
         </CardHeader>
-        {error && (
-          <p className="text-red-500 text-sm text-center mt-2">
-            {error}
-          </p>
-        )}
+        {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
         <form onSubmit={handleLogin}>
           <CardContent className="space-y-4">
             <div className="space-y-2">

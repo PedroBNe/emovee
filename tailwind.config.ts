@@ -1,4 +1,5 @@
-import { nextui } from '@nextui-org/theme';
+import { button, nextui } from '@nextui-org/theme';
+import { text } from 'stream/consumers';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -34,6 +35,16 @@ const config: Config = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+        },
+        back: {
+          DEFAULT: '#C0F205',
+        },
+        button: {
+          DEFAULT: '#000000',
+          text: '#C0F205',
+        },
+        text: {
+          DEFAULT: '#000000',
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',

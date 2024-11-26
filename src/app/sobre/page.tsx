@@ -76,7 +76,7 @@ export default function About() {
       <div className="w-[80%] min-h-[7em] flex flex-row justify-center items-center">
         <div className="w-[70%] flex flex-col justify-center items-center">
           {/* Passa os logos dos parceiros para o carrossel */}
-          <CarouselPartiners slides={partnerLogos.map(logo => ({ imagem: logo.url }))} />
+          <CarouselPartiners slides={partnerLogos.map((logo) => ({ imagem: logo.url }))} />
         </div>
       </div>
       <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">

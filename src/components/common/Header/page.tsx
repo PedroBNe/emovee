@@ -1,18 +1,17 @@
 'use client';
 
-import Image from 'next/image';
-import Logo from '@/assets/logo-blue.jpg';
-import { useState } from 'react';
-import Link from 'next/link';
-import 'aos/dist/aos.css';
-import AOS from 'aos';
-import { useEffect } from 'react';
-import MenuIcon from '@/assets/menu-icon';
-import CloseMenu from '@/assets/close-menu-icon';
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import AOS from 'aos';
+import { useState, useEffect } from 'react';
+import 'aos/dist/aos.css';
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 import useWindowSize from '@/components/utils/Window';
 import { usePathname } from 'next/navigation';
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import MenuIcon from '@/assets/menu-icon';
+import CloseMenu from '@/assets/close-menu-icon';
+
 
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
@@ -36,12 +35,18 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const pathname = usePathname();
 
+  const handleScroll = () => (document.body.style.position = "sticky"); // Can scroll down
+
+  const handleNoScroll = () => (document.body.style.position = "fixed"); // Can not scroll down
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
+
     setIsVisible(!pathname.startsWith('/dashboard'));
+
     loadCompanyInfo();
   }, [pathname]);
 
@@ -76,7 +81,7 @@ export default function Header() {
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-[#f7f7f7] px-5 relative">
+    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-back px-5 relative">
       <div className="relative w-full max-w-36 h-full max-h-10 flex items-center justify-center">
         <Link href="/Home">
           <Image src={companyInfo.logoUrl} alt="logo-emove" fill quality={100} />
@@ -97,7 +102,7 @@ export default function Header() {
                 <Link href="/cartazeamento">Serviços</Link>
                 {IsHiddenSolution && (
                   <ul
-                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-back border-2 border-black p-5 overflow-ellipsis whitespace-nowrap"
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -124,7 +129,7 @@ export default function Header() {
                 </p>
                 {IsHiddenSeg && (
                   <ul
-                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-white p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-back border-2 border-black p-5 overflow-ellipsis whitespace-nowrap"
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -160,7 +165,7 @@ export default function Header() {
           </nav>
           <div className="hidden gap-5 lg:flex justify-center items-center absolute right-2">
             <Link href="/fale-especialista">
-              <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
+              <button className="transition w-fit text-button-text font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-button hover:bg-opacity-80 items-center">
                 Fale com um Especialista
               </button>
             </Link>
@@ -171,105 +176,107 @@ export default function Header() {
         <button
           onClick={() => {
             setMenu(!menu);
+            handleNoScroll();
           }}
         >
           <MenuIcon w={25} h={25} />
         </button>
       )}
-      {menu && (
-        <div className="w-full h-[100vh] fixed left-0 bottom-0 bg-white z-20">
-          <nav className="relative w-full h-full flex justify-center items-center">
-            <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
-              <li>
-                <Link
-                  href="/Home"
-                  onClick={() => {
-                    setMenu(!menu);
-                  }}
-                >
-                  Inicio
-                </Link>
-              </li>
-              <li
-                className="text-[#1e90ff]"
-                onClick={() => {
-                  setMenu(!menu);
-                }}
-              >
-                <Link href="/cartazeamento">Cartazeamento</Link>
-              </li>
-              <li
-                className="text-[#1e90ff]"
-                onClick={() => {
-                  setMenu(!menu);
-                }}
-              >
-                <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
-              </li>
-              <li
-                className="text-[#1e90ff]"
-                onClick={() => {
-                  setMenu(!menu);
-                }}
-              >
-                <Link href="/tabloides">Tablóides</Link>
-              </li>
-              <li>
-                <Link
-                  href="/segmentos"
-                  onClick={() => {
-                    setMenu(!menu);
-                  }}
-                >
-                  Segmentos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sobre"
-                  onClick={() => {
-                    setMenu(!menu);
-                  }}
-                >
-                  Sobre
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/Blog"
-                  onClick={() => {
-                    setMenu(!menu);
-                  }}
-                >
-                  Conteúdos
-                </Link>
-              </li>
-              <ul className="flex flex-col justify-center items-center gap-3">
+        {menu && (
+          <div className="w-full h-screen fixed left-0 bottom-0 bg-white z-20">
+            <nav className="relative w-full h-full flex justify-center items-center">
+              <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
                 <li>
                   <Link
-                    href="/fale-especialista"
+                    href="/Home"
                     onClick={() => {
                       setMenu(!menu);
                     }}
                   >
-                    <button className="transition w-fit text-slate-100 font-bold rounded-full py-3 px-4 bg-[#1e90ff] hover:bg-[#1e65ff] items-center">
-                      Fale com um Especialista
-                    </button>
+                    Inicio
                   </Link>
                 </li>
+                <li
+                  className="text-back"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  <Link href="/cartazeamento">Cartazeamento</Link>
+                </li>
+                <li
+                  className="text-back"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
+                </li>
+                <li
+                  className="text-back"
+                  onClick={() => {
+                    setMenu(!menu);
+                  }}
+                >
+                  <Link href="/tabloides">Tablóides</Link>
+                </li>
+                <li>
+                  <Link
+                    href="/segmentos"
+                    onClick={() => {
+                      setMenu(!menu);
+                    }}
+                  >
+                    Segmentos
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/sobre"
+                    onClick={() => {
+                      setMenu(!menu);
+                    }}
+                  >
+                    Sobre
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/Blog"
+                    onClick={() => {
+                      setMenu(!menu);
+                    }}
+                  >
+                    Conteúdos
+                  </Link>
+                </li>
+                <ul className="flex flex-col justify-center items-center gap-3">
+                  <li>
+                    <Link
+                      href="/fale-especialista"
+                      onClick={() => {
+                        setMenu(!menu);
+                      }}
+                    >
+                      <button className="transition w-fit text-text font-bold rounded-full py-3 px-4 bg-button items-center">
+                        Fale com um Especialista
+                      </button>
+                    </Link>
+                  </li>
+                </ul>
               </ul>
-            </ul>
-            <button
-              className="absolute right-9 top-[85px]"
-              onClick={() => {
-                setMenu(!menu);
-              }}
-            >
-              <CloseMenu Width={25} Height={25} />
-            </button>
-          </nav>
-        </div>
-      )}
+              <button
+                className="absolute right-9 top-[85px]"
+                onClick={() => {
+                  setMenu(!menu);
+                  handleScroll();
+                }}
+              >
+                <CloseMenu Width={25} Height={25} />
+              </button>
+            </nav>
+          </div>
+        )}
     </header>
   );
 }

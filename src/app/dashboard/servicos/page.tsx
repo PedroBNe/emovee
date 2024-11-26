@@ -1,21 +1,21 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { PlusCircle, Save, Trash2 } from 'lucide-react'
-import Image from 'next/image'
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { PlusCircle, Save, Trash2 } from 'lucide-react';
+import Image from 'next/image';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 
 interface Service {
-  id: number
-  title: string
-  description: string
-  imageUrl: string
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
 }
 
 // Configuração do S3 Client para o AWS SDK v3
@@ -28,16 +28,16 @@ const s3 = new S3Client({
 });
 
 export default function AdminDashboard() {
-  const [services, setServices] = useState<Service[]>([])
-  const [editingService, setEditingService] = useState<Service | null>(null)
-  const [imageFile, setImageFile] = useState<File | null>(null)
+  const [services, setServices] = useState<Service[]>([]);
+  const [editingService, setEditingService] = useState<Service | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   // Função para carregar os serviços chamando a API
   const loadServices = async () => {
-    const response = await fetch('/api/services')
-    const servicesData = await response.json()
-    setServices(servicesData)
-  }
+    const response = await fetch('/api/services');
+    const servicesData = await response.json();
+    setServices(servicesData);
+  };
 
   // Função para salvar os serviços chamando a API
   const saveServices = async (services: Service[]) => {
@@ -47,67 +47,67 @@ export default function AdminDashboard() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(services),
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    loadServices()
-  }, [])
+    loadServices();
+  }, []);
 
   const handleEditService = (service: Service) => {
-    setEditingService(service)
-  }
+    setEditingService(service);
+  };
 
   const handleUpdateService = async () => {
     if (editingService) {
       if (imageFile) {
-        const uploadResult = await uploadImageToS3(imageFile)
+        const uploadResult = await uploadImageToS3(imageFile);
         if (uploadResult) {
-          editingService.imageUrl = uploadResult
+          editingService.imageUrl = uploadResult;
         }
       }
-      const updatedServices = services.map(s => s.id === editingService.id ? editingService : s)
-      setServices(updatedServices)
-      await saveServices(updatedServices) // Salva os serviços atualizados usando a API
-      setEditingService(null)
-      setImageFile(null)
+      const updatedServices = services.map((s) => (s.id === editingService.id ? editingService : s));
+      setServices(updatedServices);
+      await saveServices(updatedServices); // Salva os serviços atualizados usando a API
+      setEditingService(null);
+      setImageFile(null);
     }
-  }
+  };
 
   const handleAddService = () => {
     const newService: Service = {
       id: services.length + 1,
-      title: "Novo Serviço",
-      description: "Descrição do novo serviço.",
-      imageUrl: "/placeholder.svg?height=100&width=100"
-    }
-    const updatedServices = [...services, newService]
-    setServices(updatedServices)
-    saveServices(updatedServices) // Salva o novo serviço usando a API
-    setEditingService(newService)
-  }
+      title: 'Novo Serviço',
+      description: 'Descrição do novo serviço.',
+      imageUrl: '/placeholder.svg?height=100&width=100',
+    };
+    const updatedServices = [...services, newService];
+    setServices(updatedServices);
+    saveServices(updatedServices); // Salva o novo serviço usando a API
+    setEditingService(newService);
+  };
 
   const handleDeleteService = (id: number) => {
-    const updatedServices = services.filter(s => s.id !== id)
-    setServices(updatedServices)
-    saveServices(updatedServices) // Salva após exclusão usando a API
+    const updatedServices = services.filter((s) => s.id !== id);
+    setServices(updatedServices);
+    saveServices(updatedServices); // Salva após exclusão usando a API
     if (editingService && editingService.id === id) {
-      setEditingService(null)
+      setEditingService(null);
     }
-  }
+  };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0];
     if (file) {
-      setImageFile(file)
+      setImageFile(file);
     }
-  }
+  };
 
   const uploadImageToS3 = async (file: File) => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
 
     if (!bucketName) {
-      console.error("Nome do bucket não foi definido nas variáveis de ambiente");
+      console.error('Nome do bucket não foi definido nas variáveis de ambiente');
       return null;
     }
 
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
       const data = await s3.send(command);
       return `https://${bucketName}.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/${uniqueFileName}`;
     } catch (error) {
-      console.error("Erro ao enviar imagem para o S3:", error);
+      console.error('Erro ao enviar imagem para o S3:', error);
       return null;
     }
   };
@@ -138,7 +138,7 @@ export default function AdminDashboard() {
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <h2 className="text-2xl font-semibold mb-4">Nossos Serviços</h2>
-          {services.map(service => (
+          {services.map((service) => (
             <Card key={service.id} className="mb-4">
               <CardHeader>
                 <CardTitle className="flex justify-between items-center">
@@ -186,11 +186,7 @@ export default function AdminDashboard() {
                   </div>
                   <div>
                     <Label htmlFor="image">Imagem</Label>
-                    <Input
-                      type="file"
-                      id="image"
-                      onChange={handleImageChange}
-                    />
+                    <Input type="file" id="image" onChange={handleImageChange} />
                   </div>
                 </form>
               </CardContent>
@@ -204,5 +200,5 @@ export default function AdminDashboard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

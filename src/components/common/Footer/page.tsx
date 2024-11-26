@@ -73,17 +73,11 @@ export default function Footer() {
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <footer className="w-full bg-slate-800 min-h-40 flex flex-col justify-between text-slate-200">
+    <footer className="w-full bg-back min-h-40 flex flex-col justify-between text-text-primary">
       <div className="flex flex-col md:flex-row justify-center gap-[90px] md:gap-[120px] xl:gap-[250px] items-center md:items-start py-10">
         <div className="hover:opacity-60">
           <Link href="/">
-            <Image
-              src={companyInfo.logoUrl}
-              alt="Logo da Empresa"
-              width={200}
-              height={200}
-              className="rounded-lg"
-            />
+            <Image src={companyInfo.logoUrl} alt="Logo da Empresa" width={200} height={200} className="rounded-lg" />
           </Link>
         </div>
         <div>

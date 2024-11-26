@@ -50,7 +50,7 @@ const ServicesCard = ({ service }: { service: Service }) => {
       >
         <div className="lg:w-[50%] h-full flex justify-center items-center">
           <div className="relative w-[300px] md:w-[600px] lg:w-full h-[23vh] md:h-[42vh] rounded-lg flex justify-center items-center">
-            <Image src={service.imageUrl} alt={service.title} fill className='rounded-lg' />
+            <Image src={service.imageUrl} alt={service.title} fill className="rounded-lg" />
           </div>
         </div>
         <div className="w-full lg:w-[50%] h-full p-5 flex flex-col justify-between items-center">
@@ -72,16 +72,16 @@ const gradientVariants = {
 };
 
 interface Service {
-  id: number
-  title: string
-  description: string
-  link: string
-  imageUrl: string
+  id: number;
+  title: string;
+  description: string;
+  link: string;
+  imageUrl: string;
 }
 
 export default function Services() {
   const [currentGradient, setCurrentGradient] = useState('gradient1');
-  const [services, setServices] = useState<Service[]>([])
+  const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -96,14 +96,14 @@ export default function Services() {
   }, []);
 
   const loadServices = async () => {
-    const response = await fetch('/api/services')
-    const servicesData = await response.json()
-    setServices(servicesData)
-  }
+    const response = await fetch('/api/services');
+    const servicesData = await response.json();
+    setServices(servicesData);
+  };
 
   useEffect(() => {
-    loadServices()
-  }, [])
+    loadServices();
+  }, []);
 
   return (
     <motion.div

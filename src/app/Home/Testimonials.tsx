@@ -31,8 +31,8 @@ const CardTestimonials = ({ post }: { post: Testimonial }) => (
   <div className="w-full h-full flex items-center justify-center">
     <div className="w-full h-[400px] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl py-3">
       <div className="flex flex-col items-center gap-2">
-        <div className='relative w-20 h-20 rounded-full'>
-          <Image src={post.imagemUrl} alt="quotation-mark-icon" fill className='rounded-full' />
+        <div className="relative w-20 h-20 rounded-full">
+          <Image src={post.imagemUrl} alt="quotation-mark-icon" fill className="rounded-full" />
         </div>
         <h1 className="font-bold text-xl">{post.nome}</h1>
         <p>{post.cargo}</p>

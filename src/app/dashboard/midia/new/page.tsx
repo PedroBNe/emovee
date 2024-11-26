@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { useState, ChangeEvent, FormEvent } from 'react';
 
 export default function CreateMidiaPost() {
   const [form, setForm] = useState({
-    title: "",
-    subtitle: "",
-    content: "",
-    date: "",
+    title: '',
+    subtitle: '',
+    content: '',
+    date: '',
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export default function CreateMidiaPost() {
     e.preventDefault();
 
     if (!selectedFile) {
-      alert("Por favor, selecione uma imagem.");
+      alert('Por favor, selecione uma imagem.');
       return;
     }
 
@@ -38,26 +38,26 @@ export default function CreateMidiaPost() {
 
     try {
       const formData = new FormData();
-      formData.append("title", form.title);
-      formData.append("subtitle", form.subtitle);
-      formData.append("content", form.content);
-      formData.append("date", form.date);
-      formData.append("file", selectedFile);
+      formData.append('title', form.title);
+      formData.append('subtitle', form.subtitle);
+      formData.append('content', form.content);
+      formData.append('date', form.date);
+      formData.append('file', selectedFile);
 
-      const res = await fetch("/api/midia", {
-        method: "POST",
+      const res = await fetch('/api/midia', {
+        method: 'POST',
         body: formData,
       });
 
       if (!res.ok) {
-        throw new Error("Erro ao criar mídia.");
+        throw new Error('Erro ao criar mídia.');
       }
 
-      alert("Mídia criada com sucesso!");
-      setForm({ title: "", subtitle: "", content: "", date: "" });
+      alert('Mídia criada com sucesso!');
+      setForm({ title: '', subtitle: '', content: '', date: '' });
       setSelectedFile(null);
     } catch (error) {
-      console.error("Erro ao criar mídia:", error);
+      console.error('Erro ao criar mídia:', error);
     } finally {
       setLoading(false);
     }
@@ -67,14 +67,7 @@ export default function CreateMidiaPost() {
     <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Criar Nova Mídia</h1>
       <form onSubmit={handleSubmit} className="w-fit flex flex-col gap-4 p-4 bg-white rounded-xl">
-        <Input
-          type="text"
-          name="title"
-          placeholder="Título"
-          value={form.title}
-          onChange={handleChange}
-          required
-        />
+        <Input type="text" name="title" placeholder="Título" value={form.title} onChange={handleChange} required />
         <Input
           type="text"
           name="subtitle"
@@ -91,16 +84,10 @@ export default function CreateMidiaPost() {
           rows={5}
           required
         />
-        <Input
-          type="date"
-          name="date"
-          value={form.date}
-          onChange={handleChange}
-          required
-        />
+        <Input type="date" name="date" value={form.date} onChange={handleChange} required />
         <Input type="file" onChange={handleFileChange} required />
         <Button type="submit" disabled={loading}>
-          {loading ? "Enviando..." : "Criar Mídia"}
+          {loading ? 'Enviando...' : 'Criar Mídia'}
         </Button>
       </form>
     </div>

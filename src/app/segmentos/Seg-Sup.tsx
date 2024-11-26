@@ -3,10 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function SegSup() {
   return (
-    <div
-      className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-8"
-      data-aos="fade-right"
-    >
+    <div className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-8" data-aos="fade-right">
       <div className="w-full md:w-[60%] h-full flex justify-center items-center">
         <div className="w-[95%] xl:w-[85%] h-[95%] lg:h-[70%] flex flex-col gap-5 justify-center items-center">
           <div className="w-[100%] h-[100%] rounded-lg flex flex-col gap-5 items-center justify-center text-start p-6">

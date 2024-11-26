@@ -11,10 +11,7 @@ export default function LogoutButton() {
   };
 
   return (
-    <button
-      onClick={handleLogout}
-      className="btn btn-destructive"
-    >
+    <button onClick={handleLogout} className="btn btn-destructive">
       Sair
     </button>
   );

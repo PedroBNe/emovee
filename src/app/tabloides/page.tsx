@@ -22,15 +22,13 @@ export default function Tablo() {
       <div className="w-full min-h-[10em] flex flex-col gap-12 justify-center items-center">
         <div className="w-full h-[100%] flex flex-col justify-between items-center" data-aos="fade-right">
           <div className="w-[80%] flex flex-col items-start justify-around gap-12">
-            <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]">
-              A otimização para a precificação de ofertas!
-            </h2>
+            <h2 className="text-lg lg:text-4xl font-bold text-text">A otimização para a precificação de ofertas!</h2>
             <p className="text-sm lg:text-xl">
               Transforme a comunicação visual da sua empresa com nossa plataforma. Alcance a padronização e agilidade
               que você sempre desejou com mais de dois mil modelos de cartazes à sua disposição. Encontre rapidamente o
               design perfeito para atender às suas necessidades e eleve a qualidade da sua comunicação visual.
             </p>
-            <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]">Um software, uma solução</h2>
+            <h2 className="text-lg lg:text-4xl font-bold text-text">Um software, uma solução</h2>
             <p className="text-sm lg:text-xl">
               Ao utilizar nosso software, você poderá dizer adeus aos processos manuais e erros indesejados. Nossa
               solução é ideal para quem busca criar cartazes atrativos de maneira rápida e fácil. Simplifique seu
@@ -42,7 +40,7 @@ export default function Tablo() {
       </div>
       <div className="w-full flex flex-col justify-center items-center mt-8">
         <div className="w-[80%] flex flex-col items-start justify-around gap-12">
-          <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]" data-aos="fade-right">
+          <h2 className="text-lg lg:text-4xl font-bold text-text" data-aos="fade-right">
             Benefícios
           </h2>
           <p className="text-sm lg:text-xl" data-aos="fade-left">
@@ -52,7 +50,7 @@ export default function Tablo() {
             locais. Com gestão centralizada, você ganha agilidade e reduz significativamente os custos operacionais,
             eliminando erros e otimizando recursos.
           </p>
-          <h2 className="text-lg lg:text-4xl font-bold text-[#1e90ff]" data-aos="fade-right">
+          <h2 className="text-lg lg:text-4xl font-bold text-text" data-aos="fade-right">
             Experiência do cliente
           </h2>
           <p className="text-sm lg:text-xl" data-aos="fade-left">

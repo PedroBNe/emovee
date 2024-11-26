@@ -27,7 +27,7 @@ export const Carousel = ({ slides }: CarouselProps) => {
 
   return (
     <div className="relative w-full min-h-[100vh] flex justify-center items-center">
-      <div className="w-full min-h[800px] flex justify-center overflow-hidden items-center">
+      <div className="w-full min-h-[800px] flex justify-center overflow-hidden items-center">
         {slides.map((b, index) => (
           <div
             key={index}

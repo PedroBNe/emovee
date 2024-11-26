@@ -80,7 +80,7 @@ export default function Emovee() {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className='rounded-lg'
+              className="rounded-lg"
             ></iframe>
           </motion.div>
         </div>

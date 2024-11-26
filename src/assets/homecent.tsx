@@ -1,12 +1,6 @@
 import React from 'react';
 
-const Atac = ({
-  fill = '#000000',
-  width = 200,
-  height = 200,
-  style = {},
-  ...props
-}) => (
+const Atac = ({ fill = '#000000', width = 200, height = 200, style = {}, ...props }) => (
   <svg
     fill={fill}
     height={height}

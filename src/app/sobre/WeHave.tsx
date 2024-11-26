@@ -69,9 +69,7 @@ export default function WeHave() {
           >
             <div className="flex flex-col gap-2 justify-center items-center m-2">
               {/* <Image src={card.imageUrl || '/default-icon.png'} alt={`${card.title}-icon`} width={40} height={40} /> */}
-              <div className='text-[60px]'>
-                {card.icon}
-              </div>
+              <div className="text-[60px]">{card.icon}</div>
               <h1 className="font-bold text-lg xl:text-xl">{card.title}</h1>
             </div>
             <p className="text-center m-5">{card.text}</p>

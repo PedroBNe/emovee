@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 export default function SegAta() {
   return (
     <div
-    className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-8"
-    id="ata"
-    data-aos="fade-right"
+      className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-8"
+      id="ata"
+      data-aos="fade-right"
     >
       <div className="w-full md:w-[60%] h-full flex justify-center items-center">
         <div

@@ -25,7 +25,7 @@ export function CarouselEmovee({ slides }: CarouselProps) {
             <div className="w-full h-full p-1">
               <div className="w-full rounded-md flex items-center justify-center bg-black rounded-xl">
                 <span>
-                  <Image src={p.imagem} alt={`imagem ${index}`} width={1000} height={1000} className='rounded-lg' />
+                  <Image src={p.imagem} alt={`imagem ${index}`} width={1000} height={1000} className="rounded-lg" />
                 </span>
               </div>
             </div>

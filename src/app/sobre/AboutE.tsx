@@ -87,7 +87,7 @@ export default function AboutEmo() {
         className="w-full xl:w-[60%] h-full flex flex-col justify-center items-center gap-12 lg:mx-16"
         data-aos="fade-right"
       >
-        <h2 className="text-start text-2xl xl:text-4xl font-bold">{content.title}</h2>
+        <h2 className="text-start text-2xl xl:text-4xl font-bold text-text">{content.title}</h2>
         <div className="text-md xl:text-xl text-start flex flex-col gap-8">
           <p>{content.sideText}</p>
         </div>

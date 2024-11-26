@@ -8,7 +8,8 @@ export default function MenuIcon({ w, h }: any) {
       <g>
         <path
           d="M4 6H20M4 12H20M4 18H20"
-          stroke="#1e65ff"
+          stroke="currentColor"
+          className="text-button"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
