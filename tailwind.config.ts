@@ -2,6 +2,8 @@ import { button, nextui } from '@nextui-org/theme';
 import { text } from 'stream/consumers';
 import type { Config } from 'tailwindcss';
 
+const getColorsFromJson = require('./src/components/utils/getColorsFromJson.js');
+
 const config: Config = {
   darkMode: ['class'],
   content: [
@@ -26,6 +28,7 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        ...getColorsFromJson(),
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -35,16 +38,6 @@ const config: Config = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
-        },
-        back: {
-          DEFAULT: '#C0F205',
-        },
-        button: {
-          DEFAULT: '#000000',
-          text: '#C0F205',
-        },
-        text: {
-          DEFAULT: '#000000',
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',

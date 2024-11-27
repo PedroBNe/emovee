@@ -38,6 +38,14 @@ export default function Header() {
 
   const handleNoScroll = () => (document.body.style.position = 'fixed'); // Can not scroll down
 
+  async function streamToString(stream: any): Promise<string> {
+    const chunks: any[] = [];
+    for await (const chunk of stream) {
+      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk));
+    }
+    return Buffer.concat(chunks).toString('utf-8');
+  }
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -69,18 +77,10 @@ export default function Header() {
     }
   };
 
-  async function streamToString(stream: any): Promise<string> {
-    const chunks: any[] = [];
-    for await (const chunk of stream) {
-      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk));
-    }
-    return Buffer.concat(chunks).toString('utf-8');
-  }
-
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-back px-5 relative">
+    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-back text-back-text px-5 relative">
       <div className="relative w-full max-w-36 h-full max-h-10 flex items-center justify-center">
         <Link href="/Home">
           <Image src={companyInfo.logoUrl} alt="logo-emove" fill quality={100} />
@@ -101,7 +101,7 @@ export default function Header() {
                 <Link href="/cartazeamento">Serviços</Link>
                 {IsHiddenSolution && (
                   <ul
-                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-back border-2 border-black p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-back border-2 border-back-text p-5 overflow-ellipsis whitespace-nowrap"
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -128,7 +128,7 @@ export default function Header() {
                 </p>
                 {IsHiddenSeg && (
                   <ul
-                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-back border-2 border-black p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-back border-2 border-back-text p-5 overflow-ellipsis whitespace-nowrap"
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"

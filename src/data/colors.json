@@ -1,0 +1,16 @@
+[
+  {
+    "name": "back",
+    "default": "#ffffff",
+    "text": "#000000"
+  },
+  {
+    "name": "button",
+    "default": "#ffffff",
+    "text": "#000000"
+  },
+  {
+    "name": "text",
+    "default": "#000000"
+  }
+]

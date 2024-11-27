@@ -15,16 +15,36 @@ const s3 = new S3Client({
   },
 });
 
+interface EmpresaInfo {
+  nomeSite: string;
+}
+
+interface About {
+  videoUrl: string;
+  title: string;
+  description: string;
+}
+
 export default function Emovee() {
-  const [content, setContent] = useState({
-    videoUrl: '',
-    title: '',
-    description: '',
-  });
+  const [content, setContent] = useState<About | null>(null);
+  const [info, setInfo] = useState<EmpresaInfo | null>(null);
 
   useEffect(() => {
+    loadEmpresaInfo();
     loadAboutContent();
   }, []);
+
+  const loadEmpresaInfo = async () => {
+    try {
+      const empresaInfo = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/informacoes.json').then((res) => res.json());
+      const aboutInfo = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/about.json').then((res) => res.json());
+
+      setContent(aboutInfo.content);
+      setInfo(empresaInfo);
+    } catch (error) {
+      console.error("Erro ao carregar 'informacoes.json' do S3:", error);
+    }
+  };
 
   const loadAboutContent = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -75,8 +95,8 @@ export default function Emovee() {
             <iframe
               width="100%"
               height="100%"
-              src={content.videoUrl}
-              title="Vídeo de apresentação E-moviee"
+              src={content?.videoUrl}
+              title="Vídeo de apresentação Gondify"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -98,10 +118,10 @@ export default function Emovee() {
             whileTap={{ scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            <h1 className="font-bold text-xl">{content.title}</h1>
-            <p className="text-center m-5">{content.description}</p>
+            <h1 className="font-bold text-xl">{content?.title}</h1>
+            <p className="text-center m-5">{content?.description}</p>
             <Link href="/sobre">
-              <Button>Sobre a E-moviee</Button>
+              <Button>Sobre a {info?.nomeSite}</Button>
             </Link>
           </motion.div>
         </div>

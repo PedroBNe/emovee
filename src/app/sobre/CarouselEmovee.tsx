@@ -23,7 +23,7 @@ export function CarouselEmovee({ slides }: CarouselProps) {
         {Array.from(slides).map((p, index) => (
           <CarouselItem key={index} className="md:basis-1/1">
             <div className="w-full h-full p-1">
-              <div className="w-full rounded-md flex items-center justify-center bg-black rounded-xl">
+              <div className="w-full rounded-md flex items-center justify-center bg-black">
                 <span>
                   <Image src={p.imagem} alt={`imagem ${index}`} width={1000} height={1000} className="rounded-lg" />
                 </span>

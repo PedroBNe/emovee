@@ -2,25 +2,57 @@
 
 import formatDate from '@/components/utils/Data';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Banner from '@/components/utils/BannerTop';
 import { Input } from '@nextui-org/input';
 import { Pagination } from '@nextui-org/react';
 import useWindowSize from '@/components/utils/Window';
+import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
 
-type Post = {
-  id: number;
+const s3 = new S3Client({
+  region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY!,
+  },
+});
+
+async function loadSiteInfo() {
+  const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+  const key = 'data/informacoes.json';
+
+  try {
+    const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
+    const data = await s3.send(command);
+
+    if (data.Body) {
+      const chunks: Uint8Array[] = [];
+      for await (const chunk of data.Body as any) {
+        chunks.push(chunk);
+      }
+      const bodyContents = Buffer.concat(chunks).toString('utf-8');
+      const siteInfo = JSON.parse(bodyContents);
+      return siteInfo.nomeSite || 'Dashboard';
+    }
+  } catch (error) {
+    console.error("Erro ao carregar 'informacoes.json' do S3:", error);
+    return 'Dashboard'; // Fallback para o valor padrão
+  }
+}
+
+type Blog = {
+  id: string;
   title: string;
   subtitle: string;
   date: string;
+  content: string;
   imageUrl: string;
-  category: string;
 };
 
 // Componente para um único post
-const PostCardBlog = ({ post }: { post: Post }) => {
+const PostCardBlog = ({ post }: { post: Blog }) => {
   const [isHovered, setIsHovered] = useState(false);
   const window = useWindowSize();
 
@@ -111,82 +143,36 @@ const PostCardBlog = ({ post }: { post: Post }) => {
 };
 
 export default function Blog() {
-  // mock de exemplo para os posts
-  const allPosts: Post[] = [
-    {
-      id: 1,
-      title: 'Introdução ao React',
-      subtitle: 'Aprenda os fundamentos do React',
-      date: '2023-07-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 2,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 3,
-      title: 'Estilização com Tailwind CSS',
-      subtitle: 'Crie interfaces bonitas e responsivas rapidamente',
-      date: '2023-08-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 4,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 5,
-      title: 'Estilização com Tailwind CSS',
-      subtitle: 'Crie interfaces bonitas e responsivas rapidamente',
-      date: '2023-08-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 6,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 7,
-      title: 'Estilização com Tailwind CSS',
-      subtitle: 'Crie interfaces bonitas e responsivas rapidamente',
-      date: '2023-08-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 8,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-  ];
-
   const [postPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
 
-  const totalPages = Math.ceil(allPosts.length / postPerPage); // Número total de páginas
+  const fetchPosts = async () => {
+    try {
+      const res = await fetch('/api/blog', {
+        method: 'GET',
+      });
+
+      if (!res.ok) {
+        throw new Error(`Erro: ${res.status}`);
+      }
+
+      const data = await res.json();
+      setBlogs(data);
+    } catch (error) {
+      console.error('Falha ao buscar os posts:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const totalPages = Math.ceil(blogs.length / postPerPage); // Número total de páginas
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
 
-  const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost); // Posts atuais
+  const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost); // Posts atuais
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

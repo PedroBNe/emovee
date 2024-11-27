@@ -39,7 +39,48 @@ export default function InformacoesEmpresaDashboard() {
 
   useEffect(() => {
     loadEmpresaInfo();
+    fetchColors();
   }, []);
+
+  const fetchColors = async () => {
+    try {
+      const response = await fetch('/api/color');
+      if (!response.ok) {
+        throw new Error('Erro ao buscar as cores.');
+      }
+      const colors = await response.json();
+      console.log('Cores:', colors);
+    } catch (error) {
+      console.error('Erro:', error);
+    }
+  };
+
+  const updateColors = async () => {
+    const newColors = [
+      { name: 'back', default: '#000000', text: '#ffffff' },
+      { name: 'button', default: '#ff0000', text: '#ffffff' },
+      { name: 'text', default: '#00ff00' },
+    ];
+
+    try {
+      const response = await fetch('/api/color', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newColors),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao atualizar as cores.');
+      }
+
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error('Erro:', error);
+    }
+  };
 
   const loadEmpresaInfo = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -154,6 +195,7 @@ export default function InformacoesEmpresaDashboard() {
           <TabsTrigger value="redes-sociais">Redes Sociais</TabsTrigger>
           <TabsTrigger value="documentos">Documentos Legais</TabsTrigger>
           <TabsTrigger value="logo">Logo</TabsTrigger>
+          <TabsTrigger value="cores">Cores</TabsTrigger>
         </TabsList>
 
         <TabsContent value="contato">
@@ -322,6 +364,31 @@ export default function InformacoesEmpresaDashboard() {
                   id="nomeSite"
                   name="nomeSite"
                   value={info.nomeSite}
+                  onChange={handleInputChange}
+                  disabled={!editando}
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="cores">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex justify-between items-center">
+                Cores do site{' '}
+                <Button variant="outline" onClick={() => setEditando(!editando)}>
+                  {editando ? 'Cancelar Edição' : 'Editar'}
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div>
+                <Label htmlFor="textColor">Cores de texto</Label>
+                <Input
+                  id="textColor"
+                  name="textColor"
+                  value={'teste'}
                   onChange={handleInputChange}
                   disabled={!editando}
                 />

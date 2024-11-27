@@ -6,12 +6,12 @@ export default function SegAta() {
     <div
       className="w-full h-auto flex flex-col justify-center items-center lg:flex-row gap-8"
       id="ata"
-      data-aos="fade-right"
+      data-aos="fade-left"
     >
       <div className="w-full md:w-[60%] h-full flex justify-center items-center">
         <div
           className="w-[95%] xl:w-[85%] h-[95%] lg:h-[70%] flex flex-col gap-5 justify-center items-center"
-          data-aos="fade-right"
+          data-aos="fade-left"
         >
           <motion.div
             className="w-[90%] h-[40vh] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl p-6"

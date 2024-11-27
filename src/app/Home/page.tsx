@@ -14,25 +14,20 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 interface slide {
-  imagem: StaticImageData;
   text: string;
 }
 
 const slides: slide[] = [
   {
-    imagem: Imagem,
     text: 'A agilidade que você sempre sonhou! ',
   },
   {
-    imagem: Imagem,
     text: 'Defina ofertas estratégicas para o seu negócio. ',
   },
   {
-    imagem: Imagem,
     text: 'O caminho de sucesso para a sua empresa! ',
   },
   {
-    imagem: Imagem,
     text: 'Desfrute da rapidez que impulsiona resultados. ',
   },
 ];

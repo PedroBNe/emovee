@@ -49,11 +49,11 @@ export default function CookiePage() {
                       expires: expirationDate,
                     });
                 }}
-                className="w-[33vh] border-2 py-2 rounded-lg border-[#1e90ff] hover:bg-[#1e90ff] hover:text-white text-sm lg:text-md transition ease-in-out delay-100"
+                className="w-[33vh] border-2 py-2 rounded-lg border-button hover:bg-button hover:text-button-text text-sm lg:text-md transition ease-in-out delay-100"
               >
                 Aceitar
               </button>
-              <button className="w-[33vh] border-2 py-2 rounded-lg border-[#1e90ff] hover:bg-[#1e90ff] hover:text-white text-sm lg:text-md transition ease-in-out delay-100">
+              <button className="w-[33vh] border-2 py-2 rounded-lg border-button hover:bg-button hover:text-button-text text-sm lg:text-md transition ease-in-out delay-100">
                 <Link href="/cookies">Definição de Cookie</Link>
               </button>
             </div>
