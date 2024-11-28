@@ -7,6 +7,7 @@ const filePath = path.join(process.cwd(), 'src', 'data', 'colors.json');
 
 // Interface para os dados das cores
 interface Color {
+  id: number;
   name: string;
   default: string;
   text?: string;
