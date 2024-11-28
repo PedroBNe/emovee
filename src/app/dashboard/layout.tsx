@@ -45,7 +45,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET!);
+    jwt.verify(token, 'mysecret');
 
     const nomeSite = await loadSiteInfo();
 
