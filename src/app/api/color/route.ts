@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import path from 'path';
 import { promises as fs } from 'fs';
-import { console } from 'inspector';
 
 // Caminho do arquivo JSON
 const filePath = path.join(process.cwd(), 'src', 'data', 'colors.json');
@@ -39,12 +38,12 @@ export async function GET() {
 
 export async function PUT(req: Request) {
   try {
-    const updatedColors: Color[] = await req.json(); // Pega os dados do corpo da requisição
-    await updateColors(updatedColors);
+    const updatedColors = await req.json();  // Obtém os dados do corpo da requisição
+    await updateColors(updatedColors);  // Atualiza o arquivo JSON com as cores
     return NextResponse.json({ message: 'Cores atualizadas com sucesso!' });
   } catch (error) {
     return NextResponse.json(
-      { message: 'Erro ao atualizar as cores.', error: error instanceof Error ? error.message : 'Erro desconhecido' },
+      { message: 'Erro ao atualizar as cores', error: error instanceof Error ? error.message : 'Erro desconhecido' },
       { status: 500 },
     );
   }
