@@ -50,7 +50,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     const nomeSite = await loadSiteInfo();
 
     return (
-      <div className="w-full bg-slate-100 min-h-screen min-h-screen top-0 z-50">
+      <div className="w-full bg-slate-100 min-h-screen top-0 z-50">
         <nav className="w-full h-[8vh] flex justify-between items-center p-8 bg-white">
           <div className="w-fit flex justify-center items-center text-3xl font-bold">{nomeSite}</div>
           <Link href="/" className="flex gap-8">

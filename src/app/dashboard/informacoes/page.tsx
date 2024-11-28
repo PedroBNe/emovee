@@ -71,7 +71,7 @@ export default function InformacoesEmpresaDashboard() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newColors),
+        body: JSON.stringify(newColors), // Enviando os dados diretamente
       });
 
       if (!response.ok) {
@@ -79,11 +79,12 @@ export default function InformacoesEmpresaDashboard() {
       }
 
       const data = await response.json();
-      console.log(data.message);
+      console.log(data.message); // Exibe a mensagem de sucesso retornada pela API
     } catch (error) {
-      console.error('Erro:', error);
+      console.error('Erro:', error); // Exibe o erro caso algo aconteça
     }
   };
+
 
   const loadEmpresaInfo = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
