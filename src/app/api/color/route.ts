@@ -29,16 +29,22 @@ export async function GET() {
     const colors = await getColors();
     return NextResponse.json(colors);
   } catch (error) {
-    return NextResponse.json({ message: 'Erro ao buscar as cores.', error: error instanceof Error ? error.message : 'Erro desconhecido' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Erro ao buscar as cores.', error: error instanceof Error ? error.message : 'Erro desconhecido' },
+      { status: 500 },
+    );
   }
 }
 
 export async function PUT(req: Request) {
   try {
-    const updatedColors: Color[] = await req.json();  // Pega os dados do corpo da requisição
+    const updatedColors: Color[] = await req.json(); // Pega os dados do corpo da requisição
     await updateColors(updatedColors);
     return NextResponse.json({ message: 'Cores atualizadas com sucesso!' });
   } catch (error) {
-    return NextResponse.json({ message: 'Erro ao atualizar as cores.', error: error instanceof Error ? error.message : 'Erro desconhecido' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Erro ao atualizar as cores.', error: error instanceof Error ? error.message : 'Erro desconhecido' },
+      { status: 500 },
+    );
   }
 }

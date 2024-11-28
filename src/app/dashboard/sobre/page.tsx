@@ -45,6 +45,10 @@ interface SideImage {
   url: string;
 }
 
+interface empresaInfo {
+  nomeSite: string;
+}
+
 export default function AboutEmovieeDashboard() {
   const [content, setContent] = useState<AboutContent | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -54,10 +58,24 @@ export default function AboutEmovieeDashboard() {
   const [newLogoFile, setNewLogoFile] = useState<File | null>(null);
   const [newLogoName, setNewLogoName] = useState('');
   const [newSideImageFile, setNewSideImageFile] = useState<File | null>(null);
+  const [empresaInfo, setEmpresaInfo] = useState<empresaInfo | null>(null);
 
   useEffect(() => {
     loadAboutContent();
+    fetchEmpresa();
   }, []);
+
+  const fetchEmpresa = async () => {
+    try {
+      const nomeSite = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/informacoes.json').then(
+        (res) => res.json(),
+      );
+
+      setEmpresaInfo(nomeSite);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const loadAboutContent = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -177,7 +195,7 @@ export default function AboutEmovieeDashboard() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Dashboard - Sobre a E-moviee</h1>
+      <h1 className="text-3xl font-bold mb-6">Dashboard - Sobre a {empresaInfo?.nomeSite}</h1>
 
       {/* Video Section */}
       <Card className="mb-6">

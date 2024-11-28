@@ -27,7 +27,7 @@ export default function Seg() {
       <Banner>Segmentos</Banner>
       <div className="w-[90%] flex flex-col gap-10 justify-between items-center px-3 mb-10 text-start">
         <div className="w-full md:w-[75%] flex items-center justify-center">
-          <h2 className="text-2xl lg:text-4xl font-bold text-text">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto">
             Descubra os segmentos que podemos ajudar com as nossas soluções!
           </h2>
         </div>
@@ -63,11 +63,13 @@ export default function Seg() {
         <p id="out"></p>
         <SegOut />
       </div>
-      <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">
-        <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
-        <Link href="">
-          <Button>Fale com um Especialista</Button>
-        </Link>
+      <div className="w-full flex items-center justify-center px-5">
+        <div className="w-full min-h-[18em] bg-black rounded-[60px] flex gap-12 flex-col justify-center items-center">
+          <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
+          <Link href="/fale-especialista">
+            <Button>Fale com um Especialista</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

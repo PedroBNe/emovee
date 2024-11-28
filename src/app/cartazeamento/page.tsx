@@ -21,9 +21,7 @@ export default function Carta() {
       <Banner>Cartazeamento</Banner>
       <div className="w-full flex flex-col gap-10 justify-between items-center px-3 text-start">
         <div className="w-full md:w-[75%] flex items-center justify-center">
-          <h2 className="text-2xl lg:text-4xl font-bold text-[#1e90ff] text-text">
-            A otimização para a precificação de ofertas!
-          </h2>
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto">A otimização para a precificação de ofertas!</h2>
         </div>
         <div className="w-full md:w-[85%] flex flex-col items-center justify-around text-start md:px-8 gap-12">
           <p className="text-md lg:text-xl">
@@ -46,7 +44,7 @@ export default function Carta() {
           </div>
         </div>
         <div className="sm:w-[80%] w-[95%] flex flex-col items-start justify-around gap-12">
-          <h2 className="text-2xl lg:text-4xl font-bold text-text" data-aos="fade-right">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto" data-aos="fade-right">
             Benefícios
           </h2>
           <p className="text-md lg:text-xl" data-aos="fade-left">
@@ -56,7 +54,7 @@ export default function Carta() {
             locais. Com gestão centralizada, você ganha agilidade e reduz significativamente os custos operacionais,
             eliminando erros e otimizando recursos.
           </p>
-          <h2 className="text-2xl lg:text-4xl font-bold text-text" data-aos="fade-right">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto" data-aos="fade-right">
             Experiência do cliente
           </h2>
           <p className="text-md lg:text-xl" data-aos="fade-left">
@@ -68,7 +66,7 @@ export default function Carta() {
             <li>Personalização;</li>
             <li>Comunicação eficiente.</li>
           </ul>
-          <h2 className="text-2xl lg:text-4xl font-bold text-text" data-aos="fade-right">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto" data-aos="fade-right">
             A sua identidade em destaque
           </h2>
           <p className="text-md lg:text-xl" data-aos="fade-left">
@@ -82,7 +80,7 @@ export default function Carta() {
             <li>Eficiência;</li>
             <li>Fortalecimento de marca.</li>
           </ul>
-          <h2 className="text-2xl lg:text-4xl font-bold text-text" data-aos="fade-right">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto" data-aos="fade-right">
             Agilidade e facilidade
           </h2>
           <p className="text-md lg:text-xl" data-aos="fade-left">
@@ -96,7 +94,7 @@ export default function Carta() {
             <li>Praticidade;</li>
             <li>Segurança.</li>
           </ul>
-          <h2 className="text-2xl lg:text-4xl font-bold text-text" data-aos="fade-right">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto" data-aos="fade-right">
             A eficiência que você deseja
           </h2>
           <p className="text-md lg:text-xl" data-aos="fade-left">
@@ -110,7 +108,7 @@ export default function Carta() {
             <li>Redução de custos;</li>
             <li>Personalização.</li>
           </ul>
-          <h2 className="text-2xl lg:text-4xl font-bold text-text" data-aos="fade-right">
+          <h2 className="text-2xl lg:text-4xl font-bold text-texto" data-aos="fade-right">
             Redução de custo e tempo
           </h2>
           <p className="text-md lg:text-xl" data-aos="fade-left">
@@ -123,11 +121,13 @@ export default function Carta() {
           <FormInterface />
         </div>
       </div>
-      <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">
-        <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
-        <Link href="/fale-especialista">
-          <Button>Fale com um Especialista</Button>
-        </Link>
+      <div className="w-full flex items-center justify-center px-5">
+        <div className="w-full min-h-[18em] bg-black rounded-[60px] flex gap-12 flex-col justify-center items-center">
+          <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
+          <Link href="/fale-especialista">
+            <Button>Fale com um Especialista</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

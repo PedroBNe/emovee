@@ -36,8 +36,12 @@ export default function Emovee() {
 
   const loadEmpresaInfo = async () => {
     try {
-      const empresaInfo = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/informacoes.json').then((res) => res.json());
-      const aboutInfo = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/about.json').then((res) => res.json());
+      const empresaInfo = await fetch(
+        'https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/informacoes.json',
+      ).then((res) => res.json());
+      const aboutInfo = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/about.json').then(
+        (res) => res.json(),
+      );
 
       setContent(aboutInfo.content);
       setInfo(empresaInfo);

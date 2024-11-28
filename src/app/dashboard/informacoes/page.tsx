@@ -11,6 +11,7 @@ import { toast } from '@/hooks/use-toast';
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import Image from 'next/image';
 import { v4 as uuidv4 } from 'uuid';
+import { set } from 'date-fns';
 
 const s3 = new S3Client({
   region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
@@ -32,10 +33,18 @@ interface EmpresaInfo {
   nomeSite: string;
 }
 
+interface Color {
+  id: number;
+  name: string;
+  default: string;
+  text: string;
+}
+
 export default function InformacoesEmpresaDashboard() {
   const [info, setInfo] = useState<EmpresaInfo | null>(null);
   const [editando, setEditando] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [colors, setColors] = useState<Color[]>([]);
 
   useEffect(() => {
     loadEmpresaInfo();
@@ -49,19 +58,14 @@ export default function InformacoesEmpresaDashboard() {
         throw new Error('Erro ao buscar as cores.');
       }
       const colors = await response.json();
+      setColors(colors);
       console.log('Cores:', colors);
     } catch (error) {
       console.error('Erro:', error);
     }
   };
 
-  const updateColors = async () => {
-    const newColors = [
-      { name: 'back', default: '#000000', text: '#ffffff' },
-      { name: 'button', default: '#ff0000', text: '#ffffff' },
-      { name: 'text', default: '#00ff00' },
-    ];
-
+  const updateColors = async (newColors: Color[]) => {
     try {
       const response = await fetch('/api/color', {
         method: 'PUT',
@@ -162,8 +166,25 @@ export default function InformacoesEmpresaDashboard() {
     setInfo((prev) => (prev ? { ...prev, [name]: value } : null));
   };
 
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target; // Pegando o 'id' e o 'value' do input
+
+    setColors((prev) =>
+      prev.map((color) =>
+        color.id.toString() === id
+          ? {
+              ...color,
+              // Se a cor tem um campo 'text', atualizamos com base no 'name' (default ou text)
+              [e.target.name]: value,
+            }
+          : color,
+      ),
+    );
+  };
+
   const handleSalvar = async () => {
     await saveEmpresaInfo();
+    await updateColors(colors);
     setEditando(false);
   };
 
@@ -383,16 +404,42 @@ export default function InformacoesEmpresaDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div>
-                <Label htmlFor="textColor">Cores de texto</Label>
-                <Input
-                  id="textColor"
-                  name="textColor"
-                  value={'teste'}
-                  onChange={handleInputChange}
-                  disabled={!editando}
-                />
-              </div>
+              {colors.map((color) => (
+                <div key={color.id} className="mt-4 flex flex-col gap-2">
+                  <Label htmlFor={`${color.id}`} className="flex items-center gap-2">
+                    {`Cores de ${color.name}`}
+                    <span
+                      className="w-5 h-5 rounded-full border-2 border-black"
+                      style={{ backgroundColor: color.default }}
+                    ></span>
+                  </Label>
+                  <Input
+                    id={`${color.id}`}
+                    name="default" // Para atualizar a cor de fundo
+                    value={color.default}
+                    onChange={handleColorChange}
+                    disabled={!editando}
+                  />
+                  {color.text && (
+                    <div className="mt-4 flex flex-col gap-2">
+                      <Label htmlFor={`${color.id}-text`} className="flex items-center gap-2">
+                        {`Texto de ${color.name} - texto`}
+                        <span
+                          className="w-5 h-5 rounded-full border-2 border-black"
+                          style={{ backgroundColor: color.text }}
+                        ></span>
+                      </Label>
+                      <Input
+                        id={`${color.id}`}
+                        name="text" // Para atualizar a cor do texto
+                        value={color.text}
+                        onChange={handleColorChange}
+                        disabled={!editando}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
             </CardContent>
           </Card>
         </TabsContent>

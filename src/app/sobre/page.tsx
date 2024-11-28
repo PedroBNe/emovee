@@ -79,11 +79,13 @@ export default function About() {
           <CarouselPartiners slides={partnerLogos.map((logo) => ({ imagem: logo.url }))} />
         </div>
       </div>
-      <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">
-        <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
-        <Link href="">
-          <Button>Fale com um Especialista</Button>
-        </Link>
+      <div className="w-full flex items-center justify-center px-5">
+        <div className="w-full min-h-[18em] bg-black rounded-[60px] flex gap-12 flex-col justify-center items-center">
+          <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
+          <Link href="/fale-especialista">
+            <Button>Fale com um Especialista</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

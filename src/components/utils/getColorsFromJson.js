@@ -9,7 +9,7 @@ function getColorsFromJson() {
 
     // Certifique-se de que colorsData é um array
     if (!Array.isArray(colorsData)) {
-      throw new Error("O JSON esperado deve ser um array.");
+      throw new Error('O JSON esperado deve ser um array.');
     }
 
     const colors = {};

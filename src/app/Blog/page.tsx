@@ -9,52 +9,17 @@ import Banner from '@/components/utils/BannerTop';
 import { Input } from '@nextui-org/input';
 import { Pagination } from '@nextui-org/react';
 import useWindowSize from '@/components/utils/Window';
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
-
-const s3 = new S3Client({
-  region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
-  credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY!,
-  },
-});
-
-async function loadSiteInfo() {
-  const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
-  const key = 'data/informacoes.json';
-
-  try {
-    const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
-    const data = await s3.send(command);
-
-    if (data.Body) {
-      const chunks: Uint8Array[] = [];
-      for await (const chunk of data.Body as any) {
-        chunks.push(chunk);
-      }
-      const bodyContents = Buffer.concat(chunks).toString('utf-8');
-      const siteInfo = JSON.parse(bodyContents);
-      return siteInfo.nomeSite || 'Dashboard';
-    }
-  } catch (error) {
-    console.error("Erro ao carregar 'informacoes.json' do S3:", error);
-    return 'Dashboard'; // Fallback para o valor padrão
-  }
-}
-
-type Blog = {
-  id: string;
-  title: string;
-  subtitle: string;
-  date: string;
-  content: string;
-  imageUrl: string;
-};
 
 // Componente para um único post
 const PostCardBlog = ({ post }: { post: Blog }) => {
   const [isHovered, setIsHovered] = useState(false);
   const window = useWindowSize();
+  const category = [
+    {
+      id: 1,
+      name: 'Tecnologia',
+    },
+  ];
 
   if (window.width > 435) {
     return (
@@ -80,7 +45,8 @@ const PostCardBlog = ({ post }: { post: Blog }) => {
         <div className="flex justify-between absolute bottom-0 left-0 right-0 p-6 text-black bg-white">
           <div className="w-[70%]">
             <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold bg-primary rounded-full text-white">
-              {post.category}
+              {/* {post.category} */}
+              {category[0].name}
             </span>
             <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
             <p className="text-sm mb-2 opacity-90">{post.subtitle}</p>
@@ -120,7 +86,8 @@ const PostCardBlog = ({ post }: { post: Blog }) => {
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
           <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold bg-primary rounded-full">
-            {post.category}
+            {/* {post.category} */}
+            {category[0].name}
           </span>
           <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
           <p className="text-sm mb-2 opacity-90">{post.subtitle}</p>
@@ -142,10 +109,24 @@ const PostCardBlog = ({ post }: { post: Blog }) => {
   }
 };
 
+type Blog = {
+  id: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  content: string;
+  imageUrl: string;
+};
+
+type empresaInfo = {
+  nomeSite: string;
+};
+
 export default function Blog() {
   const [postPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [info, setInfo] = useState<empresaInfo>();
 
   const fetchPosts = async () => {
     try {
@@ -158,7 +139,20 @@ export default function Blog() {
       }
 
       const data = await res.json();
+
       setBlogs(data);
+    } catch (error) {
+      console.error('Falha ao buscar os posts:', error);
+    }
+  };
+
+  const fetchEmpresa = async () => {
+    try {
+      const data = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/informacoes.json').then(
+        (res) => res.json(),
+      );
+
+      setInfo(data);
     } catch (error) {
       console.error('Falha ao buscar os posts:', error);
     }
@@ -166,6 +160,7 @@ export default function Blog() {
 
   useEffect(() => {
     fetchPosts();
+    fetchEmpresa();
   }, []);
 
   const totalPages = Math.ceil(blogs.length / postPerPage); // Número total de páginas
@@ -180,7 +175,7 @@ export default function Blog() {
 
   return (
     <div className="w-full min-h-[100vh] items-center flex flex-col gap-3 bg-slate-300">
-      <Banner>Blog E-movee</Banner>
+      <Banner>Blog {info?.nomeSite}</Banner>
       <Input variant="faded" type="search" label="Search" color="primary" className="w-[22em]" />
       <div className="w-full min-h-[55em] mt-4 flex flex-col lg:flex-row justify-between">
         <div className="w-[15%] h-full flex justify-center items-center">{/* cookies */}</div>
@@ -194,7 +189,13 @@ export default function Blog() {
         <div className="w-[15%] flex justify-center items-center">{/* cookies */}</div>
       </div>
       <div className="w-full mb-3 py-2 flex justify-center">
-        <Pagination isCompact showControls total={totalPages} page={currentPage} onChange={handlePageChange} />
+        <Pagination
+          isCompact
+          showControls
+          total={totalPages} // Total de páginas
+          page={currentPage} // Página atual
+          onChange={handlePageChange} // Função para alterar a página
+        />
       </div>
     </div>
   );

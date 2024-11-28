@@ -27,9 +27,11 @@ export default function AboutEmo() {
 
   const loadAboutContent = async () => {
     try {
-      const data = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/about.json').then((res) => res.json());
+      const data = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/about.json').then((res) =>
+        res.json(),
+      );
 
-      setSlides(data.sideImages.map((image: { url: any; }) => ({ imagem: image.url })));
+      setSlides(data.sideImages.map((image: { url: any }) => ({ imagem: image.url })));
       setContent(data.content);
     } catch (error) {
       console.error("Erro ao carregar conteúdo 'Sobre' do S3:", error);

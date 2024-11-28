@@ -32,7 +32,7 @@ export default function CookiePage() {
       data-aos="fade-up"
     >
       {siteCookie && (
-        <div className="w-full h-[15em] lg:h-[5em] bg-white flex justify-center items-center">
+        <div className="w-full h-[15em] lg:h-[5em] bg-fundo text-fundo-text flex justify-center items-center">
           <div className="w-full lg:w-[80%] h-full flex flex-col lg:flex-row justify-center items-center gap-4">
             <div className="w-[95%] lg:w-[50%] h-full flex flex-col justify-center items-center gap-2">
               <h2 className="text-xl font-semibold">Aviso de cookies</h2>
@@ -49,11 +49,11 @@ export default function CookiePage() {
                       expires: expirationDate,
                     });
                 }}
-                className="w-[33vh] border-2 py-2 rounded-lg border-button hover:bg-button hover:text-button-text text-sm lg:text-md transition ease-in-out delay-100"
+                className="w-[33vh] border-2 py-2 rounded-lg border-botoes hover:bg-botoes hover:text-botoes-text text-sm lg:text-md transition ease-in-out delay-100"
               >
                 Aceitar
               </button>
-              <button className="w-[33vh] border-2 py-2 rounded-lg border-button hover:bg-button hover:text-button-text text-sm lg:text-md transition ease-in-out delay-100">
+              <button className="w-[33vh] border-2 py-2 rounded-lg border-botoes hover:bg-botoes hover:text-botoes-text text-sm lg:text-md transition ease-in-out delay-100">
                 <Link href="/cookies">Definição de Cookie</Link>
               </button>
             </div>
