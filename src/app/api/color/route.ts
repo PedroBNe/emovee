@@ -1,48 +1,27 @@
 import { NextResponse } from 'next/server';
-import { S3 } from 'aws-sdk'; // Importa o SDK do S3
+import path from 'path';
 import { promises as fs } from 'fs';
+import { console } from 'inspector';
 
-// Configuração do S3
-const s3 = new S3();
-const bucketName = 'your-s3-bucket-name';  // Substitua pelo nome do seu bucket
-const fileKey = 'colors.json';  // O nome do arquivo no S3
+// Caminho do arquivo JSON
+const filePath = path.join(process.cwd(), 'src', 'data', 'colors.json');
 
 // Interface para os dados das cores
 interface Color {
-  id: number;
   name: string;
   default: string;
   text?: string;
 }
 
-// Função para obter as cores do S3
+// Função para obter as cores do arquivo JSON
 async function getColors(): Promise<Color[]> {
-  try {
-    const params = {
-      Bucket: bucketName,
-      Key: fileKey,
-    };
-    const data = await s3.getObject(params).promise(); // Obtém o arquivo JSON do S3
-    const jsonData = data.Body ? data.Body.toString('utf-8') : '[]'; // Garantir que temos um JSON válido
-    return JSON.parse(jsonData);
-  } catch (error) {
-    throw new Error('Erro ao buscar as cores do S3: ' + error);
-  }
+  const jsonData = await fs.readFile(filePath, 'utf-8');
+  return JSON.parse(jsonData);
 }
 
-// Função para atualizar as cores no S3
+// Função para atualizar as cores no arquivo JSON
 async function updateColors(colors: Color[]): Promise<void> {
-  try {
-    const params = {
-      Bucket: bucketName,
-      Key: fileKey,
-      Body: JSON.stringify(colors, null, 2), // Corpo da requisição com os dados atualizados
-      ContentType: 'application/json',
-    };
-    await s3.putObject(params).promise();  // Envia os dados para o S3
-  } catch (error) {
-    throw new Error('Erro ao atualizar as cores no S3: ' + error);
-  }
+  await fs.writeFile(filePath, JSON.stringify(colors, null, 2), 'utf-8');
 }
 
 // API Route (GET e PUT)
