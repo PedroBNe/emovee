@@ -22,7 +22,7 @@ export default function Gest() {
       <div className="w-full min-h-[10em] flex flex-col justify-center xl:justify-start items-center xl:items-start">
         <div className="w-full h-[100%] flex flex-col justify-between items-center">
           <div className="w-[95%] sm:w-[75%] flex flex-col items-center justify-around gap-[75px] text-start">
-            <h2 className="text-2xl lg:text-4xl font-bold text-text">
+            <h2 className="text-2xl lg:text-4xl font-bold text-texto">
               Gerencie suas ofertas de maneira segura e eficaz!
             </h2>
             <p className="text-md lg:text-xl">
@@ -34,29 +34,29 @@ export default function Gest() {
             <div className="w-[600px] h-[400px] bg-white shadow-2xl flex justify-center items-center rounded-xl mb-8">
               Video
             </div>
-            <h2 className="text-2xl lg:text-4xl font-bold text-text">A solução que você procura</h2>
+            <h2 className="text-2xl lg:text-4xl font-bold text-texto">A solução que você procura</h2>
             <p className="text-md lg:text-xl">
               Administre as suas ofertas de maneira unificada, concentrando todas as informações essenciais em um único
               ambiente. Ganhe em produtividade e clareza ao unificar seus processos, facilitando a tomada de decisões
               estratégicas e a execução de campanhas com maior precisão e impacto.
             </p>
-            <h2 className="text-2xl lg:text-4xl font-bold text-text">Criação de Tabloides</h2>
+            <h2 className="text-2xl lg:text-4xl font-bold text-texto">Criação de Tabloides</h2>
             <p className="text-md lg:text-xl">
               Nosso software é integrado, por isso, você conseguirá gerir suas ofertas e criar tabloides estratégicos e
               assertivos. Desta maneira, os materiais promocionais ficam prontos em alguns segundos, de maneira rápida e
               intuitiva.
             </p>
-            <h2 className="text-2xl lg:text-4xl font-bold text-text">100% completo</h2>
+            <h2 className="text-2xl lg:text-4xl font-bold text-texto">100% completo</h2>
             <p className="text-md lg:text-xl">
               Por ser integrada com o ERP, nossa plataforma possui uma grande biblioteca de fotos dos produtos, bem
               cadastro com informações completas e relevantes.
             </p>
-            <h2 className="text-2xl lg:text-4xl font-bold text-text">Acompanhamento em tempo real</h2>
+            <h2 className="text-2xl lg:text-4xl font-bold text-texto">Acompanhamento em tempo real</h2>
             <p className="text-md lg:text-xl">
               Temos um local exclusivo para você acompanhar como está o processo de desenvolvimento dos cartazes de
               oferta, para facilitar a aprovação e eliminar erros de diagramação antes da impressão.
             </p>
-            <h2 className="text-2xl lg:text-4xl font-bold text-text">Economize tempo</h2>
+            <h2 className="text-2xl lg:text-4xl font-bold text-texto">Economize tempo</h2>
             <p className="text-md lg:text-xl">
               Elimine atividades manuais e simplifique o processo de criação dos materiais de oferta! Com poucos
               cliques, sua equipe ganha eficiência operacional e consegue focar em processos estratégicos.
@@ -67,11 +67,13 @@ export default function Gest() {
       <div className="py-10">
         <FormInterface />
       </div>
-      <div className="w-full min-h-[18em] bg-black flex gap-12 flex-col justify-center items-center">
-        <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
-        <Link href="">
-          <Button>Fale com um Especialista</Button>
-        </Link>
+      <div className="w-full flex items-center justify-center px-5">
+        <div className="w-full min-h-[18em] bg-black rounded-[60px] flex gap-12 flex-col justify-center items-center">
+          <h2 className="text-white text-5xl font-bold">Dúvidas?</h2>
+          <Link href="/fale-especialista">
+            <Button>Fale com um Especialista</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

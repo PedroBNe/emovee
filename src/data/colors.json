@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1",
+    "name": "fundo",
+    "default": "#000000",
+    "text": "#ffffff"
+  },
+  {
+    "id": "2",
+    "name": "botoes",
+    "default": "#C0F205",
+    "text": "#000000"
+  },
+  {
+    "id": "3",
+    "name": "texto",
+    "default": "#000000"
+  }
+]

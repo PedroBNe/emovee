@@ -2,7 +2,7 @@
 
 import formatDate from '@/components/utils/Data';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Banner from '@/components/utils/BannerTop';
@@ -10,19 +10,16 @@ import { Input } from '@nextui-org/input';
 import { Pagination } from '@nextui-org/react';
 import useWindowSize from '@/components/utils/Window';
 
-type Post = {
-  id: number;
-  title: string;
-  subtitle: string;
-  date: string;
-  imageUrl: string;
-  category: string;
-};
-
 // Componente para um único post
-const PostCardBlog = ({ post }: { post: Post }) => {
+const PostCardBlog = ({ post }: { post: Blog }) => {
   const [isHovered, setIsHovered] = useState(false);
   const window = useWindowSize();
+  const category = [
+    {
+      id: 1,
+      name: 'Tecnologia',
+    },
+  ];
 
   if (window.width > 435) {
     return (
@@ -48,7 +45,8 @@ const PostCardBlog = ({ post }: { post: Post }) => {
         <div className="flex justify-between absolute bottom-0 left-0 right-0 p-6 text-black bg-white">
           <div className="w-[70%]">
             <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold bg-primary rounded-full text-white">
-              {post.category}
+              {/* {post.category} */}
+              {category[0].name}
             </span>
             <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
             <p className="text-sm mb-2 opacity-90">{post.subtitle}</p>
@@ -88,7 +86,8 @@ const PostCardBlog = ({ post }: { post: Post }) => {
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
           <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold bg-primary rounded-full">
-            {post.category}
+            {/* {post.category} */}
+            {category[0].name}
           </span>
           <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
           <p className="text-sm mb-2 opacity-90">{post.subtitle}</p>
@@ -110,83 +109,65 @@ const PostCardBlog = ({ post }: { post: Post }) => {
   }
 };
 
-export default function Blog() {
-  // mock de exemplo para os posts
-  const allPosts: Post[] = [
-    {
-      id: 1,
-      title: 'Introdução ao React',
-      subtitle: 'Aprenda os fundamentos do React',
-      date: '2023-07-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 2,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 3,
-      title: 'Estilização com Tailwind CSS',
-      subtitle: 'Crie interfaces bonitas e responsivas rapidamente',
-      date: '2023-08-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 4,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 5,
-      title: 'Estilização com Tailwind CSS',
-      subtitle: 'Crie interfaces bonitas e responsivas rapidamente',
-      date: '2023-08-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 6,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 7,
-      title: 'Estilização com Tailwind CSS',
-      subtitle: 'Crie interfaces bonitas e responsivas rapidamente',
-      date: '2023-08-01',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-    {
-      id: 8,
-      title: 'Dominando o Next.js',
-      subtitle: 'Construa aplicações web modernas com Next.js',
-      date: '2023-07-15',
-      imageUrl: 'https://th.bing.com/th/id/OIP.mHRVRkfzQjh9L8IS9bJleQHaE6?w=261&h=180&c=7&r=0&o=5&pid=1.7',
-      category: 'Tecnology',
-    },
-  ];
+type Blog = {
+  id: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  content: string;
+  imageUrl: string;
+};
 
+type empresaInfo = {
+  nomeSite: string;
+};
+
+export default function Blog() {
   const [postPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [info, setInfo] = useState<empresaInfo>();
 
-  const totalPages = Math.ceil(allPosts.length / postPerPage); // Número total de páginas
+  const fetchPosts = async () => {
+    try {
+      const res = await fetch('/api/blog', {
+        method: 'GET',
+      });
+
+      if (!res.ok) {
+        throw new Error(`Erro: ${res.status}`);
+      }
+
+      const data = await res.json();
+
+      setBlogs(data);
+    } catch (error) {
+      console.error('Falha ao buscar os posts:', error);
+    }
+  };
+
+  const fetchEmpresa = async () => {
+    try {
+      const data = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/informacoes.json').then(
+        (res) => res.json(),
+      );
+
+      setInfo(data);
+    } catch (error) {
+      console.error('Falha ao buscar os posts:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+    fetchEmpresa();
+  }, []);
+
+  const totalPages = Math.ceil(blogs.length / postPerPage); // Número total de páginas
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
 
-  const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost); // Posts atuais
+  const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost); // Posts atuais
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -194,7 +175,7 @@ export default function Blog() {
 
   return (
     <div className="w-full min-h-[100vh] items-center flex flex-col gap-3 bg-slate-300">
-      <Banner>Blog E-movee</Banner>
+      <Banner>Blog {info?.nomeSite}</Banner>
       <Input variant="faded" type="search" label="Search" color="primary" className="w-[22em]" />
       <div className="w-full min-h-[55em] mt-4 flex flex-col lg:flex-row justify-between">
         <div className="w-[15%] h-full flex justify-center items-center">{/* cookies */}</div>
@@ -208,7 +189,13 @@ export default function Blog() {
         <div className="w-[15%] flex justify-center items-center">{/* cookies */}</div>
       </div>
       <div className="w-full mb-3 py-2 flex justify-center">
-        <Pagination isCompact showControls total={totalPages} page={currentPage} onChange={handlePageChange} />
+        <Pagination
+          isCompact
+          showControls
+          total={totalPages} // Total de páginas
+          page={currentPage} // Página atual
+          onChange={handlePageChange} // Função para alterar a página
+        />
       </div>
     </div>
   );

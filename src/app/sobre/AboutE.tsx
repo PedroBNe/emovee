@@ -1,10 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Imagem from '@/assets/location.png';
-import Imagem2 from '@/assets/insta-media.png';
-import Imagem3 from '@/assets/social-insta.png';
-import Imagem4 from '@/assets/values.png';
 import { StaticImageData } from 'next/image';
 import { CarouselEmovee } from './CarouselEmovee';
 import React from 'react';
@@ -21,14 +17,6 @@ interface Slide {
   imagem: StaticImageData | string;
 }
 
-const s3 = new S3Client({
-  region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
-  credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY!,
-  },
-});
-
 export default function AboutEmo() {
   const [content, setContent] = useState<AboutContent | null>(null);
   const [slides, setSlides] = useState<Slide[]>([]);
@@ -38,43 +26,17 @@ export default function AboutEmo() {
   }, []);
 
   const loadAboutContent = async () => {
-    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
-    const key = 'data/about.json';
-
     try {
-      const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
-      const data = await s3.send(command);
+      const data = await fetch('https://imagensladingpage.s3.sa-east-1.amazonaws.com/data/about.json').then((res) =>
+        res.json(),
+      );
 
-      if (data.Body) {
-        const bodyContents = await streamToString(data.Body);
-        const aboutData = JSON.parse(bodyContents);
-        setContent({
-          title: aboutData.content.title,
-          description: aboutData.content.description,
-          sideText: aboutData.content.sideText,
-          sideImages: aboutData.sideImages,
-        });
-
-        // Configura os slides usando as URLs das imagens no JSON
-        const slideData = aboutData.sideImages.map((img: { id: number; url: string }) => ({
-          imagem: img.url,
-        }));
-        setSlides(slideData);
-      } else {
-        console.error("Erro: Dados de 'sobre' não encontrados no S3.");
-      }
+      setSlides(data.sideImages.map((image: { url: any }) => ({ imagem: image.url })));
+      setContent(data.content);
     } catch (error) {
       console.error("Erro ao carregar conteúdo 'Sobre' do S3:", error);
     }
   };
-
-  async function streamToString(stream: any): Promise<string> {
-    const chunks: any[] = [];
-    for await (const chunk of stream) {
-      chunks.push(chunk instanceof Buffer ? chunk : Buffer.from(chunk));
-    }
-    return Buffer.concat(chunks).toString('utf-8');
-  }
 
   if (!content) {
     return <div>Carregando...</div>;
