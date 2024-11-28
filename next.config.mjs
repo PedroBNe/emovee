@@ -28,29 +28,11 @@ const nextConfig = {
 
   // Configuração de imagens para permitir domínios externos
   images: {
-    domains: ['th.bing.com', 'imagensladingpage.s3.sa-east-1.amazonaws.com', 'https://main.dg2tmjsaimumx.amplifyapp.com'],
-  },
-
-  async headers() {
-    return [
-      {
-        source: '/api/*',  // Pode ser qualquer URL ou wildcard
-        headers: [
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: '*',  // Permite acesso de todos os domínios (alterar conforme necessário)
-          },
-          {
-            key: 'Access-Control-Allow-Methods',
-            value: 'GET, POST, PUT, DELETE, OPTIONS', // Permitir métodos necessários
-          },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value: 'Content-Type, Authorization',  // Permitir cabeçalhos necessários
-          },
-        ],
-      },
-    ];
+    domains: [
+      'th.bing.com',
+      'imagensladingpage.s3.sa-east-1.amazonaws.com',
+      'https://main.dg2tmjsaimumx.amplifyapp.com',
+    ],
   },
 
   // ...other config

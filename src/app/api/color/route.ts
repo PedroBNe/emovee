@@ -1,50 +1,82 @@
-import { NextResponse } from 'next/server';
-import path from 'path';
-import { promises as fs } from 'fs';
+import { NextRequest, NextResponse } from 'next/server';
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 
-// Caminho do arquivo JSON
-const filePath = path.join(process.cwd(), 'src', 'data', 'colors.json');
+const s3 = new S3Client({
+  region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
+  credentials: {
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_ACCESS_KEY!,
+  },
+});
 
-// Interface para os dados das cores
-interface Color {
-  name: string;
-  default: string;
-  text?: string;
+// Função para converter o ReadableStream para Buffer
+async function streamToBuffer(stream: ReadableStream<Uint8Array> | null): Promise<Buffer | null> {
+  if (!stream) {
+    // Retorne null ou lance um erro se o stream for nulo
+    return null;
+  }
+
+  const chunks: Uint8Array[] = [];
+  const reader = stream.getReader();
+  let done, value;
+  while (({ done, value } = await reader.read())) {
+    if (done) break;
+
+    // Verifique se value não é undefined antes de usar
+    if (value !== undefined) {
+      chunks.push(value);
+    } else {
+      console.error('Valor de "value" é undefined, ignorando...');
+    }
+  }
+  return Buffer.concat(chunks);
 }
 
-// Função para obter as cores do arquivo JSON
-async function getColors(): Promise<Color[]> {
-  const jsonData = await fs.readFile(filePath, 'utf-8');
-  return JSON.parse(jsonData);
-}
+export async function GET(request: NextRequest) {
+  const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+  const key = 'data/colors.json';
 
-// Função para atualizar as cores no arquivo JSON
-async function updateColors(colors: Color[]): Promise<void> {
-  await fs.writeFile(filePath, JSON.stringify(colors, null, 2), 'utf-8');
-}
-
-// API Route (GET e PUT)
-export async function GET() {
   try {
-    const colors = await getColors();
-    return NextResponse.json(colors);
+    const command = new GetObjectCommand({ Bucket: bucketName, Key: key });
+    const data = await s3.send(command);
+
+    // Verifica se o data.Body existe e é do tipo correto
+    if (data.Body) {
+      const bodyContents = await streamToString(data.Body);
+      return NextResponse.json(JSON.parse(bodyContents));
+    } else {
+      throw new Error('O conteúdo do body não foi retornado do S3.');
+    }
   } catch (error) {
-    return NextResponse.json(
-      { message: 'Erro ao buscar as cores.', error: error instanceof Error ? error.message : 'Erro desconhecido' },
-      { status: 500 },
-    );
+    console.error('Erro ao carregar serviços do S3:', error);
+    return NextResponse.error();
   }
 }
 
-export async function PUT(req: Request) {
+async function streamToString(stream: any) {
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+  }
+  return Buffer.concat(chunks).toString('utf8');
+}
+
+export async function PUT(request: NextRequest) {
+  const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+  const key = 'data/colors.json';
+
   try {
-    const updatedColors = await req.json();  // Obtém os dados do corpo da requisição
-    await updateColors(updatedColors);  // Atualiza o arquivo JSON com as cores
-    return NextResponse.json({ message: 'Cores atualizadas com sucesso!' });
+    const body = await request.json();
+    const command = new PutObjectCommand({
+      Bucket: bucketName,
+      Key: key,
+      Body: JSON.stringify(body),
+      ContentType: 'application/json', // Defina o contentType conforme necessário
+    });
+    await s3.send(command);
+    return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json(
-      { message: 'Erro ao atualizar as cores', error: error instanceof Error ? error.message : 'Erro desconhecido' },
-      { status: 500 },
-    );
+    console.error('Erro ao salvar serviços no S3:', error);
+    return NextResponse.error();
   }
 }

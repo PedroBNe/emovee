@@ -79,12 +79,11 @@ export default function InformacoesEmpresaDashboard() {
       }
 
       const data = await response.json();
-      console.log(data.message); // Exibe a mensagem de sucesso retornada pela API
+      console.log('Cores atualizadas com sucesso!', data);
     } catch (error) {
       console.error('Erro:', error); // Exibe o erro caso algo aconteça
     }
   };
-
 
   const loadEmpresaInfo = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
