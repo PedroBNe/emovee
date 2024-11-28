@@ -65,23 +65,24 @@ export default function InformacoesEmpresaDashboard() {
   };
 
   const updateColors = async (newColors: Color[]) => {
+    const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
+    const key = 'data/colors.json';
+
     try {
-      const response = await fetch('/api/color', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newColors), // Enviando os dados diretamente
+      const command = new PutObjectCommand({
+        Bucket: bucketName,
+        Key: key,
+        Body: JSON.stringify(newColors),
+        ContentType: 'application/json',
       });
-
-      if (!response.ok) {
-        throw new Error('Erro ao atualizar as cores.');
-      }
-
-      const data = await response.json();
-      console.log('Cores atualizadas com sucesso!', data);
+      await s3.send(command);
+      toast({
+        title: 'Cores atualizadas',
+        description: 'As coresforam salvas com sucesso.',
+      });
+      console.log('Cores atualizadas com sucesso.');
     } catch (error) {
-      console.error('Erro:', error); // Exibe o erro caso algo aconteça
+      console.error("Erro ao salvar cores no S3:", error);
     }
   };
 
