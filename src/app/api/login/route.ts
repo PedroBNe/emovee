@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   const { username, password } = body;
 
   if (username === 'admin' && password === '123456') {
-    const token = jwt.sign({ username }, process.env.JWT_SECRET!, {
+    const token = jwt.sign({ username }, 'mysecret', {
       expiresIn: '1h',
     });
 
