@@ -10,8 +10,8 @@ export async function POST(req: NextRequest) {
   const body: LoginRequestBody = await req.json();
   const { username, password } = body;
 
-  if (username === process.env.NEXT_PUBLIC_USERNAME && password === process.env.NEXT_PUBLIC_PASSWORD) {
-    const token = jwt.sign({ username }, process.env.JWT_SECRET!, {
+  if (username === 'admin' && password === '123456') {
+    const token = jwt.sign({ username }, 'mysecret', {
       expiresIn: '1h',
     });
 
