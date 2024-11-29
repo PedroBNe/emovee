@@ -123,7 +123,7 @@ export default function FormInterface() {
         </Select>
         <button
           type="submit"
-          className="bg-botoes hover:bg-opacity-80 transition w-fit text-botoes-text font-bold rounded-full p-4 px-[40%] cursor-pointer"
+          className="botoes hover:opacity-80 transition w-fit font-bold rounded-full p-4 px-[40%] cursor-pointer"
         >
           Enviar
         </button>

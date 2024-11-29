@@ -1,8 +1,5 @@
-import { button, nextui } from '@nextui-org/theme';
-import { text } from 'stream/consumers';
+import { nextui } from '@nextui-org/theme';
 import type { Config } from 'tailwindcss';
-
-const getColorsFromJson = require('./src/components/utils/getColorsFromJson.js');
 
 const config: Config = {
   darkMode: ['class'],
@@ -28,7 +25,6 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
-        ...getColorsFromJson(),
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

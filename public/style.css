@@ -1,0 +1,36 @@
+
+.fundo {
+  background-color: #000000;
+  color: #C0F205;
+}
+
+.fundo-text {
+  color: #C0F205;
+}
+
+.dorda {
+  border: 2px solid #C0F205;
+}
+
+.botoes {
+  background-color: #C0F205;
+  color: #000000;
+}
+
+.botoes-text {
+  color: #C0F205;
+}
+
+.botoes-background {
+  background-color: #000000;
+  border: 2px solid #C0F205;
+}
+
+.botoes-background:hover {
+  background-color: #C0F205;
+  border: 2px solid #C0F205;
+}
+
+.texto {
+  color: #000000;
+}

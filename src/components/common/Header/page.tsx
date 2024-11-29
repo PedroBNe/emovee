@@ -80,7 +80,7 @@ export default function Header() {
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center bg-fundo text-fundo-text px-5 relative">
+    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center fundo px-5 relative">
       <div className="relative w-full max-w-36 h-full max-h-10 flex items-center justify-center">
         <Link href="/Home">
           <Image src={companyInfo.logoUrl} alt="logo-emove" fill quality={100} />
@@ -101,7 +101,7 @@ export default function Header() {
                 <Link href="/cartazeamento">Serviços</Link>
                 {IsHiddenSolution && (
                   <ul
-                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col bg-fundo border-2 border-fundo-text p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col fundo borda p-5 overflow-ellipsis whitespace-nowrap"
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -128,7 +128,7 @@ export default function Header() {
                 </p>
                 {IsHiddenSeg && (
                   <ul
-                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col bg-fundo border-2 border-fundo-text p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col fundo borda p-5 overflow-ellipsis whitespace-nowrap"
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -164,7 +164,7 @@ export default function Header() {
           </nav>
           <div className="hidden gap-5 lg:flex justify-center items-center absolute right-2">
             <Link href="/fale-especialista">
-              <button className="transition w-fit text-botoes-text font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 bg-botoes hover:bg-opacity-80 items-center">
+              <button className="transition w-fit botoes font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 hover:opacity-80 items-center">
                 Fale com um Especialista
               </button>
             </Link>
@@ -182,7 +182,7 @@ export default function Header() {
         </button>
       )}
       {menu && (
-        <div className="w-full h-screen fixed left-0 bottom-0 bg-fundo text-fundo-text z-20">
+        <div className="w-full h-screen fixed left-0 bottom-0 fundo z-20">
           <nav className="relative w-full h-full flex justify-center items-center">
             <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
               <li>
@@ -196,7 +196,6 @@ export default function Header() {
                 </Link>
               </li>
               <li
-                className="text-botoes"
                 onClick={() => {
                   setMenu(!menu);
                 }}
@@ -204,7 +203,6 @@ export default function Header() {
                 <Link href="/cartazeamento">Cartazeamento</Link>
               </li>
               <li
-                className="text-botoes"
                 onClick={() => {
                   setMenu(!menu);
                 }}
@@ -212,7 +210,6 @@ export default function Header() {
                 <Link href="/gestao-ofertas">Gestão de Ofertas</Link>
               </li>
               <li
-                className="text-botoes"
                 onClick={() => {
                   setMenu(!menu);
                 }}
@@ -257,7 +254,7 @@ export default function Header() {
                       setMenu(!menu);
                     }}
                   >
-                    <button className="transition w-fit text-botoes-text font-bold rounded-full py-3 px-4 bg-botoes items-center">
+                    <button className="transition w-fit text-botoes-text font-bold rounded-full py-3 px-4 botoes items-center">
                       Fale com um Especialista
                     </button>
                   </Link>
