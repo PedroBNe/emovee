@@ -4,7 +4,7 @@ export default function CloseMenu({ Width = 20, Height = 20 }: any) {
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      className="text-back"
+      className="botoes-text"
       width={Width}
       height={Height}
     >

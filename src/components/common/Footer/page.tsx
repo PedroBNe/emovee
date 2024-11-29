@@ -73,7 +73,7 @@ export default function Footer() {
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <footer className="w-full mt-10 bg-fundo text-fundo-text shadow-2xl min-h-40 flex flex-col justify-between text-text-primary">
+    <footer className="w-full mt-10 fundo shadow-2xl min-h-40 flex flex-col justify-between text-text-primary">
       <div className="flex flex-col md:flex-row justify-center gap-[90px] md:gap-[120px] xl:gap-[250px] items-center md:items-start py-10">
         <div className="hover:opacity-60">
           <Link href="/">
@@ -89,7 +89,7 @@ export default function Footer() {
               <Link href="/sobre">Sobre</Link>
             </li>
             <li className="hover:opacity-60 hover:underline">
-              <Link href="/segmentos">Servicos</Link>
+              <Link href="/cartazeamento">Servicos</Link>
             </li>
             <li className="hover:opacity-60 hover:underline">
               <Link href="/fale-especialista">Suporte</Link>
