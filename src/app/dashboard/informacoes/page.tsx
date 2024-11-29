@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -78,11 +78,12 @@ export default function InformacoesEmpresaDashboard() {
       await s3.send(command);
       toast({
         title: 'Cores atualizadas',
-        description: 'As coresforam salvas com sucesso.',
+        description:
+          'As coresforam salvas com sucesso! Para ver as cores atualizadas, feche e abra a página novamente.',
       });
-      console.log('Cores atualizadas com sucesso.');
+      alert('Cores atualizadas com sucesso.');
     } catch (error) {
-      console.error("Erro ao salvar cores no S3:", error);
+      console.error('Erro ao salvar cores no S3:', error);
     }
   };
 
