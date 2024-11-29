@@ -16,7 +16,7 @@ type Color = {
   name: string;
   default: string;
   text?: string;
-}
+};
 
 function newColors(colors: Color[]) {
   const cssContent = `
@@ -29,7 +29,7 @@ function newColors(colors: Color[]) {
   color: ${colors[0].text};
 }
 
-.dorda {
+.borda {
   border: 2px solid ${colors[0].text};
 }
 

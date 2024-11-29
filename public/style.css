@@ -1,15 +1,15 @@
 
 .fundo {
   background-color: #000000;
-  color: #C0F205;
+  color: #ffffff;
 }
 
 .fundo-text {
-  color: #C0F205;
+  color: #ffffff;
 }
 
-.dorda {
-  border: 2px solid #C0F205;
+.borda {
+  border: 2px solid #ffffff;
 }
 
 .botoes {

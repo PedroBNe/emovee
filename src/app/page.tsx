@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Home from '@/app/Home/page';
 import { useEffect } from 'react';
@@ -19,6 +19,7 @@ export default function Page() {
 
   useEffect(() => {
     fetchColors();
-  })
+  }, []);
+
   return <Home />;
 }
