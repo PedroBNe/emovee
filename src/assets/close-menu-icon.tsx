@@ -1,10 +1,10 @@
-export default function CloseMenu({ Width = 20, Height = 20 }: any) {
+export default function CloseMenu({ Width = 20, Height = 20, color }: any) {
   return (
     <svg
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      className="botoes-text"
+      style={{ color: color }}
       width={Width}
       height={Height}
     >

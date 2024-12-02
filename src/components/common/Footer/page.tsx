@@ -32,15 +32,34 @@ interface CompanyInfo {
   logoUrl: string; // Adicionamos o logoUrl
 }
 
+interface Colors {
+  name: string;
+  default: string;
+  text?: string;
+}
+
 export default function Footer() {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [companyInfo, setCompanyInfo] = useState<CompanyInfo | null>(null);
 
+  const [colors, setColors] = useState<Colors[]>([]);
+
   useEffect(() => {
     setIsVisible(!pathname.startsWith('/dashboard'));
     loadCompanyInfo();
+    fetchColors();
   }, [pathname]);
+
+  const fetchColors = async () => {
+    try {
+      const response = await fetch('/api/color');
+      const data = await response.json();
+      setColors(data);
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
+  };
 
   const loadCompanyInfo = async () => {
     const bucketName = process.env.NEXT_PUBLIC_AWS_S3_BUCKET_NAME;
@@ -72,8 +91,14 @@ export default function Footer() {
 
   if (!isVisible || !companyInfo) return null;
 
+  const footerBgColor = colors?.[0]?.default || '#ffffff';
+  const footerTextColor = colors?.[0]?.text || '#000000';
+
   return (
-    <footer className="w-full mt-10 fundo shadow-2xl min-h-40 flex flex-col justify-between text-text-primary">
+    <footer
+      className="w-full mt-10 shadow-2xl min-h-40 flex flex-col justify-between"
+      style={{ backgroundColor: footerBgColor, color: footerTextColor }}
+    >
       <div className="flex flex-col md:flex-row justify-center gap-[90px] md:gap-[120px] xl:gap-[250px] items-center md:items-start py-10">
         <div className="hover:opacity-60">
           <Link href="/">
@@ -126,10 +151,10 @@ export default function Footer() {
           <p className="pb-1">Nossas Redes:</p>
           <div className="flex flex-row justify-around">
             <Link href={companyInfo.instagram} target="_blank">
-              <Sites image={Instagram} alt="instagram" />
+              <Sites image={Instagram} alt="instagram" color={colors ?? []} />
             </Link>
             <Link href={companyInfo.linkedin} target="_blank">
-              <Sites image={Linkedin} alt="linkedin" />
+              <Sites image={Linkedin} alt="linkedin" color={colors ?? []} />
             </Link>
           </div>
         </div>

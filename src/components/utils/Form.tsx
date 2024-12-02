@@ -4,7 +4,13 @@ import { Input } from '@nextui-org/input';
 import { RadioGroup, Radio } from '@nextui-org/radio';
 import { Select, SelectItem } from '@nextui-org/react';
 import { SegmentsForm } from './Segments-form';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+interface Colors {
+  name: string;
+  default: string;
+  text?: string;
+}
 
 export default function FormInterface() {
   const [selected, setSelected] = useState('CPF');
@@ -15,6 +21,8 @@ export default function FormInterface() {
   const [empresa, setEmpresa] = useState('');
   const [segmento, setSegmento] = useState('');
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const [colors, setColors] = useState<Colors[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,6 +60,24 @@ export default function FormInterface() {
       console.error('Erro ao enviar formulário:', error);
     }
   };
+
+  const fetchColors = async () => {
+    try {
+      const response = await fetch('/api/color');
+      if (response.ok) {
+        const data = await response.json();
+        setColors(data);
+      } else {
+        console.error('Erro ao buscar as cores');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchColors();
+  }, []);
 
   return (
     <div className="w-[23em] lg:w-[30em] md:w-[38em] min-h-[50em] rounded-lg bg-white flex flex-col items-center justify-around shadow-2xl relative mt-4 xl:mt-0">
@@ -123,7 +149,8 @@ export default function FormInterface() {
         </Select>
         <button
           type="submit"
-          className="botoes hover:opacity-80 transition w-fit font-bold rounded-full p-4 px-[40%] cursor-pointer"
+          className="hover:opacity-80 transition w-fit font-bold rounded-full p-4 px-[40%] cursor-pointer"
+          style={{ backgroundColor: colors?.[1]?.default, color: colors?.[1]?.text }}
         >
           Enviar
         </button>

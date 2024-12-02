@@ -24,11 +24,19 @@ interface CompanyInfo {
   logoUrl: string; // Adicionamos o logoUrl
 }
 
+interface Colors {
+  name: string;
+  default: string;
+  text?: string;
+}
+
 export default function Header() {
   const window = useWindowSize();
   const [menu, setMenu] = useState(false);
   const [IsHiddenSolution, setIsHiddenSolution] = useState(false);
   const [IsHiddenSeg, setIsHiddenSeg] = useState(false);
+
+  const [colors, setColors] = useState<Colors[]>([]);
 
   const [companyInfo, setCompanyInfo] = useState<CompanyInfo | null>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -46,6 +54,20 @@ export default function Header() {
     return Buffer.concat(chunks).toString('utf-8');
   }
 
+  const fetchColors = async () => {
+    try {
+      const response = await fetch('/api/color');
+      if (response.ok) {
+        const data = await response.json();
+        setColors(data);
+      } else {
+        console.error('Erro ao buscar as cores');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -55,6 +77,7 @@ export default function Header() {
     setIsVisible(!pathname.startsWith('/dashboard'));
 
     loadCompanyInfo();
+    fetchColors();
   }, [pathname]);
 
   const loadCompanyInfo = async () => {
@@ -80,7 +103,10 @@ export default function Header() {
   if (!isVisible || !companyInfo) return null;
 
   return (
-    <header className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center fundo px-5 relative">
+    <header
+      className="w-full h-[12vh] 2xl:h-[10vh] flex justify-between items-center px-5 relative"
+      style={{ backgroundColor: colors?.[0]?.default, color: colors?.[0]?.text }}
+    >
       <div className="relative w-full max-w-36 h-full max-h-10 flex items-center justify-center">
         <Link href="/Home">
           <Image src={companyInfo.logoUrl} alt="logo-emove" fill quality={100} />
@@ -101,7 +127,12 @@ export default function Header() {
                 <Link href="/cartazeamento">Serviços</Link>
                 {IsHiddenSolution && (
                   <ul
-                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col fundo borda p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex delay-300 gap-4 rounded-lg absolute z-10 top-6 justify-center items-center flex-col p-5 overflow-ellipsis whitespace-nowrap"
+                    style={{
+                      backgroundColor: colors?.[0]?.default,
+                      color: colors?.[0]?.text,
+                      border: `2px solid ${colors?.[0]?.text}`,
+                    }}
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -128,7 +159,12 @@ export default function Header() {
                 </p>
                 {IsHiddenSeg && (
                   <ul
-                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col fundo borda p-5 overflow-ellipsis whitespace-nowrap"
+                    className="flex z-10 delay-300 gap-4 rounded-lg absolute top-6 justify-center items-center flex-col p-5 overflow-ellipsis whitespace-nowrap"
+                    style={{
+                      backgroundColor: colors?.[0]?.default,
+                      color: colors?.[0]?.text,
+                      border: `2px solid ${colors?.[0]?.text}`,
+                    }}
                     data-aos="fade-down"
                     data-aos-duration="200"
                     data-aos-offset="300"
@@ -164,7 +200,10 @@ export default function Header() {
           </nav>
           <div className="hidden gap-5 lg:flex justify-center items-center absolute right-2">
             <Link href="/fale-especialista">
-              <button className="transition w-fit botoes font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 hover:opacity-80 items-center">
+              <button
+                className="transition w-fit font-bold rounded-full py-3 2xl:py-4 px-4 2xl:px-6 hover:opacity-80 items-center"
+                style={{ backgroundColor: colors?.[1]?.default, color: colors?.[1]?.text }}
+              >
                 Fale com um Especialista
               </button>
             </Link>
@@ -178,11 +217,14 @@ export default function Header() {
             handleNoScroll();
           }}
         >
-          <MenuIcon w={25} h={25} />
+          <MenuIcon w={25} h={25} color={colors?.[0]?.text} />
         </button>
       )}
       {menu && (
-        <div className="w-full h-screen fixed left-0 bottom-0 fundo z-20">
+        <div
+          className="w-full h-screen fixed left-0 bottom-0 z-20"
+          style={{ backgroundColor: colors?.[0]?.default, color: colors?.[0]?.text }}
+        >
           <nav className="relative w-full h-full flex justify-center items-center">
             <ul className="w-fit flex flex-col gap-7 justify-center items-center font-bold">
               <li>
@@ -254,7 +296,10 @@ export default function Header() {
                       setMenu(!menu);
                     }}
                   >
-                    <button className="transition w-fit text-botoes-text font-bold rounded-full py-3 px-4 botoes items-center">
+                    <button
+                      className="transition w-fit font-bold rounded-full py-3 px-4 items-center"
+                      style={{ backgroundColor: colors?.[1]?.default, color: colors?.[1]?.text }}
+                    >
                       Fale com um Especialista
                     </button>
                   </Link>
@@ -268,7 +313,7 @@ export default function Header() {
                 handleScroll();
               }}
             >
-              <CloseMenu Width={25} Height={25} />
+              <CloseMenu Width={25} Height={25} color={colors?.[0]?.text} />
             </button>
           </nav>
         </div>
