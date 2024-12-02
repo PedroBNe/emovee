@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import './globals.css';
-import '../../public/style.css';
 import clsx from 'clsx';
 import Footer from '@/components/common/Footer/page';
 import Header from '@/components/common/Header/page';

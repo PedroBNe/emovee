@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function MenuIcon({ w, h }: any) {
+export default function MenuIcon({ w, h, color }: any) {
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={w} height={h}>
       <g strokeWidth="0"></g>
@@ -9,7 +9,7 @@ export default function MenuIcon({ w, h }: any) {
         <path
           d="M4 6H20M4 12H20M4 18H20"
           stroke="currentColor"
-          className="text-button"
+          style={{ color: color }}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

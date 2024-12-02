@@ -12,14 +12,38 @@ import Header from '../../components/utils/Header';
 import SegOut from './Seg-Out';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+interface Color {
+  name: string;
+  default: string;
+  text?: string;
+}
 
 export default function Seg() {
+  const [colors, setColors] = useState<Color[]>([]);
+
+  const fetchColors = async () => {
+    try {
+      const response = await fetch('/api/color');
+      if (response.ok) {
+        const data = await response.json();
+        setColors(data);
+      } else {
+        console.error('Erro ao buscar as cores');
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
+
+    fetchColors();
   }, []);
 
   return (
@@ -27,7 +51,7 @@ export default function Seg() {
       <Banner>Segmentos</Banner>
       <div className="w-[90%] flex flex-col gap-10 justify-between items-center px-3 mb-10 text-start">
         <div className="w-full md:w-[75%] flex items-center justify-center">
-          <h2 className="text-2xl lg:text-4xl font-bold text-texto">
+          <h2 className="text-2xl lg:text-4xl font-bold" style={{ color: colors?.[2]?.default }}>
             Descubra os segmentos que podemos ajudar com as nossas soluções!
           </h2>
         </div>
